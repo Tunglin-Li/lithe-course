@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "start": "wp-scripts start --webpack-src-dir=blocks",
+    "build": "wp-scripts build --webpack-src-dir=blocks"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.12.0"
+  },
+  "dependencies": {
+    "@dnd-kit/accessibility": "^3.1.1",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@wordpress/icons": "^10.25.0",
+    "motion": "^12.18.1"
+  }
+}

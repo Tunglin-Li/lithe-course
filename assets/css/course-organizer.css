@@ -1,0 +1,137 @@
+.lithe-course-selector {
+  margin: 20px 0;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ccd0d4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.lithe-course-organizer {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.lithe-course-list {
+  flex: 3;
+}
+
+.wpaa-unassigned {
+  flex: 1;
+  min-width: 250px;
+}
+
+.lithe-course {
+  background: #fff;
+  border: 1px solid #ccd0d4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2rem;
+}
+
+.lithe-course h2 {
+  margin: 0;
+  padding: 15px;
+  border-bottom: 1px solid #ccd0d4;
+  background: #f8f9fa;
+  font-size: 1.3em;
+}
+
+.lithe-modules-container {
+  padding: 15px;
+}
+
+.lithe-module {
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.lithe-module .module-header {
+  padding: 10px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lithe-module h3 {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+.handle {
+  cursor: move;
+  color: #999;
+}
+
+.lithe-module .module-actions,
+.lithe-lesson .lesson-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.lithe-lessons-container {
+  padding: 10px;
+}
+
+.lithe-lesson {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 0.5rem;
+  padding: 8px;
+}
+
+.lithe-lesson .handle {
+  margin-right: 5px;
+}
+
+.wpaa-unassigned {
+  background: #fff;
+  border: 1px solid #ccd0d4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  padding: 15px;
+}
+
+.wpaa-unassigned h2 {
+  margin: 0 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccd0d4;
+}
+
+.wpaa-unassigned h3 {
+  margin: 15px 0 10px;
+  font-size: 14px;
+}
+
+.wpaa-unassigned .lithe-module,
+.wpaa-unassigned .lithe-lesson {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.5rem;
+  padding: 8px;
+}
+
+.lithe-module-item-placeholder,
+.lithe-lesson-placeholder {
+  border: 2px dashed #b4b9be;
+  margin-bottom: 10px;
+  height: 40px;
+  background: #f8f8f8;
+}
+
+.no-items {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+.lithe-course-actions {
+  display: flex;
+  gap: 10px;
+}

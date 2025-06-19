@@ -1,0 +1,15 @@
+{
+  "name": "lithe/course",
+  "autoload": {
+    "psr-4": {
+      "Lithe\\Course\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Tunglin",
+      "email": "wpaboveaverage@gmail.com"
+    }
+  ],
+  "require": {}
+}

@@ -58,6 +58,20 @@ class Enrollment {
                 ],
             ],
         ]);
+        
+        // Register get enrolled students endpoint
+        register_rest_route($this->api_namespace, '/course/(?P<course_id>\d+)/students', [
+            'methods' => 'GET',
+            'callback' => [$this, 'get_enrolled_students_endpoint'],
+            'permission_callback' => [$this, 'admin_permission_check'],
+            'args' => [
+                'course_id' => [
+                    'validate_callback' => function($param) {
+                        return is_numeric($param);
+                    }
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -124,40 +138,68 @@ class Enrollment {
     }
 
     /**
+     * Get course type
+     * 
+     * @param int $course_id Course ID
+     * @return string Course type (public, free, paid)
+     */
+    public function get_course_type($course_id) {
+        $course_type = get_post_meta($course_id, '_course_type', true);
+        
+        // Default to 'free' if not set for backward compatibility
+        if (empty($course_type)) {
+            return 'free';
+        }
+        
+        return $course_type;
+    }
+
+    /**
      * Check if a course is free
      * 
      * @param int $course_id Course ID
      * @return bool Is free
      */
     public function is_free_course($course_id) {
-        // Check if there's a linked product
-        $product_id = get_post_meta($course_id, '_linked_product_id', true);
+        $course_type = $this->get_course_type($course_id);
         
-        // If no linked product, it's a free course
-        if (empty($product_id)) {
+        // Public and free courses are considered "free" for enrollment purposes
+        if (in_array($course_type, ['public', 'free'])) {
             return true;
         }
         
-        // Check if WooCommerce is active
-        if (!function_exists('wc_get_product')) {
-            // If WooCommerce is not active, consider it free
-            error_log('WooCommerce function wc_get_product does not exist. Consider course as free.');
-            return true;
+        // For paid courses, check if there's a linked product
+        if ($course_type === 'paid') {
+            $product_id = get_post_meta($course_id, '_linked_product_id', true);
+            
+            // If no linked product, it's effectively free
+            if (empty($product_id)) {
+                return true;
+            }
+            
+            // Check if WooCommerce is active
+            if (!function_exists('wc_get_product')) {
+                // If WooCommerce is not active, consider it free
+                error_log('WooCommerce function wc_get_product does not exist. Consider course as free.');
+                return true;
+            }
+            
+            // Get the WooCommerce product
+            $product = wc_get_product($product_id);
+            
+            // If product doesn't exist or is not purchasable, consider it free
+            if (!$product || !$product->is_purchasable()) {
+                return true;
+            }
+            
+            // Get the product price
+            $price = $product->get_price();
+            
+            // If price is not set or is 0, it's a free course
+            return empty($price) || floatval($price) <= 0;
         }
         
-        // Get the WooCommerce product
-        $product = wc_get_product($product_id);
-        
-        // If product doesn't exist or is not purchasable, consider it free
-        if (!$product || !$product->is_purchasable()) {
-            return true;
-        }
-        
-        // Get the product price
-        $price = $product->get_price();
-        
-        // If price is not set or is 0, it's a free course
-        return empty($price) || floatval($price) <= 0;
+        return false;
     }
 
     /**
@@ -221,7 +263,15 @@ class Enrollment {
             return $content;
         }
         
-        // Check if user is logged in
+        // Get course type
+        $course_type = $this->get_course_type($course_id);
+        
+        // Public courses - no restrictions, everyone can access
+        if ($course_type === 'public') {
+            return $content;
+        }
+        
+        // For free and paid courses, check if user is logged in
         if (!is_user_logged_in()) {
             $post_title = get_the_title();
             $login_url = wp_login_url(get_permalink());
@@ -425,6 +475,69 @@ class Enrollment {
             __('Failed to unenroll user from the course.', 'lithe-course'),
             ['status' => 500]
         );
+    }
+    
+    /**
+     * Handle REST API get enrolled students endpoint
+     *
+     * @param \WP_REST_Request $request
+     * @return \WP_REST_Response
+     */
+    public function get_enrolled_students_endpoint($request) {
+        $course_id = $request->get_param('course_id');
+        
+        // Verify course exists
+        $course = get_post($course_id);
+        if (!$course || $course->post_type !== 'lithe_course') {
+            return new \WP_Error(
+                'invalid_course',
+                __('Invalid course.', 'lithe-course'),
+                ['status' => 400]
+            );
+        }
+        
+        // Get enrolled users
+        $enrolled_users = $this->get_enrolled_users($course_id);
+        $enrollment_count = count($enrolled_users);
+        
+        // Format users data for response
+        $users_data = [];
+        foreach ($enrolled_users as $user) {
+            $users_data[] = [
+                'id' => $user->ID,
+                'display_name' => $user->display_name,
+                'user_email' => $user->user_email,
+            ];
+        }
+        
+        return new \WP_REST_Response([
+            'success' => true,
+            'data' => [
+                'course_id' => $course_id,
+                'course_title' => $course->post_title,
+                'enrollment_count' => $enrollment_count,
+                'enrolled_users' => $users_data,
+            ]
+        ], 200);
+    }
+    
+    /**
+     * Get enrolled users for a course
+     * 
+     * @param int $course_id Course ID
+     * @return array Enrolled users
+     */
+    private function get_enrolled_users($course_id) {
+        global $wpdb;
+        
+        $users = $wpdb->get_results($wpdb->prepare(
+            "SELECT u.* FROM {$wpdb->users} u
+            JOIN {$wpdb->usermeta} um ON u.ID = um.user_id
+            WHERE um.meta_key = %s AND um.meta_value = '1'",
+            '_has_access_to_course_' . $course_id
+        ));
+        
+        return $users ? $users : [];
     }
 }
 

@@ -42,7 +42,7 @@ $border_style = isset($style['border']) ? $style['border'] : [];
 $border_radius = isset($border_style['radius']) ? $border_style['radius'] : (isset($attributes['borderRadius']) ? $attributes['borderRadius'] : '4px');
 
 // Get color attributes with defaults
-$title_background_color = isset($attributes['titleBackgroundColor']) ? $attributes['titleBackgroundColor'] : '#e7e7e7';
+$title_background_color = isset($attributes['titleBackgroundColor']) ? $attributes['titleBackgroundColor'] : '#ffffff';
 $title_text_color = isset($attributes['titleTextColor']) ? $attributes['titleTextColor'] : '#000000';
 $lesson_background_color = isset($attributes['lessonBackgroundColor']) ? $attributes['lessonBackgroundColor'] : '';
 $lesson_text_color = isset($attributes['lessonTextColor']) ? $attributes['lessonTextColor'] : '';

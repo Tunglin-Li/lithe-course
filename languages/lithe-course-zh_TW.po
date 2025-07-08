@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Lithe Course 1.0.0\n"
+"POT-Creation-Date: 2024-12-19 10:00+0800\n"
+"PO-Revision-Date: 2024-03-21 10:00+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: .\n"
+
+msgid "Courses"
+msgstr "課程"
+
+msgid "Course"
+msgstr "課程"
+
+msgid "Add New Course"
+msgstr "新增課程"
+
+msgid "Edit Course"
+msgstr "編輯課程"
+
+msgid "Lessons"
+msgstr "課堂"
+
+msgid "Lesson"
+msgstr "課堂"
+
+msgid "Add New Lesson"
+msgstr "新增課堂"
+
+msgid "Edit Lesson"
+msgstr "編輯課堂"
+
+msgid "Modules"
+msgstr "章節"
+
+msgid "Module"
+msgstr "章節"
+
+msgid "Add New Module"
+msgstr "新增章節"
+
+msgid "Edit Module"
+msgstr "編輯章節"
+
+msgid "Parent Module"
+msgstr "上層章節"
+
+msgid "Parent Module:"
+msgstr "上層章節："
+
+msgid "Select Course:"
+msgstr "選擇課程："
+
+msgid "-- Select Course --"
+msgstr "-- 選擇課程 --"
+
+msgid "Course Type:"
+msgstr "課程類型："
+
+msgid "Free (Requires Enrollment)"
+msgstr "免費（需要報名）"
+
+msgid "Paid (WooCommerce)"
+msgstr "付費（WooCommerce）"
+
+msgid "Invalid request"
+msgstr "無效的請求"
+
+msgid "Please log in to enroll"
+msgstr "請先登入後再報名"
+
+msgid "Successfully enrolled in the course"
+msgstr "報名成功"
+
+msgid "Failed to enroll in the course"
+msgstr "報名失敗"
+
+msgid "Login to Enroll"
+msgstr "登入後報名"
+
+msgid "Already Enrolled"
+msgstr "已報名"
+
+msgid "Enroll Now"
+msgstr "立即報名"
+
+msgid "This course requires enrollment."
+msgstr "此課程需要報名。"
+
+msgid "This course is not available for purchase."
+msgstr "此課程目前無法購買。"
+
+msgid "This is a premium course. Please <a href=\"%s\">purchase the course</a> to access the content."
+msgstr "這是付費課程。請<a href=\"%s\">購買課程</a>以存取內容。"
+
+msgid "Course Product"
+msgstr "課程商品"
+
+msgid "Select Product:"
+msgstr "選擇商品："
+
+msgid "-- Select Product --"
+msgstr "-- 選擇商品 --" 

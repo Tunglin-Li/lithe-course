@@ -1,114 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WPAA Academy\n"
-"POT-Creation-Date: 2024-03-21 10:00+0800\n"
-"PO-Revision-Date: 2024-03-21 10:00+0800\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: zh_TW\n"
+"Project-Id-Version: Lithe Course 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-19 10:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: WordPress\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
 msgid "Courses"
-msgstr "課程"
+msgstr ""
 
 msgid "Course"
-msgstr "課程"
+msgstr ""
 
 msgid "Add New Course"
-msgstr "新增課程"
+msgstr ""
 
 msgid "Edit Course"
-msgstr "編輯課程"
+msgstr ""
 
 msgid "Lessons"
-msgstr "課堂"
+msgstr ""
 
 msgid "Lesson"
-msgstr "課堂"
+msgstr ""
 
 msgid "Add New Lesson"
-msgstr "新增課堂"
+msgstr ""
 
 msgid "Edit Lesson"
-msgstr "編輯課堂"
+msgstr ""
 
 msgid "Modules"
-msgstr "章節"
+msgstr ""
 
 msgid "Module"
-msgstr "章節"
+msgstr ""
 
 msgid "Add New Module"
-msgstr "新增章節"
+msgstr ""
 
 msgid "Edit Module"
-msgstr "編輯章節"
+msgstr ""
 
 msgid "Parent Module"
-msgstr "上層章節"
+msgstr ""
 
 msgid "Parent Module:"
-msgstr "上層章節："
+msgstr ""
 
 msgid "Select Course:"
-msgstr "選擇課程："
+msgstr ""
 
 msgid "-- Select Course --"
-msgstr "-- 選擇課程 --"
+msgstr ""
 
 msgid "Course Type:"
-msgstr "課程類型："
+msgstr ""
 
 msgid "Free (Requires Enrollment)"
-msgstr "免費（需要報名）"
+msgstr ""
 
 msgid "Paid (WooCommerce)"
-msgstr "付費（WooCommerce）"
+msgstr ""
 
 msgid "Invalid request"
-msgstr "無效的請求"
+msgstr ""
 
 msgid "Please log in to enroll"
-msgstr "請先登入後再報名"
+msgstr ""
 
 msgid "Successfully enrolled in the course"
-msgstr "報名成功"
+msgstr ""
 
 msgid "Failed to enroll in the course"
-msgstr "報名失敗"
+msgstr ""
 
 msgid "Login to Enroll"
-msgstr "登入後報名"
+msgstr ""
 
 msgid "Already Enrolled"
-msgstr "已報名"
+msgstr ""
 
 msgid "Enroll Now"
-msgstr "立即報名"
+msgstr ""
 
 msgid "This course requires enrollment."
-msgstr "此課程需要報名。"
+msgstr ""
 
 msgid "This course is not available for purchase."
-msgstr "此課程目前無法購買。"
+msgstr ""
 
 msgid "This is a premium course. Please <a href=\"%s\">purchase the course</a> to access the content."
-msgstr "這是付費課程。請<a href=\"%s\">購買課程</a>以存取內容。"
+msgstr ""
 
 msgid "Course Product"
-msgstr "課程商品"
+msgstr ""
 
 msgid "Select Product:"
-msgstr "選擇商品："
+msgstr ""
 
 msgid "-- Select Product --"
-msgstr "-- 選擇商品 --" 
+msgstr "" 

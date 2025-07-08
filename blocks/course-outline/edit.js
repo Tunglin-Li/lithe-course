@@ -27,7 +27,7 @@ export default function Edit({ attributes, setAttributes }) {
   };
 
   const moduleHeaderStyle = {
-    backgroundColor: attributes.titleBackgroundColor || "#e7e7e7",
+    backgroundColor: attributes.titleBackgroundColor || "#ffffff",
     color: attributes.titleTextColor || "#000000",
     borderRadius: `${borderRadius} ${borderRadius} 0 0`,
   };
@@ -150,8 +150,6 @@ export default function Edit({ attributes, setAttributes }) {
                       afterIcon="button"
                     />
                     <Button
-                      isSecondary
-                      isSmall
                       onClick={() =>
                         setAttributes({
                           style: {

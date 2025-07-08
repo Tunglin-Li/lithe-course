@@ -6,7 +6,6 @@ class Course {
     public static function init() {
         $class = new self();
         add_action('init', [$class, 'register_course_post_type']);
-        // add_filter('block_editor_settings_all', [$class, 'disable_course_block_locking'], 10, 2);
     }
 
     public function register_course_post_type() {
@@ -28,32 +27,8 @@ class Course {
             'rewrite' => ['slug' => 'courses'],
             'show_in_rest' => true,
             'hierarchical' => true,
-            // Add block template
-            'template' => [
-                ['lithe-course/meta-course-feature', [
-                    'lock' => [
-                        'remove' => true
-                        ]
-                    ]
-                ],
-            ],
-
-
-
         ]);
     }
-
-    public function disable_course_block_locking($settings, $context) {
-        // Disable block locking for course post type
-        if ($context->post && $context->post->post_type === 'lithe_course') {
-            $settings['canLockBlocks'] = false;
-        }
-
-        return $settings;
-    }
-
-    // Removed maybe_create_product method - now handled by AutoCreateProduct class
-    
 }
 
 Course::init();

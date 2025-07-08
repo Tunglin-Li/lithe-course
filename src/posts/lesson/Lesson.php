@@ -28,7 +28,7 @@ class Lesson {
             ],
             'public' => true,
             'has_archive' => true,
-            'show_in_menu' => 'edit.php?post_type=lithe_course',
+            'show_in_menu' => false,
             'supports' => ['title', 'editor', 'thumbnail', 'page-attributes'],
             'rewrite' => ['slug' => 'lesson'],
             'show_in_rest' => true,

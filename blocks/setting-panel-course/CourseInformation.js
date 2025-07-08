@@ -15,7 +15,7 @@ import { Reorder } from "framer-motion";
 import { useEntityProp } from "@wordpress/core-data";
 import { useSelect } from "@wordpress/data";
 
-export default function MetaFieldManager({
+export default function CourseInformation({
   fieldKey,
   title,
   addButtonText,

@@ -17,8 +17,6 @@ class Enqueue {
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/enrollment-button');
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/course-video');
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/course-metadata');
-        register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/meta-course-feature');
-        register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/meta-course-content');
     }
 
     /**
@@ -67,7 +65,7 @@ class Enqueue {
             $asset_file['dependencies'],
             $asset_file['version'],
             true
-        );
+        );        
     }
 
     public function enqueue_setting_panel_course() {

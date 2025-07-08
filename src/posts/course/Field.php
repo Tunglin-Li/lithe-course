@@ -195,6 +195,17 @@ class Field {
     }
 
     public function register_meta_fields() {
+        // Register course type meta field
+        register_post_meta('lithe_course', '_course_type', [
+            'type' => 'string',
+            'single' => true,
+            'default' => 'free',
+            'show_in_rest' => true,
+            'auth_callback' => function() {
+                return current_user_can('edit_posts');
+            }
+        ]);
+        
         // Register video meta
         register_post_meta('lithe_course', '_video', [
             'type' => 'object',

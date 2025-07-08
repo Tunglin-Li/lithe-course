@@ -99,11 +99,6 @@ class CourseOrganizer {
                                         <div class="module-header">
                                             <span class="dashicons dashicons-menu handle"></span>
                                             <h3><?php echo esc_html($module->post_title); ?></h3>
-                                            <div class="module-actions">
-                                                <a href="<?php echo get_edit_post_link($module->ID); ?>" class="button button-small">
-                                                    <?php _e('Edit', 'lithe-course'); ?>
-                                                </a>
-                                            </div>
                                         </div>
                                         <div class="lithe-lessons-container">
                                             <?php
@@ -159,11 +154,6 @@ class CourseOrganizer {
                                     <div class="lithe-module" data-id="<?php echo $module->ID; ?>">
                                         <span class="dashicons dashicons-menu handle"></span>
                                         <?php echo esc_html($module->post_title); ?>
-                                        <div class="module-actions">
-                                            <a href="<?php echo get_edit_post_link($module->ID); ?>" class="button button-small">
-                                                <?php _e('Edit', 'lithe-course'); ?>
-                                            </a>
-                                        </div>
                                     </div>
                                 <?php endforeach;
                             else : ?>

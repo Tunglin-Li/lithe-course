@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "title": "Lesson Sidebar",
   "category": "lithe-course",
-  "icon": "list-view",
+  "icon": "editor-ul",
   "description": "Displays a list of course modules",
   "supports": {
     "html": false,
@@ -24,11 +24,11 @@
     },
     "titleBackgroundColor": {
       "type": "string",
-      "default": "#e7e7e7"
+      "default": "#ffffff"
     },
     "lessonTextColor": {
       "type": "string",
-      "default": "#2271b1"
+      "default": "#454545"
     },
     "lessonBackgroundColor": {
       "type": "string",
@@ -36,7 +36,7 @@
     },
     "currentLessonColor": {
       "type": "string",
-      "default": "#f0f7fc"
+      "default": "#dddddd"
     },
     "borderRadius": {
       "type": "string",

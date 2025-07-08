@@ -4,7 +4,7 @@ add_action( 'init', 'register_lesson_layout_pattern' );
 
 function register_lesson_layout_pattern() {
 	register_block_pattern( 'lithe-course/lesson-layout', array(
-		'title'      => __( 'Lesson Layout', 'lithe-course' ),
+		'title'      => __( 'Single Lesson Layout', 'lithe-course' ),
 		'categories' => array( 'lithe-course' ),
 		'content'    => '<!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:columns {"align":"wide"} -->

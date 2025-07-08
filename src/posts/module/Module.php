@@ -26,23 +26,20 @@ class Module {
                 'edit_item' => __('Edit Module', 'lithe-course'),
                 'parent_item_colon' => __('Parent Course:', 'lithe-course'),
             ],
-            'public' => true,
-            'show_in_menu' => 'edit.php?post_type=lithe_course',
+            'public' => false, // No frontend pages needed
+            'show_in_menu' => false,
             'supports' => [
-                'title',
-                'editor',
-                'thumbnail',
-                'page-attributes',
+                'title', // Only title needed for data storage
             ],
-            'rewrite' => ['slug' => 'modules'],
-            'show_in_rest' => true,
+            'rewrite' => false, // No URL rewriting needed
+            'show_in_rest' => true, // Keep for API access
             'menu_position' => 5,
-            'hierarchical' => false, // Changed from true to false since we'll use custom meta
+            'hierarchical' => false,
             'has_archive' => false,
             'capability_type' => 'post',
             'map_meta_cap' => true,
-            'publicly_queryable' => true,
-            'show_ui' => true,
+            'publicly_queryable' => false, // No frontend access
+            'show_ui' => true, // Keep admin interface
         ];
 
         $result = register_post_type('lithe_module', $args);

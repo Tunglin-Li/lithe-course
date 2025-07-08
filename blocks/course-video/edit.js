@@ -1,5 +1,7 @@
 import { useBlockProps } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
+import { video } from "@wordpress/icons";
+import { Icon } from "@wordpress/components";
 
 export default function Edit() {
   const blockProps = useBlockProps();
@@ -9,7 +11,7 @@ export default function Edit() {
       <div className="lithe-course-video">
         <div className="video-placeholder">
           <div className="video-placeholder-content">
-            <span className="dashicons dashicons-video-alt3"></span>
+            <Icon icon={video} size={48} />
             <p>{__("Course Video", "lithe-course")}</p>
             <p className="video-placeholder-note">
               {__("Video will be displayed here", "lithe-course")}

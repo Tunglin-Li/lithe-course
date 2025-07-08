@@ -1,4 +1,3 @@
-import { PluginDocumentSettingPanel } from "@wordpress/editor";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { useState, useEffect } from "@wordpress/element";
 import { TextControl } from "@wordpress/components";
@@ -20,7 +19,7 @@ const videoPlatforms = {
   },
 };
 
-export const CourseVideoPanel = () => {
+export default function CourseVideo() {
   const postId = useSelect((select) =>
     select("core/editor").getCurrentPostId()
   );
@@ -96,27 +95,21 @@ export const CourseVideoPanel = () => {
   };
 
   return (
-    <PluginDocumentSettingPanel
-      name="course-video-panel"
-      title="Course Video"
-      className="course-video-panel"
-    >
-      <div className="course-video-input">
-        <TextControl
-          label="Video URL"
-          value={videoUrl}
-          onChange={handleVideoUrlChange}
-          help="Enter a valid YouTube, Vimeo, or BunnyCDN URL."
-        />
-        {error && (
-          <div
-            className="components-notice is-error"
-            style={{ marginTop: "8px" }}
-          >
-            {error}
-          </div>
-        )}
-      </div>
-    </PluginDocumentSettingPanel>
+    <div className="course-video-input">
+      <TextControl
+        label="Video URL"
+        value={videoUrl}
+        onChange={handleVideoUrlChange}
+        help="Enter a valid YouTube, Vimeo, or BunnyCDN URL."
+      />
+      {error && (
+        <div
+          className="components-notice is-error"
+          style={{ marginTop: "8px" }}
+        >
+          {error}
+        </div>
+      )}
+    </div>
   );
-};
+}

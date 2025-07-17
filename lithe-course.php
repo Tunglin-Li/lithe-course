@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Lithe Course
- * Plugin URI: https://github.com/your-username/lithe-course
+ * Plugin URI: https://github.com/Tunglin-Li/lithe-course
  * Description: A comprehensive learning management system (LMS) plugin for WordPress with modern blocks, course organization, and student enrollment features.
  * Version: 1.0.0
  * Author: Tunglin Li
@@ -67,3 +67,15 @@ function lithe_course_load_textdomain() {
     );
 }
 add_action('plugins_loaded', 'lithe_course_load_textdomain');
+
+/**
+ * Filter plugin name for better translations in some contexts
+ */
+// function lithe_course_translate_plugin_name($plugin_data, $plugin_file) {
+//     if (plugin_basename(__FILE__) === $plugin_file) {
+//         $plugin_data['Name'] = __('Lithe Course', 'lithe-course');
+//         $plugin_data['Description'] = __('A comprehensive learning management system (LMS) plugin for WordPress with modern blocks, course organization, and student enrollment features.', 'lithe-course');
+//     }
+//     return $plugin_data;
+// }
+// add_filter('plugin_row_meta', 'lithe_course_translate_plugin_name', 10, 2);

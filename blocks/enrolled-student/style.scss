@@ -1,0 +1,36 @@
+.enrolled-student-count {
+  .enrolled-student-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .enrolled-student-icon {
+      width: 1.2em;
+      height: 1.2em;
+      line-height: 1;
+      fill: currentColor;
+
+      // Ensure SVG scales properly
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+      }
+    }
+  }
+
+  // Editor specific styles
+  .block-editor & {
+    .enrolled-student-display {
+      padding: 1rem;
+      border: 1px dashed #ccc;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+
+      .enrolled-student-text {
+        color: #666;
+        font-style: italic;
+      }
+    }
+  }
+}

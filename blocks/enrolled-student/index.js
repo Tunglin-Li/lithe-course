@@ -1,6 +1,6 @@
 /**
- * Course Metadata Block
- * Displays various types of course metadata based on selection
+ * Enrolled Student Count Block
+ * Displays the number of students enrolled in a course
  */
 import { registerBlockType } from "@wordpress/blocks";
 import Edit from "./edit";
@@ -10,8 +10,11 @@ import { __ } from "@wordpress/i18n";
 
 registerBlockType(metadata.name, {
   ...metadata,
-  title: __("Course Metadata", "lithe-course"),
-  description: __("Displays various course metadata", "lithe-course"),
+  title: __("Enrolled Student Count", "lithe-course"),
+  description: __(
+    "Displays the number of students enrolled in a course",
+    "lithe-course"
+  ),
   edit: Edit,
   save: function Save() {
     // Return null to use PHP render callback

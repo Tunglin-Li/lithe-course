@@ -14,6 +14,8 @@ function register_course_layout_pattern() {
 
 <!-- wp:post-title /-->
 
+<!-- wp:lithe-course/enrolled-student /-->
+
 <!-- wp:post-excerpt /-->
 
 <!-- wp:lithe-course/course-metadata /-->

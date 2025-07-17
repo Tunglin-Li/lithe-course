@@ -3,10 +3,8 @@
   "apiVersion": 3,
   "name": "lithe-course/course-outline",
   "version": "1.0.0",
-  "title": "Course Outline",
   "category": "lithe-course",
   "icon": "list-view",
-  "description": "Displays a list of course modules",
 
   "supports": {
     "html": false,

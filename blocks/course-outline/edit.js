@@ -181,7 +181,7 @@ export default function Edit({ attributes, setAttributes }) {
               style={moduleHeaderStyle}
             >
               <h3 className="module-title" style={moduleTitleStyle}>
-                Module Title
+                {__("Module Title", "lithe-course")}
               </h3>
               <span
                 className={`dashicons module-toggle ${
@@ -198,7 +198,7 @@ export default function Edit({ attributes, setAttributes }) {
                       className="lesson-title"
                       style={{ color: attributes.lessonTextColor }}
                     >
-                      Lesson Item 1
+                      {__("Lesson Item 1", "lithe-course")}
                     </span>
                   </div>
                 </li>
@@ -208,7 +208,7 @@ export default function Edit({ attributes, setAttributes }) {
                       className="lesson-title"
                       style={{ color: attributes.lessonTextColor }}
                     >
-                      Lesson Item 2
+                      {__("Lesson Item 2", "lithe-course")}
                     </span>
                   </div>
                 </li>
@@ -218,7 +218,7 @@ export default function Edit({ attributes, setAttributes }) {
                       className="lesson-title"
                       style={{ color: attributes.lessonTextColor }}
                     >
-                      Lesson Item 3
+                      {__("Lesson Item 3", "lithe-course")}
                     </span>
                   </div>
                 </li>

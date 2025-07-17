@@ -1,6 +1,7 @@
 import { useSelect, useDispatch } from "@wordpress/data";
 import { useState, useEffect } from "@wordpress/element";
 import { TextControl } from "@wordpress/components";
+import { __ } from "@wordpress/i18n";
 import apiFetch from "@wordpress/api-fetch";
 
 const videoPlatforms = {
@@ -54,7 +55,10 @@ export default function CourseVideo() {
     }
 
     setError(
-      "Invalid video URL. Please enter a valid YouTube, Vimeo, or BunnyCDN URL."
+      __(
+        "Invalid video URL. Please enter a valid YouTube, Vimeo, or BunnyCDN URL.",
+        "lithe-course"
+      )
     );
     return false;
   };
@@ -89,7 +93,7 @@ export default function CourseVideo() {
         },
       }).catch((error) => {
         console.error("Error updating video data:", error);
-        setError("Failed to save video URL");
+        setError(__("Failed to save video URL", "lithe-course"));
       });
     }
   };
@@ -97,10 +101,13 @@ export default function CourseVideo() {
   return (
     <div className="course-video-input">
       <TextControl
-        label="Video URL"
+        label={__("Video URL", "lithe-course")}
         value={videoUrl}
         onChange={handleVideoUrlChange}
-        help="Enter a valid YouTube, Vimeo, or BunnyCDN URL."
+        help={__(
+          "Enter a valid YouTube, Vimeo, or BunnyCDN URL.",
+          "lithe-course"
+        )}
       />
       {error && (
         <div

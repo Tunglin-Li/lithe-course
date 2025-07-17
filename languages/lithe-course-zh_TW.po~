@@ -38,50 +38,65 @@ msgstr "一個專為 WordPress 打造的全面學習管理系統外掛，提供�
 msgid "Tunglin Li"
 msgstr "李東霖"
 
+#: blocks/course-metadata/render.php:20
 #: build/course-metadata/render.php:20
 msgid "No features available."
 msgstr "暫無功能介紹。"
 
+#: blocks/course-metadata/render.php:26
 #: build/course-metadata/render.php:26
 msgid "No prerequisites available."
 msgstr "暫無課程先修條件。"
 
+#: blocks/course-metadata/render.php:32
 #: build/course-metadata/render.php:32
 msgid "No learning objectives available."
 msgstr "暫無學習目標。"
 
+#: blocks/course-metadata/render.php:38
 #: build/course-metadata/render.php:38
 msgid "No suitable audience information available."
 msgstr "暫無適合對象資訊。"
 
+#: blocks/course-outline/render.php:35
+#: blocks/lesson-sidebar/render.php:35
 #: build/course-outline/render.php:35
-#: build/lesson-sidebar/render.php:45
+#: build/lesson-sidebar/render.php:35
 msgid "No modules found."
 msgstr "找不到任何章節。"
 
+#: blocks/course-video/render.php:35
 #: build/course-video/render.php:35
+#: blocks/course-video/edit.js:15
+#: blocks/setting-panel-course/index.js:35
 #: build/course-video/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Course Video"
 msgstr "課程影片"
 
+#: blocks/course-video/render.php:37
 #: build/course-video/render.php:37
 msgid "No video available yet"
 msgstr "暫無課程影片"
 
+#: blocks/enrollment-button/render.php:87
 #: build/enrollment-button/render.php:87
 msgid "Start Learning"
 msgstr "開始學習"
 
+#: blocks/enrollment-button/render.php:93
 #: build/enrollment-button/render.php:93
 msgid "View Course"
 msgstr "查看課程"
 
+#: blocks/enrollment-button/render.php:103
 #: build/enrollment-button/render.php:103
 #: src/posts/course/EnrollmentTest.php:67
 msgid "Log in to Enroll"
 msgstr "登入後報名"
 
+#: blocks/enrollment-button/render.php:132
+#: blocks/enrollment-button/render.php:138
 #: build/enrollment-button/render.php:132
 #: build/enrollment-button/render.php:138
 #: src/posts/course/EnrollmentTest.php:90
@@ -89,29 +104,35 @@ msgstr "登入後報名"
 msgid "Continue Learning"
 msgstr "繼續學習"
 
+#: blocks/enrollment-button/render.php:149
 #: build/enrollment-button/render.php:149
 #: src/posts/course/Enrollment.php:331
 #: src/posts/course/EnrollmentTest.php:106
+#: blocks/enrollment-button/edit.js:11
 #: build/enrollment-button/index.js:1
 msgid "Enroll Now"
 msgstr "立即報名"
 
+#: blocks/enrollment-button/render.php:162
 #: build/enrollment-button/render.php:162
 #: src/posts/course/EnrollmentTest.php:119
 msgid "Please link a product to this course."
 msgstr "請為此課程連結商品。"
 
+#: blocks/enrollment-button/render.php:164
 #: build/enrollment-button/render.php:164
 #: src/posts/course/Course.php:19
 #: src/posts/course/EnrollmentTest.php:121
 msgid "Edit Course"
 msgstr "編輯課程"
 
+#: blocks/enrollment-button/render.php:178
 #: build/enrollment-button/render.php:178
 #: src/posts/course/EnrollmentTest.php:135
 msgid "Product exists but is not purchasable."
 msgstr "商品存在但無法購買。"
 
+#: blocks/enrollment-button/render.php:190
 #: build/enrollment-button/render.php:190
 #: src/posts/course/EnrollmentTest.php:147
 msgid "Buy Course"
@@ -145,6 +166,8 @@ msgstr "選擇課程"
 #: src/posts/course/CourseStructure.php:143
 #: src/posts/course/CourseStructure.php:465
 #: src/posts/course/CourseStructure.php:524
+#: blocks/setting-panel-course/components/LessonItem.js:106
+#: blocks/setting-panel-course/components/ModuleItem.js:208
 #: build/setting-panel-course/index.js:1
 msgid "Edit"
 msgstr "編輯"
@@ -175,6 +198,8 @@ msgstr "沒有未分配的課堂"
 #: src/posts/course/CourseStructure.php:183
 #: src/posts/module/Module.php:24
 #: src/posts/module/Module.php:25
+#: blocks/setting-panel-course/components/AddModuleModal.js:41
+#: blocks/setting-panel-course/CourseStructure.js:614
 #: build/setting-panel-course/index.js:1
 msgid "Add New Module"
 msgstr "新增章節"
@@ -184,10 +209,12 @@ msgstr "新增章節"
 #: src/posts/course/CourseStructure.php:502
 #: src/posts/lesson/Lesson.php:24
 #: src/posts/lesson/Lesson.php:25
+#: blocks/setting-panel-course/components/ModuleItem.js:305
 #: build/setting-panel-course/index.js:1
 msgid "Add New Lesson"
 msgstr "新增課堂"
 
+#: src/blocks/Enque.php:43
 #: src/posts/course/Course.php:16
 msgid "Course"
 msgstr "課程"
@@ -222,18 +249,21 @@ msgid "Course Structure"
 msgstr "課程架構"
 
 #: src/posts/course/CourseStructure.php:61
+#: blocks/setting-panel-course/components/ModuleItem.js:81
 #: build/setting-panel-course/index.js:1
 msgid "Are you sure you want to delete this module? This will also delete all lessons within this module."
 msgstr "確定要刪除此章節嗎？這將同時刪除該章節內所有課堂。"
 
 #: src/posts/course/CourseStructure.php:62
 #: src/posts/course/CourseStructure.php:188
+#: blocks/setting-panel-course/components/AddModuleModal.js:47
 #: build/setting-panel-course/index.js:1
 msgid "Enter module title"
 msgstr "輸入章節標題"
 
 #: src/posts/course/CourseStructure.php:63
 #: src/posts/course/CourseStructure.php:191
+#: blocks/setting-panel-course/components/AddModuleModal.js:66
 #: build/setting-panel-course/index.js:1
 msgid "Add Module"
 msgstr "新增章節"
@@ -244,12 +274,15 @@ msgstr "新增章節"
 #: src/posts/course/CourseStructure.php:194
 #: src/posts/course/CourseStructure.php:458
 #: src/posts/course/CourseStructure.php:498
+#: blocks/setting-panel-course/components/AddLessonForm.js:68
+#: blocks/setting-panel-course/components/AddModuleModal.js:75
 #: build/setting-panel-course/index.js:1
 msgid "Cancel"
 msgstr "取消"
 
 #: src/posts/course/CourseStructure.php:114
 #: src/posts/course/CourseStructure.php:455
+#: blocks/setting-panel-course/components/ModuleItem.js:207
 #: build/setting-panel-course/index.js:1
 msgid "Save"
 msgstr "儲存"
@@ -258,28 +291,34 @@ msgstr "儲存"
 #: src/posts/course/CourseStructure.php:146
 #: src/posts/course/CourseStructure.php:468
 #: src/posts/course/CourseStructure.php:527
+#: blocks/setting-panel-course/components/LessonItem.js:122
+#: blocks/setting-panel-course/components/ModuleItem.js:230
 #: build/setting-panel-course/index.js:1
 msgid "Delete"
 msgstr "刪除"
 
 #: src/posts/course/CourseStructure.php:153
+#: blocks/setting-panel-course/components/ModuleItem.js:283
 #: build/setting-panel-course/index.js:1
 msgid "No lessons found. Add a new lesson to get started."
 msgstr "找不到課堂。新增一個課堂以開始。"
 
 #: src/posts/course/CourseStructure.php:159
 #: src/posts/course/CourseStructure.php:492
+#: blocks/setting-panel-course/components/AddLessonForm.js:47
 #: build/setting-panel-course/index.js:1
 msgid "Enter lesson title"
 msgstr "輸入課堂標題"
 
 #: src/posts/course/CourseStructure.php:162
 #: src/posts/course/CourseStructure.php:495
+#: blocks/setting-panel-course/components/AddLessonForm.js:59
 #: build/setting-panel-course/index.js:1
 msgid "Add Lesson"
 msgstr "新增課堂"
 
 #: src/posts/course/CourseStructure.php:177
+#: blocks/setting-panel-course/CourseStructure.js:602
 #: build/setting-panel-course/index.js:1
 msgid "No modules found. Add a new module to get started."
 msgstr "找不到章節。新增一個章節以開始。"
@@ -436,30 +475,41 @@ msgid "Product #%d not found"
 msgstr "找不到商品 #%d"
 
 #: src/posts/course/Field.php:52
+#: blocks/course-metadata/edit.js:68
+#: blocks/setting-panel-course/index.js:46
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Course Features"
 msgstr "課程特色"
 
 #: src/posts/course/Field.php:57
+#: blocks/course-metadata/edit.js:11
+#: blocks/course-metadata/edit.js:78
+#: blocks/setting-panel-course/index.js:54
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "What You Will Learn"
 msgstr "您將學到什麼"
 
 #: src/posts/course/Field.php:62
+#: blocks/course-metadata/edit.js:83
+#: blocks/setting-panel-course/index.js:62
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Who This Course Is For"
 msgstr "適合對象"
 
 #: src/posts/course/Field.php:67
+#: blocks/course-metadata/edit.js:10
+#: blocks/setting-panel-course/index.js:70
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Prerequisites"
 msgstr "先修條件"
 
 #: src/posts/lesson/Lesson.php:23
+#: blocks/course-outline/edit.js:64
+#: blocks/lesson-sidebar/edit.js:69
 #: build/course-outline/index.js:1
 #: build/lesson-sidebar/index.js:1
 msgid "Lesson"
@@ -554,515 +604,82 @@ msgstr "從最常用的課程分類中選擇"
 msgid "No course categories found."
 msgstr "找不到課程分類。"
 
-#: build/course-metadata/index.js:1
-msgid "Features"
-msgstr "特色"
-
-#: build/course-metadata/index.js:1
-msgid "Who This Is For"
-msgstr "適合對象"
-
-#: build/course-metadata/index.js:1
-msgid "None"
-msgstr "無"
-
-#: build/course-metadata/index.js:1
-msgid "Disc"
-msgstr "實心圓點"
-
-#: build/course-metadata/index.js:1
-msgid "Circle"
-msgstr "空心圓點"
-
-#: build/course-metadata/index.js:1
-msgid "Square"
-msgstr "方形"
-
-#: build/course-metadata/index.js:1
-msgid "Decimal"
-msgstr "數字"
-
-#: build/course-metadata/index.js:1
-msgid "Decimal Leading Zero"
-msgstr "前置零數字"
-
-#: build/course-metadata/index.js:1
-msgid "Lower Alpha"
-msgstr "小寫字母"
-
-#: build/course-metadata/index.js:1
-msgid "Lower Roman"
-msgstr "小寫羅馬數字"
-
-#: build/course-metadata/index.js:1
-msgid "Upper Alpha"
-msgstr "大寫字母"
-
-#: build/course-metadata/index.js:1
-msgid "Upper Roman"
-msgstr "大寫羅馬數字"
-
-#: build/course-metadata/index.js:1
-msgid "Sample feature 1"
-msgstr "課程特色 1"
-
-#: build/course-metadata/index.js:1
-msgid "Sample feature 2"
-msgstr "課程特色 2"
-
-#: build/course-metadata/index.js:1
-msgid "Sample feature 3"
-msgstr "課程特色 3"
-
-#: build/course-metadata/index.js:1
-msgid "Sample prerequisite 1"
-msgstr "先修條件範例 1"
-
-#: build/course-metadata/index.js:1
-msgid "Sample prerequisite 2"
-msgstr "先修條件範例 2"
-
-#: build/course-metadata/index.js:1
-msgid "Sample learning objective 1"
-msgstr "學習目標範例 1"
-
-#: build/course-metadata/index.js:1
-msgid "Sample learning objective 2"
-msgstr "學習目標範例 2"
-
-#: build/course-metadata/index.js:1
-msgid "Sample learning objective 3"
-msgstr "學習目標範例 3"
-
-#: build/course-metadata/index.js:1
-msgid "Sample learning objective 4"
-msgstr "學習目標範例 4"
-
-#: build/course-metadata/index.js:1
-msgid "Sample audience 1"
-msgstr "目標受眾範例 1"
-
-#: build/course-metadata/index.js:1
-msgid "Sample audience 2"
-msgstr "目標受眾範例 2"
-
-#: build/course-metadata/index.js:1
-msgid "Sample item"
-msgstr "範例項目"
-
-#: build/course-metadata/index.js:1
-msgid "Course Prerequisites"
-msgstr "課程先修條件"
-
-#: build/course-metadata/index.js:1
-msgid "Metadata Settings"
-msgstr "詮釋資料設定"
-
-#: build/course-metadata/index.js:1
-msgid "Metadata Type"
-msgstr "詮釋資料類型"
-
-#: build/course-metadata/index.js:1
-msgid "List Style"
-msgstr "清單樣式"
-
-#: build/course-metadata/index.js:1
-msgid "Columns"
-msgstr "欄位"
-
-#: build/course-outline/index.js:1
-msgid "Course Outline Settings"
-msgstr "課程大綱設定"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Title"
-msgstr "標題"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Border"
-msgstr "邊框"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Title Text Color"
-msgstr "標題文字顏色"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Title Background Color"
-msgstr "標題背景顏色"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Lesson Text Color"
-msgstr "課堂文字顏色"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Lesson Background Color"
-msgstr "課堂背景顏色"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Border Radius"
-msgstr "邊框圓角"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Reset"
-msgstr "重設"
-
-#: build/course-video/index.js:1
-msgid "Video will be displayed here"
-msgstr "影片將顯示在此處"
-
-#: build/lesson-sidebar/index.js:1
-msgid "Lesson Sidebar Settings"
-msgstr "課堂側邊欄設定"
-
-#: build/lesson-sidebar/index.js:1
-msgid "Current Lesson Color"
-msgstr "目前課堂顏色"
-
-#: build/setting-panel-course/index.js:1
-msgid "Lesson title is required."
-msgstr "課堂標題為必填項目。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to create lesson. Please try again."
-msgstr "建立課堂失敗。請重試。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Module title is required."
-msgstr "章節標題為必填項目。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to create module. Please try again."
-msgstr "建立章節失敗。請重試。"
-
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-#: build/setting-panel-course/index.js:1
-msgid "Module Title"
-msgstr "章節標題"
-
-#: build/setting-panel-course/index.js:1
-msgid "Are you sure you want to delete this lesson?"
-msgstr "確定要刪除此課堂嗎？"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to delete lesson. Please try again."
-msgstr "刪除課堂失敗。請重試。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to update module title. Please try again."
-msgstr "更新章節標題失敗。請重試。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to delete module. Please try again."
-msgstr "刪除章節失敗。請重試。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Lessons:"
-msgstr "課堂："
-
-#: build/setting-panel-course/index.js:1
-msgid "Manage"
-msgstr "管理"
-
-#: build/setting-panel-course/index.js:1
-msgid "Drag to reorder, click + to add new items"
-msgstr "拖拉以重新排序，點擊 + 以新增項目"
-
-#: build/setting-panel-course/index.js:1
-msgid "Remove item"
-msgstr "移除項目"
-
-#: build/setting-panel-course/index.js:1
-msgid "Done"
-msgstr "完成"
-
-#: build/setting-panel-course/index.js:1
-msgid "Course Access Type"
-msgstr "課程存取類型"
-
-#: build/setting-panel-course/index.js:1
-msgid "Select how users can access this course content"
-msgstr "選擇使用者如何存取此課程內容"
-
-#: build/setting-panel-course/index.js:1
-msgid "Public (No Login Required)"
-msgstr "公開（無需登入）"
-
-#: build/setting-panel-course/index.js:1
-msgid "Anyone can view course content without logging in"
-msgstr "任何人都可以在不登入的情況下查看課程內容"
-
-#: build/setting-panel-course/index.js:1
-msgid "Free (Login + Enrollment Required)"
-msgstr "免費（需登入 + 報名）"
-
-#: build/setting-panel-course/index.js:1
-msgid "Users must log in and enroll to access content"
-msgstr "使用者必須登入並報名才能存取內容"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to load course structure. Please refresh the page and try again."
-msgstr "載入課程架構失敗。請重新整理頁面並重試。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to save module order. Please try again."
-msgstr "儲存章節順序失敗。請重試。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to save changes. Please try again."
-msgstr "儲存變更失敗。請重試。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Loading course structure..."
-msgstr "載入課程架構中..."
-
-#: build/setting-panel-course/index.js:1
-msgid "Expand All"
-msgstr "展開全部"
-
-#: build/setting-panel-course/index.js:1
-msgid "Collapse All"
-msgstr "收合全部"
-
-#: build/setting-panel-course/index.js:1
-msgid "Drag to reorder lesson"
-msgstr "拖拉以重新排序課堂"
-
-#: build/setting-panel-course/index.js:1
-msgid "Drag to reorder module"
-msgstr "拖拉以重新排序章節"
-
-#: build/setting-panel-course/index.js:1
-msgid "No course ID found."
-msgstr "找不到課程 ID。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to load students data."
-msgstr "載入學員資料失敗。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Are you sure you want to unenroll this user?"
-msgstr "確定要為此使用者退選嗎？"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to unenroll user."
-msgstr "退選使用者失敗。"
-
-#: build/setting-panel-course/index.js:1
-msgid "View Students"
-msgstr "查看學員"
-
-#: build/setting-panel-course/index.js:1
-msgid "Enrolled Students"
-msgstr "已報名學員"
-
-#: build/setting-panel-course/index.js:1
-msgid "Loading students..."
-msgstr "載入學員中..."
-
-#: build/setting-panel-course/index.js:1
-msgid "No users are enrolled in this course yet."
-msgstr "目前尚無使用者報名此課程。"
-
-#: build/setting-panel-course/index.js:1
-msgid "There is 1 user enrolled in this course."
-msgstr "有 1 位使用者報名此課程。"
-
-#: build/setting-panel-course/index.js:1
-msgid "User"
-msgstr "使用者"
-
-#: build/setting-panel-course/index.js:1
-msgid "Email"
-msgstr "電子郵件"
-
-#: build/setting-panel-course/index.js:1
-msgid "Actions"
-msgstr "操作"
-
-#: build/setting-panel-course/index.js:1
-msgid "Unenroll"
-msgstr "退選"
-
-#: build/setting-panel-course/index.js:1
-msgid "Course Settings"
-msgstr "課程設定"
-
-#: build/setting-panel-course/index.js:1
-msgid "Course Information"
-msgstr "課程資訊"
-
-#: build/setting-panel-course/index.js:1
-msgid "Add Feature"
-msgstr "新增特色"
-
-#: build/setting-panel-course/index.js:1
-msgid "Enter feature description"
-msgstr "輸入特色說明"
-
-#: build/setting-panel-course/index.js:1
-msgid "No features added yet"
-msgstr "尚未新增任何特色"
-
-#: build/setting-panel-course/index.js:1
-msgid "Add Learning"
-msgstr "新增學習目標"
-
-#: build/setting-panel-course/index.js:1
-msgid "Enter what students will learn"
-msgstr "輸入學員將學到什麼"
-
-#: build/setting-panel-course/index.js:1
-msgid "No learning outcomes added yet"
-msgstr "尚未新增任何學習成果"
-
-#: build/setting-panel-course/index.js:1
-msgid "Add Target Audience"
-msgstr "新增目標受眾"
-
-#: build/setting-panel-course/index.js:1
-msgid "Enter target audience description"
-msgstr "輸入目標受眾說明"
-
-#: build/setting-panel-course/index.js:1
-msgid "No target audience defined yet"
-msgstr "尚未定義目標受眾"
-
-#: build/setting-panel-course/index.js:1
-msgid "Add Requirement"
-msgstr "新增要求"
-
-#: build/setting-panel-course/index.js:1
-msgid "Enter course requirement"
-msgstr "輸入課程要求"
-
-#: build/setting-panel-course/index.js:1
-msgid "No requirements specified yet"
-msgstr "尚未指定任何要求"
-
-#: build/my-course/index.js:1
-msgid "My Course"
-msgstr "我的課程"
-
-#: build/my-course/index.js:1
-msgid "Displays a list of my courses"
-msgstr "列出所有使用者已註冊的課程"
-
+#: blocks/course-metadata/block.json
 #: build/course-metadata/block.json
 msgctxt "block title"
 msgid "Course Metadata"
-msgstr "課程資訊"
+msgstr "課程詮釋資料"
 
+#: blocks/course-metadata/block.json
 #: build/course-metadata/block.json
 msgctxt "block description"
 msgid "Displays various course metadata"
 msgstr "顯示各種課程詮釋資料"
 
-#: build/course-metadata/index.js:1
-msgid "Course Metadata"
-msgstr "課程資訊"
-
-#: build/course-metadata/index.js:1
-msgid "Displays various course metadata"
-msgstr "顯示各種課程詮釋資料"
-
-#: build/course-outline/index.js:1
+#: blocks/course-outline/block.json
+#: build/course-outline/block.json
+msgctxt "block title"
 msgid "Course Outline"
 msgstr "課程大綱"
 
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
+#: blocks/course-outline/block.json
+#: blocks/lesson-sidebar/block.json
+#: build/course-outline/block.json
+#: build/lesson-sidebar/block.json
+msgctxt "block description"
 msgid "Displays a list of course modules"
 msgstr "顯示課程章節清單"
 
-#: build/course-video/index.js:1
+#: blocks/course-video/block.json
+#: build/course-video/block.json
+msgctxt "block title"
+msgid "Course Video"
+msgstr "課程影片"
+
+#: blocks/course-video/block.json
+#: build/course-video/block.json
+msgctxt "block description"
 msgid "Displays the course video"
 msgstr "顯示課程影片"
 
-#: build/enrollment-button/index.js:1
+#: blocks/enrollment-button/block.json
+#: build/enrollment-button/block.json
+msgctxt "block title"
 msgid "Enrollment Button"
 msgstr "報名按鈕"
 
-#: build/enrollment-button/index.js:1
+#: blocks/enrollment-button/block.json
+#: build/enrollment-button/block.json
+msgctxt "block description"
 msgid "Enroll in a course"
 msgstr "報名課程"
 
-#: build/lesson-sidebar/index.js:1
-msgid "Lesson Sidebar"
-msgstr "課程側邊欄"
-
-#: build/setting-panel-course/index.js:1
-msgid "Video URL"
-msgstr "影片網址"
-
-#: build/setting-panel-course/index.js:1
-msgid "Invalid video URL. Please enter a valid YouTube, Vimeo, or BunnyCDN URL."
-msgstr "無效的影片網址。請輸入有效的 YouTube、Vimeo 或 BunnyCDN 網址。"
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to save video URL"
-msgstr "儲存影片網址失敗"
-
-#: build/setting-panel-course/index.js:1
-msgid "Enter a valid YouTube, Vimeo, or BunnyCDN URL."
-msgstr "請輸入有效的 YouTube、Vimeo 或 BunnyCDN 網址。"
-
-#: build/enrolled-student/index.js:1
-msgid "Display Settings"
-msgstr "顯示設定"
-
-#: build/enrolled-student/index.js:1
-msgid "Text Format"
-msgstr "文字格式"
-
-#: build/enrolled-student/index.js:1
-msgid "Use {count} as placeholder for the number of enrolled students"
-msgstr "使用 {count} 作為學員人數的預留位置"
-
-#: build/enrolled-student/index.js:1
-msgid "Show Icon"
-msgstr "顯示圖示"
-
-#: build/enrolled-student/index.js:1
-msgid "Enrolled Student Count"
-msgstr "註冊學員數量"
-
-#: build/enrolled-student/index.js:1
-msgid "Displays the number of students enrolled in a course"
-msgstr "顯示課程的註冊學員數量"
-
-#: build/enrolled-student/block.json
+#: blocks/lesson-sidebar/block.json
+#: build/lesson-sidebar/block.json
 msgctxt "block title"
-msgid "Enrolled Student Count"
-msgstr "註冊學員數量"
+msgid "Lesson Sidebar"
+msgstr "課堂側邊欄"
 
-#: build/enrolled-student/block.json
-msgctxt "block description"
-msgid "Displays the number of students enrolled in a course"
-msgstr "顯示課程的註冊學員數量"
+#~ msgid "Parent Module"
+#~ msgstr "上層章節"
 
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Lesson Item 1"
-msgstr "課堂項目 1"
+#~ msgid "-- Select Course --"
+#~ msgstr "-- 選擇課程 --"
 
-#: build/course-outline/index.js:1
-#: build/lesson-sidebar/index.js:1
-msgid "Lesson Item 2"
-msgstr "課堂項目 2"
+#~ msgid "Paid (WooCommerce)"
+#~ msgstr "付費（WooCommerce）"
 
-#: build/course-outline/index.js:1
-msgid "Lesson Item 3"
-msgstr "課堂項目 3"
+#~ msgid "Already Enrolled"
+#~ msgstr "已報名"
 
-#: build/lesson-sidebar/index.js:1
-msgid "Current Lesson"
-msgstr "目前課堂"
+#~ msgid "This course is not available for purchase."
+#~ msgstr "此課程目前無法購買。"
+
+#~ msgid "This is a premium course. Please <a href=\"%s\">purchase the course</a> to access the content."
+#~ msgstr "這是付費課程。請<a href=\"%s\">購買課程</a>以存取內容。"
+
+#~ msgid "Select Product:"
+#~ msgstr "選擇商品："
+
+#~ msgid "-- Select Product --"
+#~ msgstr "-- 選擇商品 --"

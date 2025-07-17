@@ -3,10 +3,8 @@
   "apiVersion": 3,
   "name": "lithe-course/enrollment-button",
   "version": "1.0.0",
-  "title": "Enrollment Button",
   "category": "lithe-course",
   "icon": "button",
-  "description": "Enroll in a course",
   "supports": {
     "html": false
   },

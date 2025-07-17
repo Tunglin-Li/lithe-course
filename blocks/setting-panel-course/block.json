@@ -1,3 +1,5 @@
 {
+  "apiVersion": 3,
+  "textdomain": "lithe-course",
   "editorScript": "file:./index.js"
 }

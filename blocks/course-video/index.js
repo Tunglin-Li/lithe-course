@@ -6,6 +6,8 @@ import "./style.scss";
 
 registerBlockType(metadata.name, {
   ...metadata,
+  title: __("Course Video", "lithe-course"),
+  description: __("Displays the course video", "lithe-course"),
   edit: Edit,
   save: function Save() {
     // Return null to use PHP render callback

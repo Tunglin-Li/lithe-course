@@ -3,10 +3,8 @@
   "apiVersion": 3,
   "name": "lithe-course/course-video",
   "version": "1.0.0",
-  "title": "Course Video",
   "category": "lithe-course",
   "icon": "video-alt3",
-  "description": "Displays the course video",
   "supports": {
     "html": false
   },

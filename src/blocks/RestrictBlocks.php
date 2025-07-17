@@ -19,6 +19,7 @@ class RestrictBlocks {
             'lithe-course/course-video',
             'lithe-course/enrollment-button',
             'lithe-course/lesson-sidebar',
+            'lithe-course/enrolled-student',
 
         ];
 

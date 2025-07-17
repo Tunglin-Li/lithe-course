@@ -9,15 +9,23 @@ class Enqueue {
         add_action('enqueue_block_editor_assets', [$class, 'enqueue_editor_assets']);
         add_filter('block_categories_all', [$class, 'add_course_block_category'], 10, 2);
         add_action('enqueue_block_editor_assets', [$class, 'enqueue_setting_panel_course']);
+        add_action('init', [$class, 'set_script_translations']);
     }
 
     public function module_block_init() {
+
+        // Set up JavaScript translations for blocks
+
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/course-outline');
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/lesson-sidebar');
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/enrollment-button');
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/course-video');
         register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/course-metadata');
+        register_block_type(LITHE_COURSE_PLUGIN_DIR . 'build/enrolled-student');
+        
+        
     }
+
 
     /**
      * Add Course block category to the top of block categories
@@ -44,17 +52,6 @@ class Enqueue {
     public function enqueue_editor_assets() {
         wp_enqueue_style('dashicons');
 
-        // use index.asset.php to get the dependencies
-        // $asset_file = include(LITHE_COURSE_PLUGIN_DIR . 'build/editor/index.asset.php');
-
-        // wp_enqueue_script(
-        //     'lithe-course-editor-script',
-        //     LITHE_COURSE_PLUGIN_URL . 'build/editor/index.js',
-        //     $asset_file['dependencies'],
-        //     $asset_file['version'],
-        //     true
-        // );
-
         // register my course block variation
         // use index.asset.php to get the dependencies
         $asset_file = include(LITHE_COURSE_PLUGIN_DIR . 'build/my-course/index.asset.php');
@@ -65,7 +62,11 @@ class Enqueue {
             $asset_file['dependencies'],
             $asset_file['version'],
             true
-        );        
+        );
+        
+        // Set translations for my-course script after it's enqueued
+        wp_set_script_translations( 'lithe-course-my-course-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
+       
     }
 
     public function enqueue_setting_panel_course() {
@@ -96,7 +97,23 @@ class Enqueue {
                 [],
                 filemtime($build_file)
             );
+            wp_set_script_translations( 'lithe-course-setting-panel-course-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
         }
+    }
+
+    /**
+     * Set up script translations for JavaScript files
+     */
+    public function set_script_translations() {
+        // Set translations for block scripts that use @wordpress/scripts build process
+        wp_set_script_translations( 'lithe-course-course-metadata-editor-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
+        wp_set_script_translations( 'lithe-course-course-outline-editor-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
+        wp_set_script_translations( 'lithe-course-lesson-sidebar-editor-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
+        wp_set_script_translations( 'lithe-course-enrollment-button-editor-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
+        wp_set_script_translations( 'lithe-course-course-video-editor-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
+        wp_set_script_translations( 'lithe-course-enrolled-student-editor-script', 'lithe-course', LITHE_COURSE_PLUGIN_DIR . 'languages' );
+       
+
     }
 }
 

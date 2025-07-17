@@ -1,5 +1,5 @@
 === Lithe Course ===
-Contributors: (your-wordpress-username)
+Contributors: tunglinli
 Tags: course, education, learning, academy, lms
 Requires at least: 6.0
 Tested up to: 6.4

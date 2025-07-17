@@ -42,7 +42,12 @@ class CourseOrganizer {
 
         wp_localize_script('lithe-course-organizer', 'wpaaOrganizer', [
             'nonce' => wp_create_nonce('lithe_course_organizer'),
-            'ajaxurl' => admin_url('admin-ajax.php')
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'i18n' => [
+                'confirmSave' => __('Are you sure you want to save the changes?', 'lithe-course'),
+                'error' => __('An error occurred. Please try again.', 'lithe-course'),
+                'saved' => __('Changes saved successfully.', 'lithe-course')
+            ]
         ]);
     }
 

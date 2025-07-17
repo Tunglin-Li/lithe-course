@@ -1,40 +1,39 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "title": "Course Metadata",
-  "description": "Displays various course metadata",
-  "name": "lithe-course/course-metadata",
+  "title": "Enrolled Student Count",
+  "description": "Displays the number of students enrolled in a course",
+  "name": "lithe-course/enrolled-student",
   "version": "1.0.0",
   "category": "lithe-course",
-  "icon": "info",
+  "icon": "groups",
   "supports": {
     "html": false,
     "spacing": {
       "padding": true,
       "margin": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true
+    },
+    "color": {
+      "text": true,
+      "background": true
     }
   },
   "attributes": {
     "courseId": {
       "type": "number"
     },
-    "metaType": {
+    "textFormat": {
       "type": "string",
-      "default": "features",
-      "enum": [
-        "features",
-        "prerequisites",
-        "learnings",
-        "suitableFor"
-      ]
+      "default": "{count} students enrolled",
+      "description": "Text format with {count} placeholder"
     },
-    "listStyle": {
-      "type": "string",
-      "default": "disc"
-    },
-    "columns": {
-      "type": "number",
-      "default": 1
+    "showIcon": {
+      "type": "boolean",
+      "default": true
     }
   },
   "textdomain": "lithe-course",

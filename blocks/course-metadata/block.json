@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
+  "title": "Course Metadata",
+  "description": "Displays various course metadata",
   "name": "lithe-course/course-metadata",
   "version": "1.0.0",
-  "title": "Course Metadata",
   "category": "lithe-course",
   "icon": "info",
-  "description": "Displays various course metadata",
   "supports": {
     "html": false,
     "spacing": {

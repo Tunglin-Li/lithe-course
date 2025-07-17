@@ -1,7 +1,12 @@
 {
   "scripts": {
     "start": "wp-scripts start --webpack-src-dir=blocks",
-    "build": "wp-scripts build --webpack-src-dir=blocks"
+    "build": "wp-scripts build --webpack-src-dir=blocks",
+    "build:i18n": "wp i18n make-pot . languages/lithe-course.pot --slug=lithe-course --domain=lithe-course --exclude=\"node_modules,vendor,blocks\"",
+    "build:mo": "msgfmt languages/lithe-course-zh_TW.po -o languages/lithe-course-zh_TW.mo",
+    "build:js": "wp i18n make-json languages --no-purge",
+    "update:po": "wp i18n update-po languages/lithe-course.pot",
+    "update:translations": "npm run build:i18n && npm run update:po && npm run build:mo && npm run build:js"
   },
   "devDependencies": {
     "@wordpress/scripts": "^30.12.0"

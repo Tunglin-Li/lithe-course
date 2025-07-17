@@ -1,11 +1,12 @@
 import { registerBlockVariation } from "@wordpress/blocks";
+import { __ } from "@wordpress/i18n";
 
 const VARIATION_NAME = "lithe-course-my-course-list";
 
 registerBlockVariation("core/query", {
   name: VARIATION_NAME,
-  title: "My Course",
-  description: "Displays a list of my courses",
+  title: __("My Course", "lithe-course"),
+  description: __("Displays a list of my courses", "lithe-course"),
   icon: "calendar-alt",
   category: "lithe-course",
   attributes: {

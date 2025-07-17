@@ -73,7 +73,7 @@ if ($lesson_text_color) {
 }
 ?>
 
-<div <?php echo get_block_wrapper_attributes(['class' => 'lithe-course-modules']); ?>>
+<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithe-course-modules'])); ?>>
     <?php foreach ($modules as $module) : ?>
         <div class="lithe-module" data-id="<?php echo esc_attr($module->ID); ?>" style="<?php echo esc_attr($module_style); ?>">
             <div class="module-header" style="<?php echo esc_attr($module_header_style); ?>">
@@ -98,7 +98,7 @@ if ($lesson_text_color) {
                             // Check if this is the current page
                             $current_lesson = get_the_ID() === $lesson->ID ? 'current-lesson' : '';
                         ?>
-                            <li class="lesson-item <?php echo $current_lesson; ?>">
+                            <li class="lesson-item <?php echo esc_attr($current_lesson); ?>">
                                 <div class="lesson-content" style="<?php echo esc_attr($lesson_style); ?>">
                                     <span class="lesson-title">
                                         <?php echo esc_html($lesson->post_title); ?>

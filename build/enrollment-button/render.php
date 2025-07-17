@@ -204,7 +204,7 @@ if ($button_style) {
 // Output the button HTML with wrapper
 echo '<div class="' . esc_attr($wrapper_class) . '">';
 // Use the updated get_enrollment_button function
-echo get_enrollment_button($course_id);
+echo get_enrollment_button($course_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 // Add a placeholder for enrollment status messages
 echo '<span class="wpaa-enrollment-status" style="display: none;"></span>';
 echo '</div>'; 

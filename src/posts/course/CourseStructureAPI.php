@@ -212,8 +212,7 @@ class CourseStructureAPI {
             'meta_value' => $course_id,
             'orderby' => 'menu_order',
             'order' => 'ASC',
-            'posts_per_page' => -1,
-            'suppress_filters' => true
+            'posts_per_page' => -1
         ]);
 
         $structure = [];
@@ -225,8 +224,7 @@ class CourseStructureAPI {
                 'meta_value' => $module->ID,
                 'orderby' => 'menu_order',
                 'order' => 'ASC',
-                'posts_per_page' => -1,
-                'suppress_filters' => true
+                'posts_per_page' => -1
             ]);
 
             $lessons_data = [];
@@ -460,7 +458,7 @@ class CourseStructureAPI {
     }
 
     public function update_lesson_order($request) {
-        error_log('update_lesson_order API called with params: ' . json_encode($request->get_params()));
+
         
         $module_id = $request->get_param('module_id');
         $lesson_order = $request->get_param('lesson_order');
@@ -497,7 +495,7 @@ class CourseStructureAPI {
     }
 
     public function move_lesson($request) {
-        error_log('move_lesson API called with params: ' . json_encode($request->get_params()));
+
         
         $lesson_id = $request->get_param('lesson_id');
         $new_module_id = $request->get_param('module_id');
@@ -543,8 +541,7 @@ class CourseStructureAPI {
             'orderby' => 'menu_order',
             'order' => 'ASC',
             'posts_per_page' => -1,
-            'fields' => 'ids',
-            'suppress_filters' => true
+            'fields' => 'ids'
         ]);
 
         // Remove the moved lesson from the array if it's already there
@@ -570,8 +567,7 @@ class CourseStructureAPI {
                 'orderby' => 'menu_order',
                 'order' => 'ASC',
                 'posts_per_page' => -1,
-                'fields' => 'ids',
-                'suppress_filters' => true
+                'fields' => 'ids'
             ]);
 
             // Reorder source module lessons

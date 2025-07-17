@@ -71,17 +71,19 @@ class RestrictBlocks {
         }
 
         // Check for Gutenberg plugin site editor
-        if (isset($_GET['page']) && $_GET['page'] === 'gutenberg-edit-site') {
+        $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ($page === 'gutenberg-edit-site') {
             return true;
         }
 
         // Check if we're editing a wp_template post type
-        if (isset($_GET['postType']) && $_GET['postType'] === 'wp_template') {
+        $post_type = filter_input(INPUT_GET, 'postType', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ($post_type === 'wp_template') {
             return true;
         }
 
         // Check if we're editing a wp_template_part post type  
-        if (isset($_GET['postType']) && $_GET['postType'] === 'wp_template_part') {
+        if ($post_type === 'wp_template_part') {
             return true;
         }
 

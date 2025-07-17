@@ -50,8 +50,7 @@ class Lesson {
         // Get all lessons
         $lessons = get_posts([
             'post_type' => 'lithe_lesson',
-            'posts_per_page' => -1,
-            'suppress_filters' => true,
+            'posts_per_page' => -1
         ]);
         
         foreach ($lessons as $lesson) {
@@ -79,8 +78,7 @@ class Lesson {
                     'ID' => $lesson->ID,
                     'post_parent' => 0
                 ]);
-                
-                error_log('Updated lesson #' . $lesson->ID . ' parent from ' . $parent_module_id . ' to 0 and set _parent_module_id meta');
+            
             }
         }
         

@@ -129,8 +129,7 @@ class Enrollment {
             ], 200);
         }
 
-        // If we got here, enrollment failed
-        error_log("Enrollment failed for user $user_id in course $course_id");
+
         return new \WP_REST_Response([
             'success' => false,
             'message' => __('Enrollment failed', 'lithe-course')
@@ -180,7 +179,7 @@ class Enrollment {
             // Check if WooCommerce is active
             if (!function_exists('wc_get_product')) {
                 // If WooCommerce is not active, consider it free
-                error_log('WooCommerce function wc_get_product does not exist. Consider course as free.');
+  
                 return true;
             }
             
@@ -283,6 +282,7 @@ class Enrollment {
                     <a href="%s" class="wpaa-login-button">%s</a>
                 </div>',
                 __('Login Required', 'lithe-course'),
+                /* translators: %s: lesson title */
                 sprintf(__('Please log in to view this lesson: "%s"', 'lithe-course'), $post_title),
                 esc_url($login_url),
                 __('Log In', 'lithe-course')
@@ -319,6 +319,7 @@ class Enrollment {
                         <a href="%s" class="wpaa-login-button">%s</a>
                     </div>',
                     __('Access Restricted', 'lithe-course'),
+                    /* translators: %s: course title */
                     sprintf(__('This lesson is part of the course "%s". Please log in to enroll.', 'lithe-course'), $course_title),
                     esc_url(wp_login_url(get_permalink())),
                     __('Log In', 'lithe-course')
@@ -339,6 +340,7 @@ class Enrollment {
                         %s
                     </div>',
                     __('Enrollment Required', 'lithe-course'),
+                    /* translators: %s: course title */
                     sprintf(__('This lesson is part of the course "%s". Please enroll to view this content.', 'lithe-course'), $course_title),
                     esc_url($course_url),
                     __('Go to Course', 'lithe-course'),
@@ -355,6 +357,7 @@ class Enrollment {
                 <a href="%s" class="lithe-course-link">%s</a>
             </div>',
             __('Paid Course', 'lithe-course'),
+            /* translators: %s: course title */
             sprintf(__('This lesson is part of the paid course "%s".', 'lithe-course'), $course_title),
             esc_url($course_url),
             __('View Course Details', 'lithe-course')
@@ -462,11 +465,13 @@ class Enrollment {
         if ($result) {
             return new \WP_REST_Response([
                 'success' => true,
-                'message' => sprintf(
-                    __('User "%s" has been unenrolled from course "%s".', 'lithe-course'),
-                    $user->display_name,
-                    $course->post_title
-                )
+                'message' =>
+                    sprintf(
+                        /* translators: %1$s: user display name, %2$s: course title */ 
+                        __('User "%1$s" has been unenrolled from course "%2$s".', 'lithe-course'),
+                        $user->display_name,
+                        $course->post_title
+                    )
             ], 200);
         }
         
@@ -530,12 +535,22 @@ class Enrollment {
     private function get_enrolled_users($course_id) {
         global $wpdb;
         
-        $users = $wpdb->get_results($wpdb->prepare(
-            "SELECT u.* FROM {$wpdb->users} u
-            JOIN {$wpdb->usermeta} um ON u.ID = um.user_id
-            WHERE um.meta_key = %s AND um.meta_value = '1'",
-            '_has_access_to_course_' . $course_id
-        ));
+        // Check cache first
+        $cache_key = "lithe_course_enrolled_users_{$course_id}";
+        $users = wp_cache_get($cache_key, 'lithe_course');
+        
+        if (false === $users) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom enrolled users query, result is cached below
+            $users = $wpdb->get_results($wpdb->prepare(
+                "SELECT u.* FROM {$wpdb->users} u
+                JOIN {$wpdb->usermeta} um ON u.ID = um.user_id
+                WHERE um.meta_key = %s AND um.meta_value = '1'",
+                '_has_access_to_course_' . $course_id
+            ));
+            
+            // Cache the result for 5 minutes
+            wp_cache_set($cache_key, $users, 'lithe_course', 300);
+        }
         
         return $users ? $users : [];
     }

@@ -12,11 +12,21 @@ $show_icon = $attributes['showIcon'] ?? true;
 // Get enrollment count using the same method as in EnrollmentAdminColumn
 global $wpdb;
 
-$count = $wpdb->get_var($wpdb->prepare(
-    "SELECT COUNT(*) FROM {$wpdb->usermeta} 
-    WHERE meta_key = %s AND meta_value = '1'",
-    '_has_access_to_course_' . $course_id
-));
+// Check cache first
+$cache_key = "lithe_course_enrollment_count_{$course_id}";
+$count = wp_cache_get($cache_key, 'lithe_course');
+
+if (false === $count) {
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom enrollment count query, result is cached below
+    $count = $wpdb->get_var($wpdb->prepare(
+        "SELECT COUNT(*) FROM {$wpdb->usermeta} 
+        WHERE meta_key = %s AND meta_value = '1'",
+        '_has_access_to_course_' . $course_id
+    ));
+    
+    // Cache the result for 5 minutes
+    wp_cache_set($cache_key, $count, 'lithe_course', 300);
+}
 
 $enrollment_count = $count ? intval($count) : 0;
 
@@ -30,7 +40,7 @@ $wrapper_attributes = get_block_wrapper_attributes([
 
 ?>
 
-<div <?php echo $wrapper_attributes; ?>>
+<div <?php echo wp_kses_data($wrapper_attributes); ?>>
     <div class="enrolled-student-display">
         <?php if ($show_icon) : ?>
             <svg class="enrolled-student-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

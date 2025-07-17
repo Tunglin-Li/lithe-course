@@ -60,33 +60,42 @@ class CourseOrganizer {
         ]);
 
         // Get the selected course ID from URL parameter or the first course
-        $selected_course_id = isset($_GET['course_id']) ? intval($_GET['course_id']) : 
-            (!empty($courses) ? $courses[0]->ID : 0);
+        $selected_course_id = 0;
+        if (isset($_GET['course_id'])) {
+            // Verify nonce for course selection
+            if (isset($_GET['course_organizer_nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['course_organizer_nonce'])), 'course_organizer_select')) {
+                $selected_course_id = intval($_GET['course_id']);
+            }
+        } else {
+            // Default to first course if no selection made
+            $selected_course_id = !empty($courses) ? $courses[0]->ID : 0;
+        }
 
         ?>
         <div class="wrap">
-            <h1><?php _e('Course Organizer', 'lithe-course'); ?></h1>
+            <h1><?php esc_html_e('Course Organizer', 'lithe-course'); ?></h1>
 
             <div class="lithe-course-selector">
                 <form method="get" action="">
                     <input type="hidden" name="post_type" value="lithe_course">
                     <input type="hidden" name="page" value="course-organizer">
+                    <?php wp_nonce_field('course_organizer_select', 'course_organizer_nonce'); ?>
                     <select name="course_id" id="course_id" class="widefat" style="max-width: 300px; margin-right: 10px; display: inline-block; vertical-align: middle;">
                         <?php foreach ($courses as $course) : ?>
-                            <option value="<?php echo $course->ID; ?>" <?php selected($selected_course_id, $course->ID); ?>>
+                            <option value="<?php echo esc_attr($course->ID); ?>" <?php selected($selected_course_id, $course->ID); ?>>
                                 <?php echo esc_html($course->post_title); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <button type="submit" class="button"><?php _e('Select Course', 'lithe-course'); ?></button>
+                    <button type="submit" class="button"><?php esc_html_e('Select Course', 'lithe-course'); ?></button>
                 </form>
             </div>
             
             <?php if ($selected_course_id) : ?>
                 <div class="lithe-course-organizer">
                     <div class="lithe-course-list">
-                        <div class="lithe-course" data-id="<?php echo $selected_course_id; ?>">
-                            <h2><?php echo get_the_title($selected_course_id); ?></h2>
+                        <div class="lithe-course" data-id="<?php echo esc_attr($selected_course_id); ?>">
+                            <h2><?php echo esc_html(get_the_title($selected_course_id)); ?></h2>
                             <div class="lithe-modules-container">
                                 <?php
                                 $modules = get_posts([
@@ -100,7 +109,7 @@ class CourseOrganizer {
 
                                 foreach ($modules as $module) :
                                 ?>
-                                    <div class="lithe-module" data-id="<?php echo $module->ID; ?>">
+                                    <div class="lithe-module" data-id="<?php echo esc_attr($module->ID); ?>">
                                         <div class="module-header">
                                             <span class="dashicons dashicons-menu handle"></span>
                                             <h3><?php echo esc_html($module->post_title); ?></h3>
@@ -118,12 +127,12 @@ class CourseOrganizer {
 
                                             foreach ($lessons as $lesson) :
                                             ?>
-                                                <div class="lithe-lesson" data-id="<?php echo $lesson->ID; ?>">
+                                                <div class="lithe-lesson" data-id="<?php echo esc_attr($lesson->ID); ?>">
                                                     <span class="dashicons dashicons-menu handle"></span>
                                                     <?php echo esc_html($lesson->post_title); ?>
                                                     <div class="lesson-actions">
-                                                        <a href="<?php echo get_edit_post_link($lesson->ID); ?>" class="button button-small">
-                                                            <?php _e('Edit', 'lithe-course'); ?>
+                                                        <a href="<?php echo esc_url(get_edit_post_link($lesson->ID)); ?>" class="button button-small">
+                                                            <?php esc_html_e('Edit', 'lithe-course'); ?>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -136,9 +145,9 @@ class CourseOrganizer {
                     </div>
 
                     <div class="wpaa-unassigned">
-                        <h2><?php _e('Unassigned Items', 'lithe-course'); ?></h2>
+                        <h2><?php esc_html_e('Unassigned Items', 'lithe-course'); ?></h2>
                         <div class="wpaa-unassigned-modules">
-                            <h3><?php _e('Modules', 'lithe-course'); ?></h3>
+                            <h3><?php esc_html_e('Modules', 'lithe-course'); ?></h3>
                             <?php
                             $unassigned_modules = get_posts([
                                 'post_type' => 'lithe_module',
@@ -156,18 +165,18 @@ class CourseOrganizer {
                             if (!empty($unassigned_modules)) :
                                 foreach ($unassigned_modules as $module) :
                                 ?>
-                                    <div class="lithe-module" data-id="<?php echo $module->ID; ?>">
+                                    <div class="lithe-module" data-id="<?php echo esc_attr($module->ID); ?>">
                                         <span class="dashicons dashicons-menu handle"></span>
                                         <?php echo esc_html($module->post_title); ?>
                                     </div>
                                 <?php endforeach;
                             else : ?>
-                                <p class="no-items"><?php _e('No unassigned modules', 'lithe-course'); ?></p>
+                                <p class="no-items"><?php esc_html_e('No unassigned modules', 'lithe-course'); ?></p>
                             <?php endif; ?>
                         </div>
 
                         <div class="wpaa-unassigned-lessons">
-                            <h3><?php _e('Lessons', 'lithe-course'); ?></h3>
+                            <h3><?php esc_html_e('Lessons', 'lithe-course'); ?></h3>
                             <?php
                             $unassigned_lessons = get_posts([
                                 'post_type' => 'lithe_lesson',
@@ -185,29 +194,29 @@ class CourseOrganizer {
                             if (!empty($unassigned_lessons)) :
                                 foreach ($unassigned_lessons as $lesson) :
                                 ?>
-                                    <div class="lithe-lesson" data-id="<?php echo $lesson->ID; ?>">
+                                    <div class="lithe-lesson" data-id="<?php echo esc_attr($lesson->ID); ?>">
                                         <span class="dashicons dashicons-menu handle"></span>
                                         <?php echo esc_html($lesson->post_title); ?>
                                         <div class="lesson-actions">
-                                            <a href="<?php echo get_edit_post_link($lesson->ID); ?>" class="button button-small">
-                                                <?php _e('Edit', 'lithe-course'); ?>
+                                            <a href="<?php echo esc_url(get_edit_post_link($lesson->ID)); ?>" class="button button-small">
+                                                <?php esc_html_e('Edit', 'lithe-course'); ?>
                                             </a>
                                         </div>
                                     </div>
                                 <?php endforeach;
                             else : ?>
-                                <p class="no-items"><?php _e('No unassigned lessons', 'lithe-course'); ?></p>
+                                <p class="no-items"><?php esc_html_e('No unassigned lessons', 'lithe-course'); ?></p>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
 
                 <div class="lithe-course-actions" style="margin-top: 20px;">
-                    <a href="<?php echo admin_url('post-new.php?post_type=lithe_module&course_id=' . $selected_course_id); ?>" class="button button-primary">
-                        <?php _e('Add New Module', 'lithe-course'); ?>
+                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=lithe_module&course_id=' . $selected_course_id)); ?>" class="button button-primary">
+                        <?php esc_html_e('Add New Module', 'lithe-course'); ?>
                     </a>
-                    <a href="<?php echo admin_url('post-new.php?post_type=lithe_lesson'); ?>" class="button">
-                        <?php _e('Add New Lesson', 'lithe-course'); ?>
+                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=lithe_lesson')); ?>" class="button">
+                        <?php esc_html_e('Add New Lesson', 'lithe-course'); ?>
                     </a>
                 </div>
             <?php endif; ?>
@@ -222,7 +231,20 @@ class CourseOrganizer {
             wp_send_json_error('Permission denied');
         }
 
-        $data = json_decode(stripslashes($_POST['structure']), true);
+        // Validate and sanitize POST data
+        if (!isset($_POST['structure'])) {
+            wp_send_json_error('No structure data provided');
+        }
+
+        $structure_data = sanitize_textarea_field(wp_unslash($_POST['structure']));
+        if (!is_string($structure_data)) {
+            wp_send_json_error('Invalid structure data format');
+        }
+
+        $data = json_decode($structure_data, true);
+        if (!is_array($data)) {
+            wp_send_json_error('Invalid JSON structure data');
+        }
 
         foreach ($data as $course_id => $course_data) {
             if (isset($course_data['modules'])) {
@@ -261,4 +283,4 @@ class CourseOrganizer {
     }
 }
 
-CourseOrganizer::init(); 
+// CourseOrganizer::init(); 

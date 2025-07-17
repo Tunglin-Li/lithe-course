@@ -13,7 +13,7 @@
  * Requires at least: 6.0
  * Tested up to: 6.4
  * Requires PHP: 8.0
- * Network: false
+
  */
 
 // Prevent direct access to this file
@@ -55,27 +55,3 @@ function lithe_course_deactivate() {
     // Flush rewrite rules
     flush_rewrite_rules();
 }
-
-/**
- * Load plugin text domain for internationalization
- */
-function lithe_course_load_textdomain() {
-    load_plugin_textdomain(
-        'lithe-course',
-        false,
-        dirname(plugin_basename(__FILE__)) . '/languages/'
-    );
-}
-add_action('plugins_loaded', 'lithe_course_load_textdomain');
-
-/**
- * Filter plugin name for better translations in some contexts
- */
-// function lithe_course_translate_plugin_name($plugin_data, $plugin_file) {
-//     if (plugin_basename(__FILE__) === $plugin_file) {
-//         $plugin_data['Name'] = __('Lithe Course', 'lithe-course');
-//         $plugin_data['Description'] = __('A comprehensive learning management system (LMS) plugin for WordPress with modern blocks, course organization, and student enrollment features.', 'lithe-course');
-//     }
-//     return $plugin_data;
-// }
-// add_filter('plugin_row_meta', 'lithe_course_translate_plugin_name', 10, 2);

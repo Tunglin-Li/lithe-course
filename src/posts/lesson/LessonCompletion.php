@@ -21,7 +21,7 @@ class LessonCompletion {
         }
 
         $lesson_id = isset($_POST['lesson_id']) ? intval($_POST['lesson_id']) : 0;
-        $completed = isset($_POST['completed']) ? filter_var($_POST['completed'], FILTER_VALIDATE_BOOLEAN) : false;
+        $completed = isset($_POST['completed']) ? filter_var(wp_unslash($_POST['completed']), FILTER_VALIDATE_BOOLEAN) : false;
 
         if (!$lesson_id) {
             wp_send_json_error('Invalid lesson ID');

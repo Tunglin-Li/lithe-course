@@ -42,7 +42,7 @@ class EnrollmentAdmin {
     public function render_enrollment_columns($column, $post_id) {
         switch ($column) {
             case 'enrollments':
-                echo $this->get_enrollment_count($post_id);
+                echo esc_html($this->get_enrollment_count($post_id));
                 break;
         }
     }
@@ -53,11 +53,21 @@ class EnrollmentAdmin {
     private function get_enrollment_count($course_id) {
         global $wpdb;
         
-        $count = $wpdb->get_var($wpdb->prepare(
-            "SELECT COUNT(*) FROM {$wpdb->usermeta} 
-            WHERE meta_key = %s AND meta_value = '1'",
-            '_has_access_to_course_' . $course_id
-        ));
+        // Check cache first
+        $cache_key = "lithe_course_enrollment_count_{$course_id}";
+        $count = wp_cache_get($cache_key, 'lithe_course');
+        
+        if (false === $count) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom enrollment count query, result is cached below
+            $count = $wpdb->get_var($wpdb->prepare(
+                "SELECT COUNT(*) FROM {$wpdb->usermeta} 
+                WHERE meta_key = %s AND meta_value = '1'",
+                '_has_access_to_course_' . $course_id
+            ));
+            
+            // Cache the result for 5 minutes
+            wp_cache_set($cache_key, $count, 'lithe_course', 300);
+        }
         
         return $count ? intval($count) : 0;
     }

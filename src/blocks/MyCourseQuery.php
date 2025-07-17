@@ -43,13 +43,23 @@ class MyCourseQuery {
                 if ($current_user_id) {
                     global $wpdb;
     
-                    // Get all course IDs the user has access to
-                    $course_ids = $wpdb->get_col(
-                        $wpdb->prepare(
-                            "SELECT meta_key FROM {$wpdb->usermeta} WHERE user_id = %d AND meta_key LIKE '_has_access_to_course_%%'",
-                            $current_user_id
-                        )
-                    );
+                    // Check cache first
+                    $cache_key = "lithe_course_user_access_{$current_user_id}";
+                    $course_ids = wp_cache_get($cache_key, 'lithe_course');
+    
+                    if (false === $course_ids) {
+                        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom user course access query, result is cached below
+                        $course_ids = $wpdb->get_col(
+                            $wpdb->prepare(
+                                "SELECT meta_key FROM {$wpdb->usermeta} WHERE user_id = %d AND meta_key LIKE %s",
+                                $current_user_id,
+                                '_has_access_to_course_%'
+                            )
+                        );
+                        
+                        // Cache the result for 5 minutes
+                        wp_cache_set($cache_key, $course_ids, 'lithe_course', 300);
+                    }
     
                     if (!empty($course_ids)) {
                         // Extract course IDs from meta_key (e.g., '_has_access_to_course_123' → '123')
@@ -92,13 +102,23 @@ class MyCourseQuery {
             if ($current_user_id) {
                 global $wpdb;
 
-                // Get all course IDs the user has access to
-                $course_ids = $wpdb->get_col(
-                    $wpdb->prepare(
-                        "SELECT meta_key FROM {$wpdb->usermeta} WHERE user_id = %d AND meta_key LIKE '_has_access_to_course_%%'",
-                        $current_user_id
-                    )
-                );
+                // Check cache first
+                $cache_key = "lithe_course_user_access_{$current_user_id}";
+                $course_ids = wp_cache_get($cache_key, 'lithe_course');
+
+                if (false === $course_ids) {
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom user course access query, result is cached below
+                    $course_ids = $wpdb->get_col(
+                        $wpdb->prepare(
+                            "SELECT meta_key FROM {$wpdb->usermeta} WHERE user_id = %d AND meta_key LIKE %s",
+                            $current_user_id,
+                            '_has_access_to_course_%'
+                        )
+                    );
+                    
+                    // Cache the result for 5 minutes
+                    wp_cache_set($cache_key, $course_ids, 'lithe_course', 300);
+                }
 
                 if (!empty($course_ids)) {
                     // Extract course IDs from meta_key (e.g., '_has_access_to_course_123' → '123')

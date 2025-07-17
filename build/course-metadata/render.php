@@ -62,7 +62,7 @@ $wrapper_attributes = get_block_wrapper_attributes([
 $config = $meta_config[$meta_type] ?? $meta_config['features'];
 ?>
 
-<div <?php echo $wrapper_attributes; ?>>
+<div <?php echo wp_kses_data($wrapper_attributes); ?>>
     <?php if (!empty($meta_items)) : ?>
         <ul class="<?php echo esc_attr($config['css_class']); ?>">
             <?php foreach ($meta_items as $item) : ?>

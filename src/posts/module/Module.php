@@ -57,8 +57,7 @@ class Module {
         // Get all modules
         $modules = get_posts([
             'post_type' => 'lithe_module',
-            'posts_per_page' => -1,
-            'suppress_filters' => true,
+            'posts_per_page' => -1
         ]);
         
         foreach ($modules as $module) {
@@ -75,7 +74,7 @@ class Module {
                     'post_parent' => 0
                 ]);
                 
-                error_log('Updated module #' . $module->ID . ' parent from ' . $parent_course_id . ' to 0 and set _parent_course_id meta');
+
             }
         }
         

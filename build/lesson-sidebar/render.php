@@ -84,7 +84,7 @@ if ($lesson_text_color) {
 }
 ?>
 
-<div <?php echo get_block_wrapper_attributes(['class' => 'lithe-course-modules']); ?>>
+<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithe-course-modules'])); ?>>
     <?php foreach ($modules as $module) : ?>
         <div class="lithe-module" data-id="<?php echo esc_attr($module->ID); ?>" style="<?php echo esc_attr($module_style); ?>">
             <div class="module-header" style="<?php echo esc_attr($module_header_style); ?>">
@@ -115,7 +115,7 @@ if ($lesson_text_color) {
                                 $lesson_content_style .= "background-color: {$current_lesson_color};";
                             }
                         ?>
-                            <li class="lesson-item <?php echo $current_lesson; ?>">
+                            <li class="lesson-item <?php echo esc_attr($current_lesson); ?>">
                                 <div class="lesson-content" style="<?php echo esc_attr($lesson_content_style); ?>">
                                     <?php if ($user_id && !$is_public_course) : ?>
                                         <label class="lesson-completion">
@@ -138,7 +138,7 @@ if ($lesson_text_color) {
                                                   ?>"></span>
                                         </label>
                                     <?php endif; ?>
-                                    <a href="<?php echo get_permalink($lesson->ID); ?>" style="<?php echo $lesson_text_color ? "color: {$lesson_text_color};" : ''; ?>">
+                                    <a href="<?php echo esc_url(get_permalink($lesson->ID)); ?>" style="<?php echo esc_attr($lesson_text_color ? "color: {$lesson_text_color};" : ''); ?>">
                                         <?php echo esc_html($lesson->post_title); ?>
                                     </a>
                                 </div>
@@ -155,7 +155,7 @@ if ($lesson_text_color) {
 document.addEventListener('DOMContentLoaded', function() {
     // Define ajaxurl if it's not already defined
     if (typeof ajaxurl === 'undefined') {
-        var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+        var ajaxurl = '<?php echo esc_url(admin_url('admin-ajax.php')); ?>';
     }
     
     // Accordion functionality
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: new URLSearchParams({
                     action: 'update_lesson_completion',
-                    nonce: '<?php echo wp_create_nonce('lesson_completion_nonce'); ?>',
+                    nonce: '<?php echo esc_attr(wp_create_nonce('lesson_completion_nonce')); ?>',
                     lesson_id: lessonId,
                     completed: completed
                 })
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.checked = completed;
                     
                     // Update completion status styling
-                    const lessonTextColor = '<?php echo $lesson_text_color; ?>';
+                    const lessonTextColor = '<?php echo esc_js($lesson_text_color); ?>';
                     const defaultColor = '#2271b1';
                     const borderColor = lessonTextColor || defaultColor;
                     

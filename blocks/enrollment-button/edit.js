@@ -6,10 +6,10 @@ export default function Edit() {
 
   return (
     <div {...blockProps}>
-      <div className="wp-block-button wpaa-enrollment-button-wrap">
-        <a href="#" className="wp-block-button__link wp-element-button">
+      <div className="wp-block-button lithe-course-enrollment-button-wrap">
+        <button className="wp-block-button__link wp-element-button lithe-course-enroll-button">
           {__("Enroll Now", "lithe-course")}
-        </a>
+        </button>
       </div>
     </div>
   );

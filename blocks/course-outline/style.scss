@@ -1,87 +1,97 @@
+// Main container
 .lithe-course-modules {
   margin: 2rem 0;
-}
 
-.lithe-module {
-  border: 1px solid #e2e4e7;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  background: #fff;
-  overflow: hidden;
-  transition: border-radius 0.3s;
-}
+  // Module container
+  .lithe-module {
+    border: 1px solid #e2e4e7;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    background: #fff;
+    overflow: hidden;
+    transition: border-radius 0.3s;
 
-.module-header {
-  padding: 1rem;
-  background: #ffffff;
-  color: #000000;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition:
-    background-color 0.2s,
-    color 0.2s,
-    border-radius 0.3s;
+    // Module header
+    .module-header {
+      padding: 1rem;
+      background: #ffffff;
+      color: #000000;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-radius 0.3s;
 
-  &:hover {
-    filter: brightness(0.95);
-  }
-}
+      &:hover {
+        filter: brightness(0.95);
+      }
 
-.module-title {
-  margin: 0;
-  font-size: 1.2rem;
-  color: inherit;
-}
+      // Module title
+      .module-title {
+        margin: 0;
+        font-size: 1.2rem;
+        color: inherit;
+      }
 
-.module-toggle {
-  transition: transform 0.3s ease;
-  color: inherit;
-}
+      // Module toggle icon
+      .module-toggle {
+        transition: transform 0.3s ease;
+        color: inherit;
+      }
+    }
 
-.module-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  background: #fff;
+    // Module content area
+    .module-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #fff;
 
-  &.is-open {
-    max-height: none;
-    overflow: visible;
-  }
-}
+      &.is-open {
+        max-height: none;
+        overflow: visible;
+      }
 
-.module-lessons {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+      // Lessons list
+      .module-lessons {
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-.lesson-item {
-  margin: 0;
-  border-bottom: 1px solid #f0f0f1;
+        // Individual lesson item
+        .lesson-item {
+          margin: 0;
+          border-bottom: 1px solid #f0f0f1;
 
-  &:last-child {
-    border-bottom: none;
-  }
+          &:last-child {
+            border-bottom: none;
+          }
 
-  .lesson-title {
-    text-decoration: none;
-    transition: color 0.2s;
-    display: block;
+          // Lesson content wrapper
+          .lesson-content {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            transition:
+              background-color 0.2s,
+              color 0.2s;
+          }
 
-    &:hover {
-      filter: brightness(0.9);
+          // Lesson title link
+          .lesson-title {
+            text-decoration: none;
+            transition: color 0.2s;
+            display: block;
+
+            &:hover {
+              filter: brightness(0.9);
+            }
+          }
+        }
+      }
     }
   }
-}
-
-.lesson-content {
-  display: flex;
-  align-items: center;
-  padding: 0.8rem 1rem;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
 }

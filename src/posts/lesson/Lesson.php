@@ -2,6 +2,8 @@
 
 namespace Lithe\Course\Posts\Lesson;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class Lesson {
     private static $instance = null;
 
@@ -10,12 +12,12 @@ class Lesson {
             self::$instance = new self();
         }
 
-        add_action('init', [self::$instance, 'register_lesson_post_type']);
+        add_action('init', [self::$instance, 'lithe_course_register_lesson_post_type']);
         // Add migration code
-        add_action('admin_init', [self::$instance, 'migrate_lesson_relationships']);
+        add_action('admin_init', [self::$instance, 'lithe_course_migrate_lesson_relationships']);
     }
 
-    public function register_lesson_post_type() {
+    public function lithe_course_register_lesson_post_type() {
         // Register Lesson Post Type
         $args = [
             'labels' => [
@@ -41,7 +43,7 @@ class Lesson {
     /**
      * Migrate existing lesson relationships from post_parent to custom meta
      */
-    public function migrate_lesson_relationships() {
+    public function lithe_course_migrate_lesson_relationships() {
         // Only run once by checking for a flag in options
         if (get_option('lithe_lesson_migration_complete')) {
             return;

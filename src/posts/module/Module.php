@@ -2,6 +2,8 @@
 
 namespace Lithe\Course\Posts\Module;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class Module {
     private static $instance = null;
 
@@ -10,12 +12,12 @@ class Module {
             self::$instance = new self();
         }
 
-        add_action('init', [self::$instance, 'register_module_post_type']);
+        add_action('init', [self::$instance, 'lithe_course_register_module_post_type']);
         // Add migration code
-        add_action('admin_init', [self::$instance, 'migrate_module_relationships']);
+        add_action('admin_init', [self::$instance, 'lithe_course_migrate_module_relationships']);
     }
 
-    public function register_module_post_type() {
+    public function lithe_course_register_module_post_type() {
         // Register Module Post Type
         $args = [
             'labels' => [
@@ -48,7 +50,7 @@ class Module {
     /**
      * Migrate existing module relationships from post_parent to custom meta
      */
-    public function migrate_module_relationships() {
+    public function lithe_course_migrate_module_relationships() {
         // Only run once by checking for a flag in options
         if (get_option('lithe_module_migration_complete')) {
             return;

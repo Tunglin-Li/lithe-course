@@ -1,4 +1,7 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Course Metadata Block Renderer
  * Displays various types of course metadata based on the selected type

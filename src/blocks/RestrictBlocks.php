@@ -2,16 +2,18 @@
 
 namespace Lithe\Course\Blocks;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class RestrictBlocks {
     public static function init() {
         $class = new self();
-        add_filter('allowed_block_types_all', [$class, 'restrict_course_blocks'], 10, 2);
+        add_filter('allowed_block_types_all', [$class, 'lithe_course_restrict_course_blocks'], 10, 2);
     }
 
     /**
      * Restrict course blocks to only appear in template editor
      */
-    public function restrict_course_blocks($allowed_blocks, $block_editor_context) {
+    public function lithe_course_restrict_course_blocks($allowed_blocks, $block_editor_context) {
         // List of your course blocks to restrict
         $course_blocks = [
             'lithe-course/course-outline',
@@ -24,7 +26,7 @@ class RestrictBlocks {
         ];
 
         // Check if we're in template editor
-        $is_template_editor = $this->is_template_editor($block_editor_context);
+        $is_template_editor = $this->lithe_course_is_template_editor($block_editor_context);
         
         // If we're in template editor, allow all blocks (return original value)
         if ($is_template_editor) {
@@ -50,7 +52,7 @@ class RestrictBlocks {
     /**
      * Check if we should allow course blocks (only in specific contexts)
      */
-    private function is_template_editor($block_editor_context) {
+    private function lithe_course_is_template_editor($block_editor_context) {
         // Check if we have a post context
         if (isset($block_editor_context->post)) {
             $post = $block_editor_context->post;

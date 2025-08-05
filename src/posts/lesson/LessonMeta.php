@@ -2,9 +2,11 @@
 
 namespace Lithe\Course\Posts\Lesson;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class LessonMeta {
     private static $instance = null;
-    private static $meta_key = 'wpaa_completed_lessons';
+    private static $meta_key = 'lithe_course_completed_lessons';
 
     public static function init() {
         if (self::$instance === null) {
@@ -12,7 +14,7 @@ class LessonMeta {
         }
     }
 
-    public static function get_lesson_completion_status($lesson_id, $user_id = null) {
+    public static function lithe_course_get_lesson_completion_status($lesson_id, $user_id = null) {
         if (!$user_id) {
             $user_id = get_current_user_id();
         }
@@ -30,7 +32,7 @@ class LessonMeta {
         return in_array($lesson_id, $completed_lessons);
     }
 
-    public static function update_lesson_completion_status($lesson_id, $completed, $user_id = null) {
+    public static function lithe_course_update_lesson_completion_status($lesson_id, $completed, $user_id = null) {
         if (!$user_id) {
             $user_id = get_current_user_id();
         }

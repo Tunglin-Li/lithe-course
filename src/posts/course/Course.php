@@ -2,13 +2,15 @@
 
 namespace Lithe\Course\Posts\Course;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class Course {
     public static function init() {
         $class = new self();
-        add_action('init', [$class, 'register_course_post_type']);
+        add_action('init', [$class, 'lithe_course_register_course_post_type']);
     }
 
-    public function register_course_post_type() {
+    public function lithe_course_register_course_post_type() {
      // Register Course Post Type
         register_post_type('lithe_course', [
             'labels' => [

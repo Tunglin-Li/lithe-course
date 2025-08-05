@@ -2,6 +2,8 @@
 
 namespace Lithe\Course\Template;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class TemplateRegistration {
     public static function init() {
         $class = new self();

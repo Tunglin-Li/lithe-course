@@ -1,5 +1,7 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 add_action( 'init', 'lithe_course_register_pattern_categories' );
 
 function lithe_course_register_pattern_categories() {

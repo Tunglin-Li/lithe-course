@@ -2,6 +2,8 @@
 
 namespace Lithe\Course\Admin;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class CourseOrganizer {
     private static $instance = null;
 
@@ -10,23 +12,23 @@ class CourseOrganizer {
             self::$instance = new self();
         }
 
-        add_action('admin_menu', [self::$instance, 'add_menu_page']);
-        add_action('admin_enqueue_scripts', [self::$instance, 'enqueue_scripts']);
-        add_action('wp_ajax_update_course_structure', [self::$instance, 'update_course_structure']);
+        add_action('admin_menu', [self::$instance, 'lithe_course_add_menu_page']);
+        add_action('admin_enqueue_scripts', [self::$instance, 'lithe_course_enqueue_scripts']);
+        add_action('wp_ajax_update_course_structure', [self::$instance, 'lithe_course_update_course_structure']);
     }
 
-    public function add_menu_page() {
+    public function lithe_course_add_menu_page() {
         add_submenu_page(
             'edit.php?post_type=lithe_course',
             __('Course Organizer', 'lithe-course'),
             __('Course Organizer', 'lithe-course'),
             'edit_posts',
             'course-organizer',
-            [$this, 'render_page']
+            [$this, 'lithe_course_render_page']
         );
     }
 
-    public function enqueue_scripts($hook) {
+    public function lithe_course_enqueue_scripts($hook) {
         if ($hook !== 'lithe_course_page_course-organizer') {
             return;
         }
@@ -40,7 +42,7 @@ class CourseOrganizer {
             true
         );
 
-        wp_localize_script('lithe-course-organizer', 'wpaaOrganizer', [
+        wp_localize_script('lithe-course-organizer', 'litheCourseOrganizer', [
             'nonce' => wp_create_nonce('lithe_course_organizer'),
             'ajaxurl' => admin_url('admin-ajax.php'),
             'i18n' => [
@@ -51,7 +53,7 @@ class CourseOrganizer {
         ]);
     }
 
-    public function render_page() {
+    public function lithe_course_render_page() {
         $courses = get_posts([
             'post_type' => 'lithe_course',
             'posts_per_page' => -1,
@@ -224,7 +226,7 @@ class CourseOrganizer {
         <?php
     }
 
-    public function update_course_structure() {
+    public function lithe_course_update_course_structure() {
         check_ajax_referer('lithe_course_organizer', 'nonce');
 
         if (!current_user_can('edit_posts')) {
@@ -283,4 +285,4 @@ class CourseOrganizer {
     }
 }
 
-// CourseOrganizer::init(); 
+CourseOrganizer::init(); 

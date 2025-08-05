@@ -2,6 +2,8 @@
 
 namespace Lithe\Course\Posts\Course;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Handles the admin interface for course enrollments
  */
@@ -14,14 +16,14 @@ class EnrollmentAdmin {
         }
 
         // Add enrollment columns to course admin
-        add_filter('manage_lithe_course_posts_columns', [self::$instance, 'add_enrollment_columns']);
-        add_action('manage_lithe_course_posts_custom_column', [self::$instance, 'render_enrollment_columns'], 10, 2);
+        add_filter('manage_lithe_course_posts_columns', [self::$instance, 'lithe_course_add_enrollment_columns']);
+        add_action('manage_lithe_course_posts_custom_column', [self::$instance, 'lithe_course_render_enrollment_columns'], 10, 2);
     }
 
     /**
      * Add enrollment columns to courses admin
      */
-    public function add_enrollment_columns($columns) {
+    public function lithe_course_add_enrollment_columns($columns) {
         $new_columns = [];
         
         // Insert columns after title
@@ -39,10 +41,10 @@ class EnrollmentAdmin {
     /**
      * Render enrollment column content
      */
-    public function render_enrollment_columns($column, $post_id) {
+    public function lithe_course_render_enrollment_columns($column, $post_id) {
         switch ($column) {
             case 'enrollments':
-                echo esc_html($this->get_enrollment_count($post_id));
+                echo esc_html($this->lithe_course_get_enrollment_count($post_id));
                 break;
         }
     }
@@ -50,7 +52,7 @@ class EnrollmentAdmin {
     /**
      * Get enrollment count for a course
      */
-    private function get_enrollment_count($course_id) {
+    private function lithe_course_get_enrollment_count($course_id) {
         global $wpdb;
         
         // Check cache first

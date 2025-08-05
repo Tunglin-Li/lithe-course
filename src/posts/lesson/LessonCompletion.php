@@ -2,6 +2,8 @@
 
 namespace Lithe\Course\Posts\Lesson;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class LessonCompletion {
     private static $instance = null;
 
@@ -10,10 +12,10 @@ class LessonCompletion {
             self::$instance = new self();
         }
 
-        add_action('wp_ajax_update_lesson_completion', [self::$instance, 'handle_completion_update']);
+        add_action('wp_ajax_update_lesson_completion', [self::$instance, 'lithe_course_handle_completion_update']);
     }
 
-    public function handle_completion_update() {
+    public function lithe_course_handle_completion_update() {
         check_ajax_referer('lesson_completion_nonce', 'nonce');
 
         if (!is_user_logged_in()) {
@@ -27,7 +29,7 @@ class LessonCompletion {
             wp_send_json_error('Invalid lesson ID');
         }
 
-        $result = LessonMeta::update_lesson_completion_status($lesson_id, $completed);
+        $result = LessonMeta::lithe_course_update_lesson_completion_status($lesson_id, $completed);
 
         if ($result) {
             wp_send_json_success([

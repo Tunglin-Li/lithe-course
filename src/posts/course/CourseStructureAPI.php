@@ -2,6 +2,8 @@
 
 namespace Lithe\Course\Posts\Course;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class CourseStructureAPI {
     private static $instance = null;
     private $api_namespace = 'lithe-course/v1';
@@ -11,15 +13,15 @@ class CourseStructureAPI {
             self::$instance = new self();
         }
         
-        add_action('rest_api_init', [self::$instance, 'register_rest_routes']);
+        add_action('rest_api_init', [self::$instance, 'lithe_course_register_rest_routes']);
     }
 
-    public function register_rest_routes() {
+    public function lithe_course_register_rest_routes() {
         // Get course structure
         register_rest_route($this->api_namespace, '/course/(?P<course_id>\d+)/structure', [
             'methods' => 'GET',
-            'callback' => [$this, 'get_course_structure'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_get_course_structure'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'course_id' => [
                     'validate_callback' => function($param) {
@@ -32,8 +34,8 @@ class CourseStructureAPI {
         // Create module
         register_rest_route($this->api_namespace, '/module', [
             'methods' => 'POST',
-            'callback' => [$this, 'create_module'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_create_module'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'course_id' => [
                     'required' => true,
@@ -51,8 +53,8 @@ class CourseStructureAPI {
         // Update module
         register_rest_route($this->api_namespace, '/module/(?P<module_id>\d+)', [
             'methods' => 'PUT',
-            'callback' => [$this, 'update_module'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_update_module'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'module_id' => [
                     'validate_callback' => function($param) {
@@ -69,8 +71,8 @@ class CourseStructureAPI {
         // Delete module
         register_rest_route($this->api_namespace, '/module/(?P<module_id>\d+)', [
             'methods' => 'DELETE',
-            'callback' => [$this, 'delete_module'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_delete_module'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'module_id' => [
                     'validate_callback' => function($param) {
@@ -83,8 +85,8 @@ class CourseStructureAPI {
         // Create lesson
         register_rest_route($this->api_namespace, '/lesson', [
             'methods' => 'POST',
-            'callback' => [$this, 'create_lesson'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_create_lesson'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'module_id' => [
                     'required' => true,
@@ -102,8 +104,8 @@ class CourseStructureAPI {
         // Delete lesson
         register_rest_route($this->api_namespace, '/lesson/(?P<lesson_id>\d+)', [
             'methods' => 'DELETE',
-            'callback' => [$this, 'delete_lesson'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_delete_lesson'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'lesson_id' => [
                     'validate_callback' => function($param) {
@@ -116,8 +118,8 @@ class CourseStructureAPI {
         // Move lesson to different module
         register_rest_route($this->api_namespace, '/lesson/(?P<lesson_id>\d+)/move', [
             'methods' => 'PUT',
-            'callback' => [$this, 'move_lesson'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_move_lesson'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'lesson_id' => [
                     'validate_callback' => function($param) {
@@ -142,8 +144,8 @@ class CourseStructureAPI {
         // Update module order
         register_rest_route($this->api_namespace, '/course/(?P<course_id>\d+)/module-order', [
             'methods' => 'PUT',
-            'callback' => [$this, 'update_module_order'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_update_module_order'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'course_id' => [
                     'validate_callback' => function($param) {
@@ -162,8 +164,8 @@ class CourseStructureAPI {
         // Update lesson order within a module
         register_rest_route($this->api_namespace, '/module/(?P<module_id>\d+)/lesson-order', [
             'methods' => 'PUT',
-            'callback' => [$this, 'update_lesson_order'],
-            'permission_callback' => [$this, 'check_edit_permission'],
+            'callback' => [$this, 'lithe_course_update_lesson_order'],
+            'permission_callback' => [$this, 'lithe_course_check_edit_permission'],
             'args' => [
                 'module_id' => [
                     'validate_callback' => function($param) {
@@ -180,7 +182,7 @@ class CourseStructureAPI {
         ]);
     }
 
-    public function check_edit_permission($request) {
+    public function lithe_course_check_edit_permission($request) {
         if (!current_user_can('edit_posts')) {
             return new \WP_Error(
                 'rest_forbidden',
@@ -202,7 +204,7 @@ class CourseStructureAPI {
         return true;
     }
 
-    public function get_course_structure($request) {
+    public function lithe_course_get_course_structure($request) {
         $course_id = $request->get_param('course_id');
         
         // Get all modules for this course
@@ -248,7 +250,7 @@ class CourseStructureAPI {
         return new \WP_REST_Response($structure, 200);
     }
 
-    public function create_module($request) {
+    public function lithe_course_create_module($request) {
         $course_id = $request->get_param('course_id');
         $title = $request->get_param('title');
 
@@ -295,7 +297,7 @@ class CourseStructureAPI {
         ], 201);
     }
 
-    public function update_module($request) {
+    public function lithe_course_update_module($request) {
         $module_id = $request->get_param('module_id');
         $title = $request->get_param('title');
 
@@ -322,7 +324,7 @@ class CourseStructureAPI {
         ], 200);
     }
 
-    public function delete_module($request) {
+    public function lithe_course_delete_module($request) {
         $module_id = $request->get_param('module_id');
 
         // Get all lessons for this module
@@ -353,7 +355,7 @@ class CourseStructureAPI {
         return new \WP_REST_Response(null, 204);
     }
 
-    public function create_lesson($request) {
+    public function lithe_course_create_lesson($request) {
         $module_id = $request->get_param('module_id');
         $title = $request->get_param('title');
 
@@ -406,7 +408,7 @@ class CourseStructureAPI {
         ], 201);
     }
 
-    public function delete_lesson($request) {
+    public function lithe_course_delete_lesson($request) {
         $lesson_id = $request->get_param('lesson_id');
         
         $result = wp_delete_post($lesson_id, true);
@@ -422,7 +424,7 @@ class CourseStructureAPI {
         return new \WP_REST_Response(null, 204);
     }
 
-    public function update_module_order($request) {
+    public function lithe_course_update_module_order($request) {
         $course_id = $request->get_param('course_id');
         $module_order = $request->get_param('module_order');
 
@@ -457,7 +459,7 @@ class CourseStructureAPI {
         return new \WP_REST_Response(['success' => true], 200);
     }
 
-    public function update_lesson_order($request) {
+    public function lithe_course_update_lesson_order($request) {
 
         
         $module_id = $request->get_param('module_id');
@@ -494,7 +496,7 @@ class CourseStructureAPI {
         return new \WP_REST_Response(['success' => true], 200);
     }
 
-    public function move_lesson($request) {
+    public function lithe_course_move_lesson($request) {
 
         
         $lesson_id = $request->get_param('lesson_id');

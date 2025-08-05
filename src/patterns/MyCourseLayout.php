@@ -1,8 +1,10 @@
 <?php
 
-add_action( 'init', 'register_my_course_layout_pattern' );
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-function register_my_course_layout_pattern() {
+add_action( 'init', 'lithe_course_register_my_course_layout_pattern' );
+
+function lithe_course_register_my_course_layout_pattern() {
 	register_block_pattern( 'lithe-course/my-course-layout', array(
 		'title'      => __( 'My Course Layout', 'lithe-course' ),
 		'categories' => array( 'lithe-course' ),

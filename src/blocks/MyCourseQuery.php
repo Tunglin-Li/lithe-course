@@ -1,11 +1,8 @@
 <?php
 
-namespace LITHE_COURSE\Blocks;
+namespace Lithe\Course\Blocks;
 
-// Don't allow direct access
-if (!defined('ABSPATH')) {
-    exit;
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
  * Handle query modifications for the My Course block
@@ -21,8 +18,8 @@ class MyCourseQuery {
             self::$instance = new self();
         }
 
-        add_filter('pre_render_block', [self::$instance, 'wpaa_my_courses_pre_render_block'], 10, 2);
-        add_filter('rest_lithe_course_query', [self::$instance, 'wpaa_rest_lithe_course_query'], 10, 2);
+        add_filter('pre_render_block', [self::$instance, 'lithe_course_my_courses_pre_render_block'], 10, 2);
+        add_filter('rest_lithe_course_query', [self::$instance, 'lithe_course_rest_lithe_course_query'], 10, 2);
     }
 
     /**
@@ -32,7 +29,7 @@ class MyCourseQuery {
      * @param array $parsed_block The block being rendered
      * @return mixed The original pre_render value
      */
-    public function wpaa_my_courses_pre_render_block($pre_render, $parsed_block) {
+    public function lithe_course_my_courses_pre_render_block($pre_render, $parsed_block) {
         // Verify it's the correct block by checking the namespace
         if (!empty($parsed_block['attrs']['namespace']) && 'lithe-course-my-course-list' === $parsed_block['attrs']['namespace']) {
     
@@ -92,7 +89,7 @@ class MyCourseQuery {
      * @param \WP_REST_Request $request The REST API request
      * @return array Modified query args
      */
-    public function wpaa_rest_lithe_course_query($query, $request) {
+    public function lithe_course_rest_lithe_course_query($query, $request) {
 
         // grab value from the request
         $enrolledFilter = $request['filterByEnrolled'];

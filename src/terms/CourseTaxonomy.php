@@ -2,13 +2,15 @@
 
 namespace Lithe\Course\Terms;
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 class CourseTaxonomy {
     public static function init() {
         $class = new self();
-        add_action('init', [$class, 'register_course_taxonomies']);
+        add_action('init', [$class, 'lithe_course_register_course_taxonomies']);
     }
 
-    public function register_course_taxonomies() {
+    public function lithe_course_register_course_taxonomies() {
         // Register Course Category Taxonomy
         register_taxonomy('lithe_course_category', 'lithe_course', [
             'labels' => [

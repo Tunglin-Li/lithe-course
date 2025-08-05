@@ -1,10 +1,10 @@
-.enrolled-student-count {
-  .enrolled-student-display {
+.lithe-course-enrolled-student-count {
+  .lithe-course-enrolled-student-display {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 
-    .enrolled-student-icon {
+    .lithe-course-enrolled-student-icon {
       width: 1.2em;
       height: 1.2em;
       line-height: 1;
@@ -21,13 +21,13 @@
 
   // Editor specific styles
   .block-editor & {
-    .enrolled-student-display {
+    .lithe-course-enrolled-student-display {
       padding: 1rem;
       border: 1px dashed #ccc;
       border-radius: 4px;
       background-color: #f9f9f9;
 
-      .enrolled-student-text {
+      .lithe-course-enrolled-student-text {
         color: #666;
         font-style: italic;
       }

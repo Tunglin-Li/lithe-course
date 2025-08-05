@@ -88,11 +88,11 @@ jQuery(document).ready(function ($) {
 
     // Send to server
     $.ajax({
-      url: wpaaOrganizer.ajaxurl,
+      url: litheCourseOrganizer.ajaxurl,
       method: "POST",
       data: {
         action: "update_course_structure",
-        nonce: wpaaOrganizer.nonce,
+        nonce: litheCourseOrganizer.nonce,
         structure: JSON.stringify(structure),
       },
       success: function (response) {

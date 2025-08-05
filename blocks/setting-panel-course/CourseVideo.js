@@ -99,7 +99,7 @@ export default function CourseVideo() {
   };
 
   return (
-    <div className="course-video-input">
+    <div className="lithe-course-video-input">
       <TextControl
         label={__("Video URL", "lithe-course")}
         value={videoUrl}

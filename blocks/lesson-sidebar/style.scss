@@ -1,6 +1,18 @@
+// =============================================================================
+// Lesson Sidebar Styles
+// =============================================================================
+
+// =============================================================================
+// Main Container
+// =============================================================================
+
 .lithe-course-modules {
   margin: 2rem 0;
 }
+
+// =============================================================================
+// Module Hierarchy
+// =============================================================================
 
 .lithe-module {
   border: 1px solid #e2e4e7;
@@ -9,54 +21,60 @@
   background: #fff;
   overflow: hidden;
   transition: border-radius 0.3s;
-}
 
-.module-header {
-  padding: 1rem;
-  background: #ffffff;
-  color: #000000;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition:
-    background-color 0.2s,
-    color 0.2s,
-    border-radius 0.3s;
+  // Module Header
+  .module-header {
+    padding: 1rem;
+    background: #ffffff;
+    color: #000000;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      border-radius 0.3s;
 
-  &:hover {
-    filter: brightness(0.95);
+    &:hover {
+      filter: brightness(0.95);
+    }
+
+    .module-title {
+      margin: 0;
+      font-size: 1.2rem;
+      color: inherit;
+    }
+
+    .module-toggle {
+      transition: transform 0.3s ease;
+      color: inherit;
+    }
+  }
+
+  // Module Content
+  .module-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #fff;
+
+    &.is-open {
+      max-height: none;
+      overflow: visible;
+    }
+
+    .module-lessons {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
-.module-title {
-  margin: 0;
-  font-size: 1.2rem;
-  color: inherit;
-}
-
-.module-toggle {
-  transition: transform 0.3s ease;
-  color: inherit;
-}
-
-.module-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  background: #fff;
-
-  &.is-open {
-    max-height: none;
-    overflow: visible;
-  }
-}
-
-.module-lessons {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+// =============================================================================
+// Lesson Hierarchy
+// =============================================================================
 
 .lesson-item {
   margin: 0;
@@ -66,6 +84,7 @@
     border-bottom: none;
   }
 
+  // Lesson Link
   a {
     color: #2271b1;
     text-decoration: none;
@@ -78,6 +97,7 @@
     }
   }
 
+  // Current Lesson State
   &.current-lesson {
     background-color: #f0f7fc;
 
@@ -85,54 +105,58 @@
       font-weight: 600;
     }
   }
-}
 
-.lesson-content {
-  display: flex;
-  align-items: center;
-  padding: 0.8rem 1rem;
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}
-
-.lesson-completion {
-  display: flex;
-  align-items: center;
-  margin-right: 0.8rem;
-  cursor: pointer;
-
-  &.loading .completion-status {
-    opacity: 0.5;
-    pointer-events: none;
+  .lesson-content {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
   }
-}
 
-.lesson-completion-checkbox {
-  display: none;
+  // =============================================================================
+  // Completion Checkbox Hierarchy
+  // =============================================================================
 
-  &:checked + .completion-status {
-    &::after {
-      content: "";
-      position: absolute;
-      left: 6px;
-      top: 3px;
-      width: 4px;
-      height: 8px;
-      border: solid white;
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
+  .lesson-completion {
+    display: flex;
+    align-items: center;
+    margin-right: 0.8rem;
+    cursor: pointer;
+
+    &.loading .completion-status {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .lesson-completion-checkbox {
+      display: none;
+
+      &:checked + .completion-status {
+        &::after {
+          content: "";
+          position: absolute;
+          left: 6px;
+          top: 3px;
+          width: 4px;
+          height: 8px;
+          border: solid white;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    .completion-status {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #2271b1;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      transition: all 0.2s;
+      background-color: transparent;
     }
   }
-}
-
-.completion-status {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #2271b1;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  transition: all 0.2s;
-  background-color: transparent;
 }

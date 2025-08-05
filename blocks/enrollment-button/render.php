@@ -13,6 +13,9 @@ wp_localize_script('lithe-course-enrollment-button-view-script', 'litheCourseEnr
     'nonce' => wp_create_nonce('wp_rest'),
 ]);
 
+// enque wordpress button style
+wp_enqueue_style('wp-block-button');
+
 // Get block attributes
 $button_style = isset($attributes['buttonStyle']) ? $attributes['buttonStyle'] : 'primary';
 

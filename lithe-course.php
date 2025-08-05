@@ -5,13 +5,13 @@
  * Description: A comprehensive learning management system (LMS) plugin for WordPress with modern blocks, course organization, and student enrollment features.
  * Version: 1.0.0
  * Author: Tunglin Li
- * Author URI: 
+ * Author URI: https://github.com/Tunglin-Li/
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: lithe-course
  * Domain Path: /languages
  * Requires at least: 6.0
- * Tested up to: 6.4
+ * Tested up to: 6.8
  * Requires PHP: 8.0
 
  */

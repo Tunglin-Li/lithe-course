@@ -115,7 +115,7 @@ wp_localize_script('lithe-course-lesson-sidebar-view-script', 'litheLessonSideba
                 if (!empty($lessons)) : ?>
                     <ul class="module-lessons">
                         <?php foreach ($lessons as $lesson) : 
-                            $completed = Lithe\Course\Posts\Lesson\LessonMeta::get_lesson_completion_status($lesson->ID, $user_id);
+                            $completed = Lithe\Course\Posts\Lesson\LessonMeta::lithe_course_get_lesson_completion_status($lesson->ID, $user_id);
                             $current_lesson = get_the_ID() === $lesson->ID ? 'current-lesson' : '';
                             
                             // Determine lesson content style

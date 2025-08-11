@@ -7,7 +7,7 @@
     "build:js": "wp i18n make-json languages --no-purge",
     "update:po": "wp i18n update-po languages/lithe-course.pot",
     "update:translations": "npm run build:i18n && npm run update:po && npm run build:mo && npm run build:js",
-    "zip": "rm -rf plugin-dist && mkdir -p plugin-dist/lithe-course && cp -r assets build languages src vendor lithe-course.php uninstall.php readme.txt composer.json plugin-dist/lithe-course && cd plugin-dist && zip -r ../lithe-course.zip lithe-course && cd .. && rm -rf plugin-dist"
+    "zip": "rm -rf plugin-dist && mkdir -p plugin-dist/lithe-course && cp -r assets build blocks languages src vendor lithe-course.php uninstall.php readme.txt composer.json package.json plugin-dist/lithe-course && cd plugin-dist && zip -r ../lithe-course.zip lithe-course && cd .. && rm -rf plugin-dist"
   },
   "devDependencies": {
     "@wordpress/scripts": "^30.12.0"

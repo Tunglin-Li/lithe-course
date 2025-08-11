@@ -13,6 +13,15 @@
  * Requires at least: 6.0
  * Tested up to: 6.8
  * Requires PHP: 8.0
+ * 
+ * Development: This plugin uses @wordpress/scripts for building blocks.
+ * Source code is available in the blocks/ directory and on GitHub.
+ * 
+ * Third-party libraries used:
+ * - @dnd-kit (MIT License): https://github.com/clauderic/dnd-kit
+ * - Motion (MIT License): https://github.com/motion-dev/motion
+ * - @wordpress/icons (GPL v2+): https://github.com/WordPress/gutenberg
+ * - @wordpress/scripts (GPL v2+): https://github.com/WordPress/gutenberg
 
  */
 

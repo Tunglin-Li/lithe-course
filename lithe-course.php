@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Lithe Course
- * Plugin URI: https://github.com/Tunglin-Li/lithecourse
+ * Plugin URI: https://github.com/Tunglin-Li/lithe-course
  * Description: A comprehensive learning management system (LMS) plugin for WordPress with modern blocks, course organization, and student enrollment features.
  * Version: 1.0.0
  * Author: Tunglin Li

@@ -31,7 +31,7 @@ msgstr "一個專為 WordPress 打造的全面學習管理系統外掛，提供�
 #. Author of the plugin
 #: lithe-course.php
 msgid "Tunglin Li"
-msgstr "李東霖"
+msgstr ""
 
 #: build/course-metadata/render.php:23
 msgid "No features available."

@@ -30,18 +30,28 @@ echo "📦 版本: $VERSION"
 echo "🌿 推送 main 分支..."
 git push origin main
 
-# 切換到 release 分支
-echo "🔄 切換到 release 分支..."
-git checkout release
+# 檢查 release 分支是否存在
+if git show-ref --verify --quiet refs/heads/release; then
+    echo "🔄 切換到現有的 release 分支..."
+    git checkout release
+    
+    # 合併 main 分支的變更
+    echo "🌿 合併 main 分支的變更..."
+    git merge main --no-edit
+else
+    echo "🆕 建立新的 release 分支..."
+    git checkout -b release
+fi
 
-# 合併 main 分支的變更
-echo "🌿 合併 main 分支的變更..."
-git merge main --no-edit
+# 清理 release 分支，只保留需要的檔案
+echo "🧹 清理發布檔案..."
 
-# 重新設定 .gitignore（完全跟隨 .distignore 邏輯）
-echo "🌿 清理發布檔案..."
+# 移除不需要的檔案和資料夾
+rm -rf node_modules temp tests .git .github .idea .vscode package-lock.json composer.lock .distignore prepare-release.sh deploy-from-release.sh README.md *.zip plugin-dist 2>/dev/null || true
+
+# 建立簡潔的 .gitignore
 cat > .gitignore << 'EOF'
-# Development files - 跟隨 .distignore 邏輯
+# 忽略所有開發檔案
 node_modules/
 temp/
 tests/
@@ -51,44 +61,20 @@ tests/
 .vscode/
 *.log
 .distignore
-.gitignore
-
-# Build tools
 package-lock.json
 composer.lock
-
-# Build artifacts
 *.zip
 plugin-dist/
-
-# OS cruft
 .DS_Store
 Thumbs.db
-
-# 保留這個 .gitignore
-!.gitignore
+prepare-release.sh
+deploy-from-release.sh
+README.md
 EOF
 
-# 移除已追蹤的檔案（跟隨 .distignore 邏輯）
-echo "🌿 移除開發檔案..."
-git rm -r --cached node_modules 2>/dev/null || true
-git rm -r --cached temp 2>/dev/null || true
-git rm -r --cached tests 2>/dev/null || true
-git rm -r --cached .git 2>/dev/null || true
-git rm -r --cached .github 2>/dev/null || true
-git rm -r --cached .idea 2>/dev/null || true
-git rm -r --cached .vscode 2>/dev/null || true
-git rm --cached package-lock.json 2>/dev/null || true
-git rm --cached composer.lock 2>/dev/null || true
-git rm --cached .distignore 2>/dev/null || true
-git rm --cached .gitignore 2>/dev/null || true
-git rm --cached prepare-release.sh 2>/dev/null || true
-git rm --cached deploy-from-release.sh 2>/dev/null || true
-git rm --cached README.md 2>/dev/null || true
-
-# 提交清理
+# 提交清理後的版本
 git add .
-git commit -m "chore: 清理發布檔案 v$VERSION"
+git commit -m "chore: 初始發布分支 v$VERSION"
 
 # 建立標籤
 echo "🏷️ 建立版本標籤..."

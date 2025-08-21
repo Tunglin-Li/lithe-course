@@ -8,8 +8,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 
 // Pass REST API data to the view script (automatically enqueued via block.json)
-wp_localize_script('lithe-course-enrollment-button-view-script', 'litheCourseEnrollment', [
-    'apiUrl' => rest_url('lithe-course/v1'),
+wp_localize_script('lithecourse-enrollment-button-view-script', 'litheCourseEnrollment', [
+    'apiUrl' => rest_url('lithecourse/v1'),
     'nonce' => wp_create_nonce('wp_rest'),
 ]);
 
@@ -23,7 +23,7 @@ $button_style = isset($attributes['buttonStyle']) ? $attributes['buttonStyle'] :
 $course_id = get_the_ID();
 
 // If not a course, don't display anything
-if (get_post_type() !== 'lithe_course') {
+if (get_post_type() !== 'lithecourse_course') {
     return '';
 }
 
@@ -31,13 +31,13 @@ if (get_post_type() !== 'lithe_course') {
 use Lithe\Course\Posts\Course\Enrollment;
 
 // Add wrapper with CSS classes
-$wrapper_class = 'wp-block-button lithe-course-enrollment-button-wrap';
+$wrapper_class = 'wp-block-button lithecourse-enrollment-button-wrap';
 if ($button_style) {
     $wrapper_class .= " is-style-{$button_style}";
 }
 
 // Output the button HTML with wrapper
 echo '<div class="' . esc_attr($wrapper_class) . '">';
-echo Enrollment::lithe_course_get_enrollment_button_html($course_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-echo '<span class="lithe-course-enrollment-status" style="display: none;"></span>';
+echo Enrollment::lithecourse_get_enrollment_button_html($course_id); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+echo '<span class="lithecourse-enrollment-status" style="display: none;"></span>';
 echo '</div>'; 

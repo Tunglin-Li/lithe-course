@@ -35,7 +35,7 @@ export default function LessonItem({
     setIsDeleting(true);
     try {
       await apiFetch({
-        path: `/lithe-course/v1/lesson/${lesson.id}`,
+        path: `/lithecourse/v1/lesson/${lesson.id}`,
         method: "DELETE",
       });
       onDelete(lesson.id);

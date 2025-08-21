@@ -17,7 +17,7 @@ export default function AddModuleModal({ courseId, isOpen, onClose, onAdd }) {
     setIsSubmitting(true);
     try {
       const response = await apiFetch({
-        path: "/lithe-course/v1/module",
+        path: "/lithecourse/v1/module",
         method: "POST",
         data: {
           course_id: courseId,

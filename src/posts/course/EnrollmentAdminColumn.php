@@ -16,14 +16,14 @@ class EnrollmentAdmin {
         }
 
         // Add enrollment columns to course admin
-        add_filter('manage_lithe_course_posts_columns', [self::$instance, 'lithe_course_add_enrollment_columns']);
-        add_action('manage_lithe_course_posts_custom_column', [self::$instance, 'lithe_course_render_enrollment_columns'], 10, 2);
+        add_filter('manage_lithecourse_posts_columns', [self::$instance, 'lithecourse_add_enrollment_columns']);
+        add_action('manage_lithecourse_posts_custom_column', [self::$instance, 'lithecourse_render_enrollment_columns'], 10, 2);
     }
 
     /**
      * Add enrollment columns to courses admin
      */
-    public function lithe_course_add_enrollment_columns($columns) {
+    public function lithecourse_add_enrollment_columns($columns) {
         $new_columns = [];
         
         // Insert columns after title
@@ -41,10 +41,10 @@ class EnrollmentAdmin {
     /**
      * Render enrollment column content
      */
-    public function lithe_course_render_enrollment_columns($column, $post_id) {
+    public function lithecourse_render_enrollment_columns($column, $post_id) {
         switch ($column) {
             case 'enrollments':
-                echo esc_html($this->lithe_course_get_enrollment_count($post_id));
+                echo esc_html($this->lithecourse_get_enrollment_count($post_id));
                 break;
         }
     }
@@ -52,12 +52,12 @@ class EnrollmentAdmin {
     /**
      * Get enrollment count for a course
      */
-    private function lithe_course_get_enrollment_count($course_id) {
+    private function lithecourse_get_enrollment_count($course_id) {
         global $wpdb;
         
         // Check cache first
-        $cache_key = "lithe_course_enrollment_count_{$course_id}";
-        $count = wp_cache_get($cache_key, 'lithe_course');
+        $cache_key = "lithecourse_enrollment_count_{$course_id}";
+        $count = wp_cache_get($cache_key, 'lithe-course');
         
         if (false === $count) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom enrollment count query, result is cached below
@@ -68,7 +68,7 @@ class EnrollmentAdmin {
             ));
             
             // Cache the result for 5 minutes
-            wp_cache_set($cache_key, $count, 'lithe_course', 300);
+            wp_cache_set($cache_key, $count, 'lithe-course', 300);
         }
         
         return $count ? intval($count) : 0;

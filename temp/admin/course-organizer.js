@@ -61,7 +61,7 @@ jQuery(document).ready(function ($) {
     var structure = {};
 
     // Gather course structure
-    $(".lithe-course").each(function () {
+    $(".lithecourse").each(function () {
       var courseId = $(this).data("id");
       structure[courseId] = {
         modules: [],

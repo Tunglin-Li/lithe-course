@@ -28,7 +28,7 @@ export default function EnrolledStudent() {
 
     try {
       const response = await apiFetch({
-        path: `/lithe-course/v1/course/${postId}/students`,
+        path: `/lithecourse/v1/course/${postId}/students`,
         method: "GET",
       });
 
@@ -56,7 +56,7 @@ export default function EnrolledStudent() {
 
     try {
       const response = await apiFetch({
-        path: "/lithe-course/v1/unenroll",
+        path: "/lithecourse/v1/unenroll",
         method: "POST",
         data: {
           user_id: userId,

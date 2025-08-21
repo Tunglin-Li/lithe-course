@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Enrollment {
     private static $instance = null;
-    private $api_namespace = 'lithe-course/v1';
+    private $api_namespace = 'lithecourse/v1';
 
     public static function init() {
         if (self::$instance === null) {
@@ -14,10 +14,10 @@ class Enrollment {
         }
         
         // Register REST API routes
-        add_action('rest_api_init', [self::$instance, 'lithe_course_register_rest_routes']);
+        add_action('rest_api_init', [self::$instance, 'lithecourse_register_rest_routes']);
         
         // Content restriction filter
-        add_filter('the_content', [self::$instance, 'lithe_course_restrict_lesson_content']);
+        add_filter('the_content', [self::$instance, 'lithecourse_restrict_lesson_content']);
         
 
     }
@@ -28,7 +28,7 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return string Course type (public, free, paid)
      */
-    public static function lithe_course_get_course_type($course_id) {
+    public static function lithecourse_get_course_type($course_id) {
         $course_type = get_post_meta($course_id, '_course_type', true);
         
         // Default to 'free' if not set for backward compatibility
@@ -46,7 +46,7 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return bool Has access
      */
-    public static function lithe_course_user_has_course_access($user_id = null, $course_id = null) {
+    public static function lithecourse_user_has_course_access($user_id = null, $course_id = null) {
         if (!$user_id) {
             $user_id = get_current_user_id();
         }
@@ -69,9 +69,10 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return string|null First lesson URL or null if no lessons
      */
-    public static function lithe_course_get_first_lesson_url($course_id) {
-        $lessons = get_posts([
-            'post_type' => 'lithe_lesson',
+    public static function lithecourse_get_first_lesson_url($course_id) {
+        // Get the first module for this course (ordered by menu_order)
+        $first_module = get_posts([
+            'post_type' => 'lithecourse_module',
             'posts_per_page' => 1,
             'meta_key' => '_parent_course_id',
             'meta_value' => $course_id,
@@ -79,11 +80,25 @@ class Enrollment {
             'order' => 'ASC'
         ]);
         
-        if (!empty($lessons)) {
-            return get_permalink($lessons[0]->ID);
+        if (empty($first_module)) {
+            return null;
         }
         
-        return null;
+        // Get the first lesson from the first module (ordered by menu_order)
+        $first_lesson = get_posts([
+            'post_type' => 'lithecourse_lesson',
+            'posts_per_page' => 1,
+            'meta_key' => '_parent_module_id',
+            'meta_value' => $first_module[0]->ID,
+            'orderby' => 'menu_order',
+            'order' => 'ASC'
+        ]);
+        
+        if (empty($first_lesson)) {
+            return null;
+        }
+        
+        return get_permalink($first_lesson[0]->ID);
     }
 
     /**
@@ -92,23 +107,23 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return string HTML button
      */
-    public static function lithe_course_get_enrollment_button_html($course_id) {
-        $course_type = self::lithe_course_get_course_type($course_id);
+    public static function lithecourse_get_enrollment_button_html($course_id) {
+        $course_type = self::lithecourse_get_course_type($course_id);
         
         // For public courses, show a "View Course" or "Start Learning" button
         if ($course_type === 'public') {
-            $first_lesson_url = self::lithe_course_get_first_lesson_url($course_id);
+            $first_lesson_url = self::lithecourse_get_first_lesson_url($course_id);
             
             if ($first_lesson_url) {
                 return sprintf(
-                    '<a href="%s" class="wp-block-button__link wp-element-button lithe-course-start-learning-button">%s</a>',
+                    '<a href="%s" class="wp-block-button__link wp-element-button lithecourse-start-learning-button">%s</a>',
                     esc_url($first_lesson_url),
                     __('Start Learning', 'lithe-course')
                 );
             } else {
                 // No lessons found, link to course content section
                 return sprintf(
-                    '<a href="#course-content" class="wp-block-button__link wp-element-button lithe-course-view-course-button">%s</a>',
+                    '<a href="#course-content" class="wp-block-button__link wp-element-button lithecourse-view-course-button">%s</a>',
                     __('View Course', 'lithe-course')
                 );
             }
@@ -117,7 +132,7 @@ class Enrollment {
         // For free and paid courses, check login status first
         if (!is_user_logged_in()) {
             return sprintf(
-                '<a href="%s" class="wp-block-button__link wp-element-button lithe-course-login-button">%s</a>',
+                '<a href="%s" class="wp-block-button__link wp-element-button lithecourse-login-button">%s</a>',
                 esc_url(wp_login_url(get_permalink($course_id))),
                 __('Log in to Enroll', 'lithe-course')
             );
@@ -126,20 +141,20 @@ class Enrollment {
         $user_id = get_current_user_id();
         
         // Check if user is enrolled in this course
-        if (self::lithe_course_user_has_course_access($user_id, $course_id)) {
+        if (self::lithecourse_user_has_course_access($user_id, $course_id)) {
             // User is already enrolled - show Continue Learning button
-            $first_lesson_url = self::lithe_course_get_first_lesson_url($course_id);
+            $first_lesson_url = self::lithecourse_get_first_lesson_url($course_id);
             
             if ($first_lesson_url) {
                 return sprintf(
-                    '<a href="%s" class="wp-block-button__link wp-element-button lithe-course-continue-button">%s</a>',
+                    '<a href="%s" class="wp-block-button__link wp-element-button lithecourse-continue-button">%s</a>',
                     esc_url($first_lesson_url),
                     __('Continue Learning', 'lithe-course')
                 );
             } else {
                 // No lessons found, link to course content section
                 return sprintf(
-                    '<a href="#course-content" class="wp-block-button__link wp-element-button lithe-course-continue-button">%s</a>',
+                    '<a href="#course-content" class="wp-block-button__link wp-element-button lithecourse-continue-button">%s</a>',
                     __('Continue Learning', 'lithe-course')
                 );
             }
@@ -149,7 +164,7 @@ class Enrollment {
         if ($course_type === 'free') {
             // Free course - show Enroll button
             return sprintf(
-                '<a href="#" class="wp-block-button__link wp-element-button lithe-course-enroll-button" data-course="%d">%s</a>',
+                '<a href="#" class="wp-block-button__link wp-element-button lithecourse-enroll-button" data-course="%d">%s</a>',
                 $course_id,
                 __('Enroll Now', 'lithe-course')
             );
@@ -163,7 +178,7 @@ class Enrollment {
                     // Admin sees configuration issue
                     $edit_link = admin_url('post.php?post=' . $course_id . '&action=edit');
                     return sprintf(
-                        '<div class="lithe-course-configuration-notice">%s <a href="%s">%s</a></div>',
+                        '<div class="lithecourse-configuration-notice">%s <a href="%s">%s</a></div>',
                         __('Please link a product to this course.', 'lithe-course'),
                         esc_url($edit_link),
                         __('Edit Course', 'lithe-course')
@@ -179,7 +194,7 @@ class Enrollment {
                 if (current_user_can('manage_options')) {
                     // Admin sees configuration issue
                     return sprintf(
-                        '<div class="lithe-course-configuration-notice">%s</div>',
+                        '<div class="lithecourse-configuration-notice">%s</div>',
                         __('Product exists but is not purchasable.', 'lithe-course')
                     );
                 }
@@ -190,7 +205,7 @@ class Enrollment {
             $checkout_url = add_query_arg('add-to-cart', $product_id, wc_get_checkout_url());
             
             return sprintf(
-                '<a href="%s" class="wp-block-button__link wp-element-button lithe-course-buy-now-button">%s</a>',
+                '<a href="%s" class="wp-block-button__link wp-element-button lithecourse-buy-now-button">%s</a>',
                 esc_url($checkout_url),
                 __('Buy Course', 'lithe-course')
             );
@@ -203,11 +218,11 @@ class Enrollment {
     /**
      * Register REST API routes
      */
-    public function lithe_course_register_rest_routes() {
+    public function lithecourse_register_rest_routes() {
         register_rest_route($this->api_namespace, '/enroll/(?P<course_id>\d+)', [
             'methods' => 'POST',
-            'callback' => [$this, 'lithe_course_handle_enrollment_endpoint'],
-            'permission_callback' => [$this, 'lithe_course_enrollment_permission_check'],
+            'callback' => [$this, 'lithecourse_handle_enrollment_endpoint'],
+            'permission_callback' => [$this, 'lithecourse_enrollment_permission_check'],
             'args' => [
                 'course_id' => [
                     'validate_callback' => function($param) {
@@ -220,8 +235,8 @@ class Enrollment {
         // Register unenroll endpoint
         register_rest_route($this->api_namespace, '/unenroll', [
             'methods' => 'POST',
-            'callback' => [$this, 'lithe_course_handle_unenrollment_endpoint'],
-            'permission_callback' => [$this, 'lithe_course_admin_permission_check'],
+            'callback' => [$this, 'lithecourse_handle_unenrollment_endpoint'],
+            'permission_callback' => [$this, 'lithecourse_admin_permission_check'],
             'args' => [
                 'user_id' => [
                     'required' => true,
@@ -241,8 +256,8 @@ class Enrollment {
         // Register get enrolled students endpoint
         register_rest_route($this->api_namespace, '/course/(?P<course_id>\d+)/students', [
             'methods' => 'GET',
-            'callback' => [$this, 'lithe_course_get_enrolled_students_endpoint'],
-            'permission_callback' => [$this, 'lithe_course_admin_permission_check'],
+            'callback' => [$this, 'lithecourse_get_enrolled_students_endpoint'],
+            'permission_callback' => [$this, 'lithecourse_admin_permission_check'],
             'args' => [
                 'course_id' => [
                     'validate_callback' => function($param) {
@@ -259,7 +274,7 @@ class Enrollment {
      * @param \WP_REST_Request $request
      * @return bool|WP_Error
      */
-    public function lithe_course_enrollment_permission_check($request) {
+    public function lithecourse_enrollment_permission_check($request) {
         // Check if user is logged in
         if (!is_user_logged_in()) {
             return new \WP_Error(
@@ -288,12 +303,12 @@ class Enrollment {
      * @param \WP_REST_Request $request
      * @return \WP_REST_Response
      */
-    public function lithe_course_handle_enrollment_endpoint($request) {
+    public function lithecourse_handle_enrollment_endpoint($request) {
         $course_id = $request->get_param('course_id');
         $user_id = get_current_user_id();
 
         // Check if course is free
-        if (!$this->lithe_course_is_free_course($course_id)) {
+        if (!$this->lithecourse_is_free_course($course_id)) {
             return new \WP_REST_Response([
                 'success' => false,
                 'message' => __('This is a paid course and requires purchase', 'lithe-course')
@@ -301,7 +316,7 @@ class Enrollment {
         }
 
         // Attempt to enroll user
-        if ($this->lithe_course_enroll_user($user_id, $course_id)) {
+        if ($this->lithecourse_enroll_user($user_id, $course_id)) {
             return new \WP_REST_Response([
                 'success' => true,
                 'message' => __('Successfully enrolled', 'lithe-course')
@@ -321,8 +336,8 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return bool Is free
      */
-    public function lithe_course_is_free_course($course_id) {
-        $course_type = self::lithe_course_get_course_type($course_id);
+    public function lithecourse_is_free_course($course_id) {
+        $course_type = self::lithecourse_get_course_type($course_id);
         
         // Public and free courses are considered "free" for enrollment purposes
         if (in_array($course_type, ['public', 'free'])) {
@@ -370,9 +385,9 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return bool Success
      */
-    public function lithe_course_enroll_user($user_id, $course_id) {
+    public function lithecourse_enroll_user($user_id, $course_id) {
         // Check if already enrolled
-        if (self::lithe_course_user_has_course_access($user_id, $course_id)) {
+        if (self::lithecourse_user_has_course_access($user_id, $course_id)) {
             return true;
         }
 
@@ -386,9 +401,9 @@ class Enrollment {
      * @param string $content Post content
      * @return string Modified content
      */
-    public function lithe_course_restrict_lesson_content($content) {
+    public function lithecourse_restrict_lesson_content($content) {
         // Only apply restrictions to lesson pages
-        if (!is_singular('lithe_lesson')) {
+        if (!is_singular('lithecourse_lesson')) {
             return $content;
         }
         
@@ -401,7 +416,7 @@ class Enrollment {
         }
         
         // Get course type
-        $course_type = self::lithe_course_get_course_type($course_id);
+        $course_type = self::lithecourse_get_course_type($course_id);
         
         // Public courses - no restrictions, everyone can access
         if ($course_type === 'public') {
@@ -414,10 +429,10 @@ class Enrollment {
             $login_url = wp_login_url(get_permalink());
             
             return sprintf(
-                '<div class="lithe-course-access-message">
+                '<div class="lithecourse-access-message">
                     <h3>%s</h3>
                     <p>%s</p>
-                    <a href="%s" class="lithe-course-login-button">%s</a>
+                    <a href="%s" class="lithecourse-login-button">%s</a>
                 </div>',
                 __('Login Required', 'lithe-course'),
                 /* translators: %s: lesson title */
@@ -428,12 +443,12 @@ class Enrollment {
         }
         
         // Check if logged-in user has access to the course
-        if (self::lithe_course_user_has_course_access(null, $course_id)) {
+        if (self::lithecourse_user_has_course_access(null, $course_id)) {
             return $content;
         }
         
         // User doesn't have access, show enrollment message
-        return $this->lithe_course_get_enrollment_message($course_id);
+        return $this->lithecourse_get_enrollment_message($course_id);
     }
 
     /**
@@ -442,14 +457,14 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return string HTML message
      */
-    private function lithe_course_get_enrollment_message($course_id) {
+    private function lithecourse_get_enrollment_message($course_id) {
         $course_title = get_the_title($course_id);
         $course_url = get_permalink($course_id);
-        $course_type = self::lithe_course_get_course_type($course_id);
+        $course_type = self::lithecourse_get_course_type($course_id);
         
         if (!is_user_logged_in()) {
             return sprintf(
-                '<div class="lithe-course-access-message">
+                '<div class="lithecourse-access-message">
                     <h3>%s</h3>
                     <p>%s</p>
                     <a href="%s" class="wp-block-button__link wp-element-button">%s</a>
@@ -467,7 +482,7 @@ class Enrollment {
         $action_text = $course_type === 'paid' ? __('View Course & Purchase', 'lithe-course') : __('Go to Course & Enroll', 'lithe-course');
         
         return sprintf(
-            '<div class="lithe-course-access-message">
+            '<div class="lithecourse-access-message">
                 <h3>%s</h3>
                 <p>%s</p>
                 <a href="%s" class="wp-block-button__link wp-element-button">%s</a>
@@ -488,7 +503,7 @@ class Enrollment {
      * @param \WP_REST_Request $request
      * @return bool|WP_Error
      */
-    public function lithe_course_admin_permission_check($request) {
+    public function lithecourse_admin_permission_check($request) {
         // Check if user is logged in and is admin
         if (!is_user_logged_in() || !current_user_can('manage_options')) {
             return new \WP_Error(
@@ -517,7 +532,7 @@ class Enrollment {
      * @param \WP_REST_Request $request
      * @return \WP_REST_Response
      */
-    public function lithe_course_handle_unenrollment_endpoint($request) {
+    public function lithecourse_handle_unenrollment_endpoint($request) {
         $course_id = $request->get_param('course_id');
         $user_id = $request->get_param('user_id');
         
@@ -525,7 +540,7 @@ class Enrollment {
         $user = get_userdata($user_id);
         $course = get_post($course_id);
         
-        if (!$user || !$course || $course->post_type !== 'lithe_course') {
+        if (!$user || !$course || $course->post_type !== 'lithecourse_course') {
             return new \WP_Error(
                 'invalid_data',
                 __('Invalid user or course.', 'lithe-course'),
@@ -562,12 +577,12 @@ class Enrollment {
      * @param \WP_REST_Request $request
      * @return \WP_REST_Response
      */
-    public function lithe_course_get_enrolled_students_endpoint($request) {
+    public function lithecourse_get_enrolled_students_endpoint($request) {
         $course_id = $request->get_param('course_id');
         
         // Verify course exists
         $course = get_post($course_id);
-        if (!$course || $course->post_type !== 'lithe_course') {
+        if (!$course || $course->post_type !== 'lithecourse_course') {
             return new \WP_Error(
                 'invalid_course',
                 __('Invalid course.', 'lithe-course'),
@@ -576,7 +591,7 @@ class Enrollment {
         }
         
         // Get enrolled users
-        $enrolled_users = $this->lithe_course_get_enrolled_users($course_id);
+        $enrolled_users = $this->lithecourse_get_enrolled_users($course_id);
         $enrollment_count = count($enrolled_users);
         
         // Format users data for response
@@ -606,12 +621,12 @@ class Enrollment {
      * @param int $course_id Course ID
      * @return array Enrolled users
      */
-    private function lithe_course_get_enrolled_users($course_id) {
+    private function lithecourse_get_enrolled_users($course_id) {
         global $wpdb;
         
         // Check cache first
-        $cache_key = "lithe_course_enrolled_users_{$course_id}";
-        $users = wp_cache_get($cache_key, 'lithe_course');
+        $cache_key = "lithecourse_enrolled_users_{$course_id}";
+        $users = wp_cache_get($cache_key, 'lithe-course');
         
         if (false === $users) {
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom enrolled users query, result is cached below
@@ -623,7 +638,7 @@ class Enrollment {
             ));
             
             // Cache the result for 5 minutes
-            wp_cache_set($cache_key, $users, 'lithe_course', 300);
+            wp_cache_set($cache_key, $users, 'lithe-course', 300);
         }
         
         return $users ? $users : [];

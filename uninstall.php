@@ -12,7 +12,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 // Remove plugin options (only plugin settings, not user data)
-delete_option('lithe_course_version');
+delete_option('LITHECOURSE_VERSION');
 
 // Flush rewrite rules to clean up custom post type rules
 flush_rewrite_rules();

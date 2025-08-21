@@ -7,12 +7,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class Course {
     public static function init() {
         $class = new self();
-        add_action('init', [$class, 'lithe_course_register_course_post_type']);
+        add_action('init', [$class, 'lithecourse_register_course_post_type']);
     }
 
-    public function lithe_course_register_course_post_type() {
+    public function lithecourse_register_course_post_type() {
      // Register Course Post Type
-        register_post_type('lithe_course', [
+        register_post_type('lithecourse_course', [
             'labels' => [
                 'name' => __('Courses', 'lithe-course'),
                 'singular_name' => __('Course', 'lithe-course'),
@@ -25,7 +25,7 @@ class Course {
             'has_archive' => true,
             'show_in_menu' => true,
             'menu_icon' => 'dashicons-welcome-learn-more',
-            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
+            'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'author'],
             'rewrite' => ['slug' => 'courses'],
             'show_in_rest' => true,
             'hierarchical' => true,

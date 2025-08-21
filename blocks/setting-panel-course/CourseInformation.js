@@ -38,7 +38,8 @@ export default function CourseInformation({
   const fieldData = meta[fieldKey];
 
   // Local state for smooth reordering
-  const [localItems, setLocalItems] = useState(fieldData || []);
+  const [localItems, setLocalItems] = useState([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Check if we have valid content
   const hasContent =
@@ -47,40 +48,49 @@ export default function CourseInformation({
     localItems.some((item) => item.text && item.text.trim() !== "");
   const isEmpty = !hasContent;
 
-  // Sync local state with meta when field data changes
+  // Initialize local state with meta when field data changes (only once)
   useEffect(() => {
-    // Add IDs to items from WordPress (they don't have IDs in the database)
-    const itemsWithIds = (fieldData || []).map((item, index) => ({
-      ...item,
-      id: item.id || `existing-${index}-${Date.now()}`,
-    }));
-    setLocalItems(itemsWithIds);
-  }, [fieldData]);
+    if (!isInitialized && fieldData) {
+      // Add IDs to items from WordPress (they don't have IDs in the database)
+      const itemsWithIds = (fieldData || []).map((item, index) => ({
+        ...item,
+        id: item.id || `existing-${index}-${Date.now()}`,
+      }));
+      setLocalItems(itemsWithIds);
+      setIsInitialized(true);
+    }
+  }, [fieldData, isInitialized]);
 
   // Sync local state to meta (debounced for performance)
   useEffect(() => {
+    if (!isInitialized) return;
+
     const timeoutId = setTimeout(() => {
       // Remove id properties before saving to WordPress (only keep text)
       const cleanItems = localItems.map(({ id, ...item }) => item);
-      if (JSON.stringify(cleanItems) !== JSON.stringify(fieldData || [])) {
+      const currentFieldData = fieldData || [];
+
+      // Only save if there's actually a difference
+      if (JSON.stringify(cleanItems) !== JSON.stringify(currentFieldData)) {
         setMeta({ ...meta, [fieldKey]: cleanItems });
       }
-    }, 300);
+    }, 1500);
 
     return () => clearTimeout(timeoutId);
-  }, [localItems, meta, fieldData, setMeta, fieldKey]);
+  }, [localItems, fieldData, setMeta, fieldKey, isInitialized]);
 
   // Add a new item
   const addItem = () => {
-    const newItems = [...localItems, { text: "", id: Date.now() }];
-    setLocalItems(newItems);
+    setLocalItems((prevItems) => [...prevItems, { text: "", id: Date.now() }]);
   };
 
   // Remove an item
   const removeItem = (index) => {
-    const newItems = [...localItems];
-    newItems.splice(index, 1);
-    setLocalItems(newItems);
+    setLocalItems((prevItems) => {
+      const newItems = [...prevItems];
+      newItems.splice(index, 1);
+      return newItems;
+    });
   };
 
   // Handle reordering (now just updates local state)
@@ -90,9 +100,11 @@ export default function CourseInformation({
 
   // Update item text
   const updateItemText = (index, value) => {
-    const newItems = [...localItems];
-    newItems[index] = { ...newItems[index], text: value };
-    setLocalItems(newItems);
+    setLocalItems((prevItems) => {
+      const newItems = [...prevItems];
+      newItems[index] = { ...newItems[index], text: value };
+      return newItems;
+    });
   };
 
   return (
@@ -186,10 +198,11 @@ export default function CourseInformation({
                           </FlexItem>
                           <FlexBlock>
                             <TextControl
+                              key={`${item.id}-${index}`}
                               value={item.text}
                               onChange={(value) => updateItemText(index, value)}
                               placeholder={placeholder}
-                              className="lithe-course-input-text"
+                              className="lithecourse-input-text"
                             />
                           </FlexBlock>
                           <FlexItem>

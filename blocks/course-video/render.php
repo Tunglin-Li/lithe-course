@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $course_id = get_the_ID();
 
 // If we're not on a course page, try to get the course ID from the block attributes
-if (get_post_type() !== 'lithe_course') {
+if (get_post_type() !== 'lithecourse_course') {
     $course_id = isset($attributes['courseId']) ? $attributes['courseId'] : null;
     
     // Fallback to ACF field if using it
@@ -29,7 +29,7 @@ $video_data = get_post_meta($course_id, '_video', true);
 
 if (empty($video_data) || empty($video_data['video_url'])) {
     ?>
-    <div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithe-course-video'])); ?>>
+    <div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithecourse-video'])); ?>>
         <div class="video-placeholder">
             <div class="video-placeholder-content">
                 <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -71,7 +71,7 @@ if (!empty($video_id)) {
 }
 ?>
 
-<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithe-course-video'])); ?>>
+<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithecourse-video'])); ?>>
     <div class="video-container">
         <iframe 
             src="<?php echo esc_url($embed_url); ?>" 

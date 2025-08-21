@@ -7,12 +7,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class CourseTaxonomy {
     public static function init() {
         $class = new self();
-        add_action('init', [$class, 'lithe_course_register_course_taxonomies']);
+        add_action('init', [$class, 'lithecourse_register_course_taxonomies']);
     }
 
-    public function lithe_course_register_course_taxonomies() {
+    public function lithecourse_register_course_taxonomies() {
         // Register Course Category Taxonomy
-        register_taxonomy('lithe_course_category', 'lithe_course', [
+        register_taxonomy('lithecourse_category', 'lithecourse_course', [
             'labels' => [
                 'name' => __('Course Categories', 'lithe-course'),
                 'singular_name' => __('Course Category', 'lithe-course'),
@@ -43,7 +43,7 @@ class CourseTaxonomy {
             'show_in_rest' => true,
             'rest_base' => 'course-categories',
             'rewrite' => [
-                'slug' => 'lithe-course-category',
+                'slug' => 'lithecourse-course-category',
                 'with_front' => false,
                 'hierarchical' => true,
             ],

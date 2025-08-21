@@ -16,8 +16,8 @@ $show_icon = $attributes['showIcon'] ?? true;
 global $wpdb;
 
 // Check cache first
-$cache_key = "lithe_course_enrollment_count_{$course_id}";
-$count = wp_cache_get($cache_key, 'lithe_course');
+$cache_key = "lithecourse_enrollment_count_{$course_id}";
+$count = wp_cache_get($cache_key, 'lithe-course');
 
 if (false === $count) {
     // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom enrollment count query, result is cached below
@@ -28,7 +28,7 @@ if (false === $count) {
     ));
     
     // Cache the result for 5 minutes
-    wp_cache_set($cache_key, $count, 'lithe_course', 300);
+    wp_cache_set($cache_key, $count, 'lithe-course', 300);
 }
 
 $enrollment_count = $count ? intval($count) : 0;
@@ -38,19 +38,19 @@ $display_text = str_replace('{count}', $enrollment_count, $text_format);
 
 // Apply block wrapper attributes
 $wrapper_attributes = get_block_wrapper_attributes([
-    'class' => 'lithe-course-enrolled-student-count',
+    'class' => 'lithecourse-enrolled-student-count',
 ]);
 
 ?>
 
 <div <?php echo wp_kses_data($wrapper_attributes); ?>>
-    <div class="lithe-course-enrolled-student-display">
+    <div class="lithecourse-enrolled-student-display">
         <?php if ($show_icon) : ?>
-            <svg class="lithe-course-enrolled-student-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <svg class="lithecourse-enrolled-student-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M15.5 9.5a1 1 0 100-2 1 1 0 000 2zm0 1.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zm-2.25 6v-2a2.75 2.75 0 00-2.75-2.75h-4A2.75 2.75 0 003.75 15v2h1.5v-2c0-.69.56-1.25 1.25-1.25h4c.69 0 1.25.56 1.25 1.25v2h1.5zm7-2v2h-1.5v-2c0-.69-.56-1.25-1.25-1.25H15v-1.5h2.5A2.75 2.75 0 0120.25 15zM9.5 8.5a1 1 0 11-2 0 1 1 0 012 0zm1.5 0a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" fill-rule="evenodd"></path>
             </svg>
         <?php endif; ?>
-        <span class="lithe-course-enrolled-student-text">
+        <span class="lithecourse-enrolled-student-text">
             <?php echo esc_html($display_text); ?>
         </span>
     </div>

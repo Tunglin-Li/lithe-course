@@ -30,16 +30,6 @@ export default function ModuleDraggable({ module, children }) {
         dragHandleProps: {
           ...attributes,
           ...listeners,
-          style: {
-            cursor: isDragging ? "grabbing" : "grab",
-            display: "flex",
-            alignItems: "center",
-            padding: "2px",
-            color: "#666",
-            borderRadius: "2px",
-            transition: "background-color 0.2s",
-          },
-          title: __("Drag to reorder module", "lithe-course"),
         },
         isDragging,
       })}

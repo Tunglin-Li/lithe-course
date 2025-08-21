@@ -7,7 +7,7 @@ export default function Edit({ attributes, setAttributes }) {
   const { textFormat, showIcon } = attributes;
 
   const blockProps = useBlockProps({
-    className: "lithe-course-enrolled-student-count",
+    className: "lithecourse-enrolled-student-count",
   });
 
   // Sample display for the editor
@@ -37,14 +37,11 @@ export default function Edit({ attributes, setAttributes }) {
       </InspectorControls>
 
       <div {...blockProps}>
-        <div className="lithe-course-enrolled-student-display">
+        <div className="lithecourse-enrolled-student-display">
           {showIcon && (
-            <Icon
-              icon={people}
-              className="lithe-course-enrolled-student-icon"
-            />
+            <Icon icon={people} className="lithecourse-enrolled-student-icon" />
           )}
-          <span className="lithe-course-enrolled-student-text">
+          <span className="lithecourse-enrolled-student-text">
             {displayText}
           </span>
         </div>

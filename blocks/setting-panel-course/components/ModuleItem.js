@@ -25,6 +25,8 @@ export default function ModuleItem({
   onUpdate,
   onDelete,
   forceExpanded,
+  onExpandedChange,
+  isModuleDraggingDisabled,
 }) {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
@@ -43,6 +45,13 @@ export default function ModuleItem({
     }
   }, [forceExpanded]);
 
+  // Notify parent when expanded state changes
+  useEffect(() => {
+    if (onExpandedChange) {
+      onExpandedChange(module.id, isExpanded);
+    }
+  }, [isExpanded, module.id, onExpandedChange]);
+
   const handleSaveTitle = async () => {
     if (!editTitle.trim()) {
       alert(__("Module title is required.", "lithe-course"));
@@ -52,7 +61,7 @@ export default function ModuleItem({
     setIsUpdating(true);
     try {
       await apiFetch({
-        path: `/lithe-course/v1/module/${module.id}`,
+        path: `/lithecourse/v1/module/${module.id}`,
         method: "PUT",
         data: {
           title: editTitle.trim(),
@@ -90,7 +99,7 @@ export default function ModuleItem({
     setIsDeleting(true);
     try {
       await apiFetch({
-        path: `/lithe-course/v1/module/${module.id}`,
+        path: `/lithecourse/v1/module/${module.id}`,
         method: "DELETE",
       });
       onDelete(module.id);
@@ -120,101 +129,132 @@ export default function ModuleItem({
     onUpdate(module.id, updatedModule);
   };
 
-  return (
-    <ModuleDraggable module={module}>
-      {({ dragHandleProps, isDragging }) => (
-        <Card style={{ marginBottom: "16px" }}>
-          <CardHeader style={{ padding: "8px" }}>
+  const renderModuleContent = (dragHandleProps = {}, isDragging = false) => {
+    return (
+      <Card style={{ marginBottom: "16px" }}>
+        <CardHeader style={{ padding: "8px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            {/* Left side - Drag handle and Expand icon */}
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
+                marginRight: "8px",
               }}
             >
-              {/* Left side - Drag handle and Expand icon */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginRight: "8px",
-                }}
-              >
-                {/* Drag handle */}
-                <div {...dragHandleProps}>
+              {/* Drag handle - only show when collapsed AND no modules are expanded */}
+              {!isExpanded && !isModuleDraggingDisabled && (
+                <div
+                  {...dragHandleProps}
+                  style={{
+                    cursor: isDragging ? "grabbing" : "grab",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "2px",
+                    color: "#666",
+                    borderRadius: "2px",
+                    transition: "background-color 0.2s",
+                    zIndex: 1,
+                  }}
+                  title={__("Drag to reorder module", "lithe-course")}
+                >
                   <Icon icon={dragHandle} size={16} />
                 </div>
+              )}
 
-                {/* Expand/collapse button */}
+              {/* Expand/collapse button */}
+              <Button
+                icon={isExpanded ? "arrow-down" : "arrow-right"}
+                onClick={() => setIsExpanded(!isExpanded)}
+                size="small"
+                style={{
+                  minWidth: "auto",
+                  padding: "2px",
+                  width: "20px",
+                  height: "20px",
+                }}
+              />
+            </div>
+
+            {/* Middle - Title (takes up remaining space) */}
+            <div
+              style={{
+                flex: 1,
+                minWidth: 0, // Prevents flex item from overflowing
+              }}
+            >
+              {isEditing ? (
+                <div style={{ flex: 1 }}>
+                  <TextControl
+                    value={editTitle}
+                    onChange={setEditTitle}
+                    disabled={isUpdating}
+                    style={{ margin: 0 }}
+                    className="lithecourse-module-title-input"
+                  />
+                </div>
+              ) : (
+                <div
+                  style={{
+                    margin: 0,
+                    fontWeight: "500",
+                    fontSize: "12px",
+                    overflowWrap: "break-word",
+                  }}
+                >
+                  {module.title}
+                </div>
+              )}
+            </div>
+
+            {/* Right side - Edit and delete icons */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "2px",
+              }}
+            >
+              <div>
                 <Button
-                  icon={isExpanded ? "arrow-down" : "arrow-right"}
-                  onClick={() => setIsExpanded(!isExpanded)}
+                  icon={isEditing ? "saved" : "edit"}
+                  label={
+                    isEditing
+                      ? __("Save", "lithe-course")
+                      : __("Edit", "lithe-course")
+                  }
+                  onClick={
+                    isEditing ? handleSaveTitle : () => setIsEditing(true)
+                  }
+                  disabled={
+                    isDeleting ||
+                    (isEditing && (!editTitle.trim() || isUpdating))
+                  }
                   size="small"
                   style={{
                     minWidth: "auto",
-                    padding: "2px",
-                    width: "20px",
-                    height: "20px",
+                    padding: "4px",
+                    width: "24px",
+                    height: "24px",
                   }}
                 />
               </div>
-
-              {/* Middle - Title (takes up remaining space) */}
-              <div
-                style={{
-                  flex: 1,
-                  minWidth: 0, // Prevents flex item from overflowing
-                }}
-              >
-                {isEditing ? (
-                  <div style={{ flex: 1 }}>
-                    <TextControl
-                      value={editTitle}
-                      onChange={setEditTitle}
-                      disabled={isUpdating}
-                      style={{ margin: 0 }}
-                      className="lithe-course-module-title-input"
-                    />
-                  </div>
-                ) : (
-                  <div
-                    style={{
-                      margin: 0,
-                      fontWeight: "500",
-                      fontSize: "12px",
-                      overflowWrap: "break-word",
-                    }}
-                  >
-                    {module.title}
-                  </div>
-                )}
-              </div>
-
-              {/* Right side - Edit and delete icons */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "2px",
-                }}
-              >
+              {!isEditing && (
                 <div>
                   <Button
-                    icon={isEditing ? "saved" : "edit"}
-                    label={
-                      isEditing
-                        ? __("Save", "lithe-course")
-                        : __("Edit", "lithe-course")
-                    }
-                    onClick={
-                      isEditing ? handleSaveTitle : () => setIsEditing(true)
-                    }
-                    disabled={
-                      isDeleting ||
-                      (isEditing && (!editTitle.trim() || isUpdating))
-                    }
+                    icon="trash"
+                    label={__("Delete", "lithe-course")}
+                    onClick={handleDelete}
+                    disabled={isDeleting}
                     size="small"
+                    isDestructive
                     style={{
                       minWidth: "auto",
                       padding: "4px",
@@ -223,92 +263,88 @@ export default function ModuleItem({
                     }}
                   />
                 </div>
-                {!isEditing && (
-                  <div>
-                    <Button
-                      icon="trash"
-                      label={__("Delete", "lithe-course")}
-                      onClick={handleDelete}
-                      disabled={isDeleting}
-                      size="small"
-                      isDestructive
-                      style={{
-                        minWidth: "auto",
-                        padding: "4px",
-                        width: "24px",
-                        height: "24px",
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          </CardHeader>
-
-          {isExpanded && (
-            <CardBody style={{ padding: "10px" }}>
-              <div style={{ marginBottom: "12px" }}>
-                <strong>{__("Lessons:", "lithe-course")}</strong>
-              </div>
-              {/* Droppable for lesson list */}
-              <Droppable id={`module-${module.id}`}>
-                {/* SortableContext for lesson list */}
-                <SortableContext
-                  items={lessons.map((lesson) => lesson.id)}
-                  strategy={verticalListSortingStrategy}
-                >
-                  <div
-                    style={{
-                      minHeight: "40px",
-                      borderRadius: "4px",
-                    }}
-                  >
-                    {lessons.length > 0 ? (
-                      lessons.map((lesson) => (
-                        // Draggable for each lesson
-                        <Draggable key={lesson.id} id={lesson.id}>
-                          {({ dragHandleProps, isDragging }) => (
-                            <LessonItem
-                              lesson={lesson}
-                              moduleId={module.id}
-                              onDelete={handleDeleteLesson}
-                              dragHandleProps={dragHandleProps}
-                              isDragging={isDragging}
-                            />
-                          )}
-                        </Draggable>
-                      ))
-                    ) : (
-                      <p style={{ fontStyle: "italic", color: "#666" }}>
-                        {__(
-                          "No lessons found. Add a new lesson to get started.",
-                          "lithe-course"
-                        )}
-                      </p>
-                    )}
-                  </div>
-                </SortableContext>
-              </Droppable>
-
-              {showAddLesson ? (
-                <AddLessonForm
-                  moduleId={module.id}
-                  onAdd={handleAddLesson}
-                  onCancel={() => setShowAddLesson(false)}
-                />
-              ) : (
-                <Button
-                  variant="secondary"
-                  onClick={() => setShowAddLesson(true)}
-                  style={{ marginTop: "8px" }}
-                >
-                  {__("Add New Lesson", "lithe-course")}
-                </Button>
               )}
-            </CardBody>
-          )}
-        </Card>
-      )}
-    </ModuleDraggable>
-  );
+            </div>
+          </div>
+        </CardHeader>
+
+        {isExpanded && (
+          <CardBody style={{ padding: "10px" }}>
+            <div style={{ marginBottom: "12px" }}>
+              <strong>{__("Lessons:", "lithe-course")}</strong>
+            </div>
+            {/* Droppable for lesson list */}
+            <Droppable id={`module-${module.id}`}>
+              {/* SortableContext for lesson list */}
+              <SortableContext
+                items={lessons.map((lesson) => lesson.id)}
+                strategy={verticalListSortingStrategy}
+              >
+                <div
+                  style={{
+                    minHeight: "40px",
+                    borderRadius: "4px",
+                  }}
+                >
+                  {lessons.length > 0 ? (
+                    lessons.map((lesson) => (
+                      // Draggable for each lesson
+                      <Draggable key={lesson.id} id={lesson.id}>
+                        {({ dragHandleProps, isDragging }) => (
+                          <LessonItem
+                            lesson={lesson}
+                            moduleId={module.id}
+                            onDelete={handleDeleteLesson}
+                            dragHandleProps={dragHandleProps}
+                            isDragging={isDragging}
+                          />
+                        )}
+                      </Draggable>
+                    ))
+                  ) : (
+                    <p style={{ fontStyle: "italic", color: "#666" }}>
+                      {__(
+                        "No lessons found. Add a new lesson to get started.",
+                        "lithe-course"
+                      )}
+                    </p>
+                  )}
+                </div>
+              </SortableContext>
+            </Droppable>
+
+            {showAddLesson ? (
+              <AddLessonForm
+                moduleId={module.id}
+                onAdd={handleAddLesson}
+                onCancel={() => setShowAddLesson(false)}
+              />
+            ) : (
+              <Button
+                variant="secondary"
+                onClick={() => setShowAddLesson(true)}
+                style={{ marginTop: "8px" }}
+              >
+                {__("Add New Lesson", "lithe-course")}
+              </Button>
+            )}
+          </CardBody>
+        )}
+      </Card>
+    );
+  };
+
+  // Conditionally wrap with ModuleDraggable only when collapsed AND no modules are expanded
+  if (!isExpanded && !isModuleDraggingDisabled) {
+    return (
+      <ModuleDraggable module={module}>
+        {({ dragHandleProps, isDragging }) =>
+          renderModuleContent(dragHandleProps, isDragging)
+        }
+      </ModuleDraggable>
+    );
+  }
+
+  // When expanded or when any module is expanded, render without drag functionality
+  return renderModuleContent();
 }

@@ -11,7 +11,7 @@ import {
 
 export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps({
-    className: "lithe-course-modules-container",
+    className: "lithecourse-modules-container",
   });
   const [isOpen, setIsOpen] = useState(true);
   const [activeTab, setActiveTab] = useState("title");
@@ -49,7 +49,7 @@ export default function Edit({ attributes, setAttributes }) {
           initialOpen={true}
         >
           <TabPanel
-            className="lithe-course-outline-tabs"
+            className="lithecourse-outline-tabs"
             activeClass="is-active"
             initialTabName={activeTab}
             onSelect={(tabName) => setActiveTab(tabName)}
@@ -173,7 +173,7 @@ export default function Edit({ attributes, setAttributes }) {
       </InspectorControls>
 
       <div {...blockProps}>
-        <div className="lithe-course-modules">
+        <div className="lithecourse-modules">
           <div className="lithe-module" data-id="preview" style={moduleStyle}>
             <div
               className="module-header"

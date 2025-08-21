@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "title": "Enrolled Student Count",
   "description": "Displays the number of students enrolled in a course",
-  "name": "lithe-course/enrolled-student",
+  "name": "lithecourse/enrolled-student",
   "version": "1.0.0",
   "category": "lithe-course",
   "icon": "groups",

@@ -23,7 +23,7 @@ export default function AddLessonForm({ moduleId, onAdd, onCancel }) {
     setIsSubmitting(true);
     try {
       const response = await apiFetch({
-        path: "/lithe-course/v1/lesson",
+        path: "/lithecourse/v1/lesson",
         method: "POST",
         data: {
           module_id: moduleId,

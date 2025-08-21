@@ -1,10 +1,10 @@
 <?php return array(
     'root' => array(
-        'name' => 'wpaa/academy',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
-        'type' => 'wordpress-plugin',
+        'name' => 'lithe/course',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'a9e886cda1cb560eea5783e45264847b13726c44',
+        'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
@@ -19,11 +19,11 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'wpaa/academy' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
-            'type' => 'wordpress-plugin',
+        'lithe/course' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'a9e886cda1cb560eea5783e45264847b13726c44',
+            'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,

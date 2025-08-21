@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ac50f222fef58126cd1644deb6e1570",
+    "content-hash": "f6420534add76e0419a95f818335f8bb",
     "packages": [
         {
             "name": "a7/autoload",
@@ -54,9 +54,7 @@
     "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {
-        "php": ">=7.4"
-    },
+    "platform": {},
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

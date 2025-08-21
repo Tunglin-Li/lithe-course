@@ -8,7 +8,7 @@ export default function Edit() {
 
   return (
     <div {...blockProps}>
-      <div className="lithe-course-video">
+      <div className="lithecourse-video">
         <div className="video-placeholder">
           <div className="video-placeholder-content">
             <Icon icon={video} size={48} />

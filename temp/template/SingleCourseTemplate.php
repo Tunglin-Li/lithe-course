@@ -16,14 +16,14 @@ class TemplateRegistration {
             return $query_result;
         }
 
-        // Check for single-lithe_course template specifically
-        $template_file_path = LITHE_COURSE_PLUGIN_DIR . 'src/template/templates/single-lithe_course.html';
+        // Check for single-lithecourse template specifically
+        $template_file_path = LITHECOURSE_PLUGIN_DIR . 'src/template/templates/single-lithecourse.html';
         
         if (file_exists($template_file_path)) {
             // Check if this template is already in the results
             $template_exists = false;
             foreach ($query_result as $template) {
-                if (isset($template->slug) && $template->slug === 'single-lithe_course') {
+                if (isset($template->slug) && $template->slug === 'single-lithecourse') {
                     $template_exists = true;
                     break;
                 }
@@ -33,9 +33,9 @@ class TemplateRegistration {
             if (!$template_exists) {
                 $html = file_get_contents($template_file_path);
                 $single_course_template = new \WP_Block_Template();
-                $single_course_template->id = 'lithe-course//single-lithe_course';
+                $single_course_template->id = 'lithecourse//single-lithecourse';
                 $single_course_template->theme = get_stylesheet();
-                $single_course_template->slug = 'single-lithe_course';
+                $single_course_template->slug = 'single-lithecourse';
                 $single_course_template->source = 'plugin';
                 $single_course_template->type = 'wp_template';
                 $single_course_template->title = __('Single Course', 'lithe-course');

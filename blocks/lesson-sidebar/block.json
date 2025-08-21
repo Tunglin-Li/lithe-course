@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "lithe-course/lesson-sidebar",
+  "name": "lithecourse/lesson-sidebar",
   "version": "1.0.0",
   "category": "lithe-course",
   "icon": "editor-ul",

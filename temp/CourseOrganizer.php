@@ -12,38 +12,38 @@ class CourseOrganizer {
             self::$instance = new self();
         }
 
-        add_action('admin_menu', [self::$instance, 'lithe_course_add_menu_page']);
-        add_action('admin_enqueue_scripts', [self::$instance, 'lithe_course_enqueue_scripts']);
-        add_action('wp_ajax_update_course_structure', [self::$instance, 'lithe_course_update_course_structure']);
+        add_action('admin_menu', [self::$instance, 'lithecourse_add_menu_page']);
+        add_action('admin_enqueue_scripts', [self::$instance, 'lithecourse_enqueue_scripts']);
+        add_action('wp_ajax_update_course_structure', [self::$instance, 'lithecourse_update_course_structure']);
     }
 
-    public function lithe_course_add_menu_page() {
+    public function lithecourse_add_menu_page() {
         add_submenu_page(
-            'edit.php?post_type=lithe_course',
+            'edit.php?post_type=lithecourse_course',
             __('Course Organizer', 'lithe-course'),
             __('Course Organizer', 'lithe-course'),
             'edit_posts',
             'course-organizer',
-            [$this, 'lithe_course_render_page']
+            [$this, 'lithecourse_render_page']
         );
     }
 
-    public function lithe_course_enqueue_scripts($hook) {
-        if ($hook !== 'lithe_course_page_course-organizer') {
+    public function lithecourse_enqueue_scripts($hook) {
+        if ($hook !== 'lithecourse_page_course-organizer') {
             return;
         }
 
-        wp_enqueue_style('lithe-course-organizer', LITHE_COURSE_PLUGIN_URL . 'assets/css/course-organizer.css', [], LITHE_COURSE_VERSION);
+        wp_enqueue_style('lithecourse-organizer', LITHECOURSE_PLUGIN_URL . 'assets/css/course-organizer.css', [], LITHECOURSE_VERSION);
         wp_enqueue_script(
-            'lithe-course-organizer',
-            LITHE_COURSE_PLUGIN_URL . 'assets/js/course-organizer.js',
+            'lithecourse-organizer',
+            LITHECOURSE_PLUGIN_URL . 'assets/js/course-organizer.js',
             ['jquery', 'jquery-ui-sortable', 'jquery-ui-droppable'],
-            LITHE_COURSE_VERSION,
+            LITHECOURSE_VERSION,
             true
         );
 
-        wp_localize_script('lithe-course-organizer', 'litheCourseOrganizer', [
-            'nonce' => wp_create_nonce('lithe_course_organizer'),
+        wp_localize_script('lithecourse-organizer', 'litheCourseOrganizer', [
+            'nonce' => wp_create_nonce('lithecourse_organizer'),
             'ajaxurl' => admin_url('admin-ajax.php'),
             'i18n' => [
                 'confirmSave' => __('Are you sure you want to save the changes?', 'lithe-course'),
@@ -53,9 +53,9 @@ class CourseOrganizer {
         ]);
     }
 
-    public function lithe_course_render_page() {
+    public function lithecourse_render_page() {
         $courses = get_posts([
-            'post_type' => 'lithe_course',
+            'post_type' => 'lithecourse_course',
             'posts_per_page' => -1,
             'orderby' => 'title',
             'order' => 'ASC'
@@ -77,9 +77,9 @@ class CourseOrganizer {
         <div class="wrap">
             <h1><?php esc_html_e('Course Organizer', 'lithe-course'); ?></h1>
 
-            <div class="lithe-course-selector">
+            <div class="lithecourse-selector">
                 <form method="get" action="">
-                    <input type="hidden" name="post_type" value="lithe_course">
+                    <input type="hidden" name="post_type" value="lithecourse_course">
                     <input type="hidden" name="page" value="course-organizer">
                     <?php wp_nonce_field('course_organizer_select', 'course_organizer_nonce'); ?>
                     <select name="course_id" id="course_id" class="widefat" style="max-width: 300px; margin-right: 10px; display: inline-block; vertical-align: middle;">
@@ -94,14 +94,14 @@ class CourseOrganizer {
             </div>
             
             <?php if ($selected_course_id) : ?>
-                <div class="lithe-course-organizer">
-                    <div class="lithe-course-list">
+                <div class="lithecourse-organizer">
+                    <div class="lithecourse-list">
                         <div class="lithe-course" data-id="<?php echo esc_attr($selected_course_id); ?>">
                             <h2><?php echo esc_html(get_the_title($selected_course_id)); ?></h2>
                             <div class="lithe-modules-container">
                                 <?php
-                                $modules = get_posts([
-                                    'post_type' => 'lithe_module',
+                                            $modules = get_posts([
+                'post_type' => 'lithecourse_module',
                                     'posts_per_page' => -1,
                                     'meta_key' => '_parent_course_id',
                                     'meta_value' => $selected_course_id,
@@ -118,14 +118,14 @@ class CourseOrganizer {
                                         </div>
                                         <div class="lithe-lessons-container">
                                             <?php
-                                            $lessons = get_posts([
-                                                'post_type' => 'lithe_lesson',
-                                                'posts_per_page' => -1,
-                                                'meta_key' => '_parent_module_id',
-                                                'meta_value' => $module->ID,
-                                                'orderby' => 'menu_order title',
-                                                'order' => 'ASC'
-                                            ]);
+                                                                        $lessons = get_posts([
+                                'post_type' => 'lithecourse_lesson',
+                                'posts_per_page' => -1,
+                                'meta_key' => '_parent_module_id',
+                                'meta_value' => $module->ID,
+                                'orderby' => 'menu_order title',
+                                'order' => 'ASC'
+                            ]);
 
                                             foreach ($lessons as $lesson) :
                                             ?>
@@ -152,7 +152,7 @@ class CourseOrganizer {
                             <h3><?php esc_html_e('Modules', 'lithe-course'); ?></h3>
                             <?php
                             $unassigned_modules = get_posts([
-                                'post_type' => 'lithe_module',
+                                'post_type' => 'lithecourse_module',
                                 'posts_per_page' => -1,
                                 'meta_query' => [
                                     [
@@ -181,7 +181,7 @@ class CourseOrganizer {
                             <h3><?php esc_html_e('Lessons', 'lithe-course'); ?></h3>
                             <?php
                             $unassigned_lessons = get_posts([
-                                'post_type' => 'lithe_lesson',
+                                'post_type' => 'lithecourse_lesson',
                                 'posts_per_page' => -1,
                                 'meta_query' => [
                                     [
@@ -213,11 +213,11 @@ class CourseOrganizer {
                     </div>
                 </div>
 
-                <div class="lithe-course-actions" style="margin-top: 20px;">
-                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=lithe_module&course_id=' . $selected_course_id)); ?>" class="button button-primary">
+                <div class="lithecourse-actions" style="margin-top: 20px;">
+                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=lithecourse_module&course_id=' . $selected_course_id)); ?>" class="button button-primary">
                         <?php esc_html_e('Add New Module', 'lithe-course'); ?>
                     </a>
-                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=lithe_lesson')); ?>" class="button">
+                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=lithecourse_lesson')); ?>" class="button">
                         <?php esc_html_e('Add New Lesson', 'lithe-course'); ?>
                     </a>
                 </div>
@@ -226,8 +226,8 @@ class CourseOrganizer {
         <?php
     }
 
-    public function lithe_course_update_course_structure() {
-        check_ajax_referer('lithe_course_organizer', 'nonce');
+    public function lithecourse_update_course_structure() {
+        check_ajax_referer('lithecourse_organizer', 'nonce');
 
         if (!current_user_can('edit_posts')) {
             wp_send_json_error('Permission denied');

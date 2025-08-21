@@ -16,7 +16,7 @@ const CourseSettingsPanel = () => {
   }, []);
 
   // Only show this panel for course post type
-  if (currentPostType !== "lithe_course") {
+  if (currentPostType !== "lithecourse_course") {
     return null;
   }
 
@@ -24,21 +24,21 @@ const CourseSettingsPanel = () => {
     <>
       <PluginDocumentSettingPanel
         name="course-settings-panel"
-        className="lithe-course-settings-panel"
+        className="lithecourse-settings-panel"
         title={__("Course Settings", "lithe-course")}
       >
         <CourseSetting />
       </PluginDocumentSettingPanel>
       <PluginDocumentSettingPanel
         name="course-video-panel"
-        className="lithe-course-video-panel"
+        className="lithecourse-video-panel"
         title={__("Course Video", "lithe-course")}
       >
         <CourseVideo />
       </PluginDocumentSettingPanel>
       <PluginDocumentSettingPanel
         name="course-information-panel"
-        className="lithe-course-information-panel"
+        className="lithecourse-information-panel"
         title={__("Course Information", "lithe-course")}
       >
         <CourseInformation
@@ -75,7 +75,7 @@ const CourseSettingsPanel = () => {
       </PluginDocumentSettingPanel>
       <PluginDocumentSettingPanel
         name="enrolled-students-panel"
-        className="lithe-course-enrolled-students-panel"
+        className="lithecourse-enrolled-students-panel"
         title={__("Enrolled Students", "lithe-course")}
       >
         <EnrolledStudent />

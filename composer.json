@@ -11,5 +11,7 @@
       "email": "wpaboveaverage@gmail.com"
     }
   ],
-  "require": {}
+  "require": {
+    "a7/autoload": "^2.1"
+  }
 }

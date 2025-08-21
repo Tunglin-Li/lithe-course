@@ -1,7 +1,7 @@
 import { registerBlockVariation } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 
-const VARIATION_NAME = "lithe-course-my-course-list";
+const VARIATION_NAME = "lithecourse-my-course-list";
 
 registerBlockVariation("core/query", {
   name: VARIATION_NAME,
@@ -13,7 +13,7 @@ registerBlockVariation("core/query", {
     namespace: VARIATION_NAME,
     align: "wide",
     query: {
-      postType: "lithe_course",
+      postType: "lithecourse_course",
       offset: 0,
       filterByEnrolled: true,
     },

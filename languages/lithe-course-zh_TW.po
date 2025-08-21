@@ -19,14 +19,9 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: lithe-course.php
-#: src/patterns/LitheCoursePatternCategory.php:7
+#: src/patterns/LitheCoursePatternCategory.php:14
 msgid "Lithe Course"
 msgstr "輕課｜課程管理系統"
-
-#. Plugin URI of the plugin
-#: lithe-course.php
-msgid "https://github.com/Tunglin-Li/lithe-course"
-msgstr "https://github.com/Tunglin-Li/lithe-course"
 
 #. Description of the plugin
 #: lithe-course.php
@@ -38,259 +33,216 @@ msgstr "一個專為 WordPress 打造的全面學習管理系統外掛，提供�
 msgid "Tunglin Li"
 msgstr "李東霖"
 
-#: build/course-metadata/render.php:20
+#: build/course-metadata/render.php:23
 msgid "No features available."
 msgstr "暫無功能介紹。"
 
-#: build/course-metadata/render.php:26
+#: build/course-metadata/render.php:29
 msgid "No prerequisites available."
 msgstr "暫無課程先修條件。"
 
-#: build/course-metadata/render.php:32
+#: build/course-metadata/render.php:35
 msgid "No learning objectives available."
 msgstr "暫無學習目標。"
 
-#: build/course-metadata/render.php:38
+#: build/course-metadata/render.php:41
 msgid "No suitable audience information available."
 msgstr "暫無適合對象資訊。"
 
-#: build/course-outline/render.php:35
-#: build/lesson-sidebar/render.php:45
+#: build/course-outline/render.php:38
+#: build/lesson-sidebar/render.php:46
 msgid "No modules found."
 msgstr "找不到任何章節。"
 
-#: build/course-video/render.php:35
+#: build/course-video/render.php:38
 #: build/course-video/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Course Video"
 msgstr "課程影片"
 
-#: build/course-video/render.php:37
+#: build/course-video/render.php:40
 msgid "No video available yet"
 msgstr "暫無課程影片"
 
-#: build/enrollment-button/render.php:87
+#: src/posts/course/Enrollment.php:121
 msgid "Start Learning"
 msgstr "開始學習"
 
-#: build/enrollment-button/render.php:93
+#: src/posts/course/Enrollment.php:127
 msgid "View Course"
 msgstr "查看課程"
 
-#: build/enrollment-button/render.php:103
-#: src/posts/course/EnrollmentTest.php:67
+#: src/posts/course/Enrollment.php:137
 msgid "Log in to Enroll"
 msgstr "登入後報名"
 
-#: build/enrollment-button/render.php:132
-#: build/enrollment-button/render.php:138
-#: src/posts/course/EnrollmentTest.php:90
-#: src/posts/course/EnrollmentTest.php:96
+#: src/posts/course/Enrollment.php:152
+#: src/posts/course/Enrollment.php:158
 msgid "Continue Learning"
 msgstr "繼續學習"
 
-#: build/enrollment-button/render.php:149
-#: src/posts/course/Enrollment.php:331
-#: src/posts/course/EnrollmentTest.php:106
+#: src/posts/course/Enrollment.php:169
 #: build/enrollment-button/index.js:1
 msgid "Enroll Now"
 msgstr "立即報名"
 
-#: build/enrollment-button/render.php:162
-#: src/posts/course/EnrollmentTest.php:119
+#: src/posts/course/Enrollment.php:182
 msgid "Please link a product to this course."
 msgstr "請為此課程連結商品。"
 
-#: build/enrollment-button/render.php:164
-#: src/posts/course/Course.php:19
-#: src/posts/course/EnrollmentTest.php:121
+#: src/posts/course/Course.php:21
+#: src/posts/course/Enrollment.php:184
 msgid "Edit Course"
 msgstr "編輯課程"
 
-#: build/enrollment-button/render.php:178
-#: src/posts/course/EnrollmentTest.php:135
+#: src/posts/course/Enrollment.php:198
 msgid "Product exists but is not purchasable."
 msgstr "商品存在但無法購買。"
 
-#: build/enrollment-button/render.php:190
-#: src/posts/course/EnrollmentTest.php:147
+#: src/posts/course/Enrollment.php:210
 msgid "Buy Course"
 msgstr "購買課程"
 
-#: src/admin/CourseOrganizer.php:21
-#: src/admin/CourseOrganizer.php:22
-#: src/admin/CourseOrganizer.php:68
+#: temp/CourseOrganizer.php:23
+#: temp/CourseOrganizer.php:24
+#: temp/CourseOrganizer.php:78
 msgid "Course Organizer"
 msgstr "課程管理器"
 
-#: src/admin/CourseOrganizer.php:47
+#: temp/CourseOrganizer.php:49
 msgid "Are you sure you want to save the changes?"
 msgstr "確定要儲存變更嗎？"
 
-#: src/admin/CourseOrganizer.php:48
+#: temp/CourseOrganizer.php:50
 msgid "An error occurred. Please try again."
 msgstr "發生錯誤，請重試。"
 
-#: src/admin/CourseOrganizer.php:49
+#: temp/CourseOrganizer.php:51
 msgid "Changes saved successfully."
 msgstr "變更已成功儲存。"
 
-#: src/admin/CourseOrganizer.php:81
+#: temp/CourseOrganizer.php:92
 msgid "Select Course"
 msgstr "選擇課程"
 
-#: src/admin/CourseOrganizer.php:126
-#: src/admin/CourseOrganizer.php:193
-#: src/posts/course/CourseStructure.php:124
-#: src/posts/course/CourseStructure.php:143
-#: src/posts/course/CourseStructure.php:465
-#: src/posts/course/CourseStructure.php:524
+#: temp/CourseOrganizer.php:137
+#: temp/CourseOrganizer.php:204
 #: build/setting-panel-course/index.js:1
 msgid "Edit"
 msgstr "編輯"
 
-#: src/admin/CourseOrganizer.php:139
+#: temp/CourseOrganizer.php:150
 msgid "Unassigned Items"
 msgstr "未分配項目"
 
-#: src/admin/CourseOrganizer.php:141
-#: src/posts/module/Module.php:22
+#: src/posts/module/Module.php:24
+#: temp/CourseOrganizer.php:152
 msgid "Modules"
 msgstr "章節"
 
-#: src/admin/CourseOrganizer.php:165
+#: temp/CourseOrganizer.php:176
 msgid "No unassigned modules"
 msgstr "沒有未分配的章節"
 
-#: src/admin/CourseOrganizer.php:170
-#: src/posts/lesson/Lesson.php:22
+#: src/posts/lesson/Lesson.php:24
+#: temp/CourseOrganizer.php:181
 msgid "Lessons"
 msgstr "課堂"
 
-#: src/admin/CourseOrganizer.php:199
+#: temp/CourseOrganizer.php:210
 msgid "No unassigned lessons"
 msgstr "沒有未分配的課堂"
 
-#: src/admin/CourseOrganizer.php:207
-#: src/posts/course/CourseStructure.php:183
-#: src/posts/module/Module.php:24
-#: src/posts/module/Module.php:25
+#: src/posts/module/Module.php:26
+#: src/posts/module/Module.php:27
+#: temp/CourseOrganizer.php:218
 #: build/setting-panel-course/index.js:1
 msgid "Add New Module"
 msgstr "新增章節"
 
-#: src/admin/CourseOrganizer.php:210
-#: src/posts/course/CourseStructure.php:169
-#: src/posts/course/CourseStructure.php:502
-#: src/posts/lesson/Lesson.php:24
-#: src/posts/lesson/Lesson.php:25
+#: src/posts/lesson/Lesson.php:26
+#: src/posts/lesson/Lesson.php:27
+#: temp/CourseOrganizer.php:221
 #: build/setting-panel-course/index.js:1
 msgid "Add New Lesson"
 msgstr "新增課堂"
 
-#: src/posts/course/Course.php:16
+#: src/posts/course/Course.php:18
 msgid "Course"
 msgstr "課程"
 
-#: src/patterns/LitheCoursePatternCategory.php:8
+#: src/patterns/LitheCoursePatternCategory.php:15
 msgid "Patterns for Lithe Course."
 msgstr "輕課樣板。"
 
-#: src/patterns/MyCourseLayout.php:7
+#: src/patterns/MyCourseLayout.php:14
 msgid "My Course Layout"
 msgstr "我的課程版面"
 
-#: src/patterns/SingleCourseLayout.php:7
+#: src/patterns/SingleCourseLayout.php:14
 msgid "Single Course Layout"
 msgstr "單一課程版面"
 
-#: src/patterns/SingleLessonLayout.php:7
+#: src/patterns/SingleLessonLayout.php:14
 msgid "Single Lesson Layout"
 msgstr "單一課堂版面"
 
-#: src/posts/course/Course.php:15
+#: src/posts/course/Course.php:17
 msgid "Courses"
 msgstr "課程"
 
-#: src/posts/course/Course.php:17
-#: src/posts/course/Course.php:18
+#: src/posts/course/Course.php:19
+#: src/posts/course/Course.php:20
 msgid "Add New Course"
 msgstr "新增課程"
 
-#: src/posts/course/CourseStructure.php:27
-msgid "Course Structure"
-msgstr "課程架構"
-
-#: src/posts/course/CourseStructure.php:61
 #: build/setting-panel-course/index.js:1
 msgid "Are you sure you want to delete this module? This will also delete all lessons within this module."
 msgstr "確定要刪除此章節嗎？這將同時刪除該章節內所有課堂。"
 
-#: src/posts/course/CourseStructure.php:62
-#: src/posts/course/CourseStructure.php:188
 #: build/setting-panel-course/index.js:1
 msgid "Enter module title"
 msgstr "輸入章節標題"
 
-#: src/posts/course/CourseStructure.php:63
-#: src/posts/course/CourseStructure.php:191
 #: build/setting-panel-course/index.js:1
 msgid "Add Module"
 msgstr "新增章節"
 
-#: src/posts/course/CourseStructure.php:64
-#: src/posts/course/CourseStructure.php:117
-#: src/posts/course/CourseStructure.php:165
-#: src/posts/course/CourseStructure.php:194
-#: src/posts/course/CourseStructure.php:458
-#: src/posts/course/CourseStructure.php:498
 #: build/setting-panel-course/index.js:1
 msgid "Cancel"
 msgstr "取消"
 
-#: src/posts/course/CourseStructure.php:114
-#: src/posts/course/CourseStructure.php:455
 #: build/setting-panel-course/index.js:1
 msgid "Save"
 msgstr "儲存"
 
-#: src/posts/course/CourseStructure.php:127
-#: src/posts/course/CourseStructure.php:146
-#: src/posts/course/CourseStructure.php:468
-#: src/posts/course/CourseStructure.php:527
 #: build/setting-panel-course/index.js:1
 msgid "Delete"
 msgstr "刪除"
 
-#: src/posts/course/CourseStructure.php:153
 #: build/setting-panel-course/index.js:1
 msgid "No lessons found. Add a new lesson to get started."
 msgstr "找不到課堂。新增一個課堂以開始。"
 
-#: src/posts/course/CourseStructure.php:159
-#: src/posts/course/CourseStructure.php:492
 #: build/setting-panel-course/index.js:1
 msgid "Enter lesson title"
 msgstr "輸入課堂標題"
 
-#: src/posts/course/CourseStructure.php:162
-#: src/posts/course/CourseStructure.php:495
 #: build/setting-panel-course/index.js:1
 msgid "Add Lesson"
 msgstr "新增課堂"
 
-#: src/posts/course/CourseStructure.php:177
 #: build/setting-panel-course/index.js:1
 msgid "No modules found. Add a new module to get started."
 msgstr "找不到章節。新增一個章節以開始。"
 
-#: src/posts/course/CourseStructureAPI.php:187
+#: src/posts/course/CourseStructureAPI.php:189
 msgid "You do not have permission to edit posts."
 msgstr "您沒有編輯文章的權限。"
 
-#: src/posts/course/CourseStructureAPI.php:197
-#: src/posts/course/Enrollment.php:98
-#: src/posts/course/Enrollment.php:429
+#: src/posts/course/CourseStructureAPI.php:199
+#: src/posts/course/Enrollment.php:292
+#: src/posts/course/Enrollment.php:521
 msgid "Invalid security token."
 msgstr "無效的安全權杖。"
 
@@ -332,225 +284,174 @@ msgstr "無效的課堂 ID。"
 msgid "Invalid module ID."
 msgstr "無效的章節 ID。"
 
-#: src/posts/course/Enrollment.php:88
+#: src/posts/course/Enrollment.php:282
 msgid "You must be logged in to enroll in courses."
 msgstr "您必須登入才能報名課程。"
 
-#: src/posts/course/Enrollment.php:120
+#: src/posts/course/Enrollment.php:314
 msgid "This is a paid course and requires purchase"
 msgstr "這是付費課程，需要購買。"
 
-#: src/posts/course/Enrollment.php:128
+#: src/posts/course/Enrollment.php:322
 msgid "Successfully enrolled"
 msgstr "報名成功"
 
-#: src/posts/course/Enrollment.php:136
+#: src/posts/course/Enrollment.php:329
 msgid "Enrollment failed"
 msgstr "報名失敗"
 
-#: src/posts/course/Enrollment.php:285
+#: src/posts/course/Enrollment.php:437
+#: src/posts/course/Enrollment.php:472
 msgid "Login Required"
 msgstr "需要登入"
 
-#: src/posts/course/Enrollment.php:286
+#. translators: %s: lesson title
+#: src/posts/course/Enrollment.php:439
 #, php-format
 msgid "Please log in to view this lesson: \"%s\""
 msgstr "請登入以查看此課堂：「%s」"
 
-#: src/posts/course/Enrollment.php:288
-#: src/posts/course/Enrollment.php:324
+#: src/posts/course/Enrollment.php:441
+#: src/posts/course/Enrollment.php:476
 msgid "Log In"
 msgstr "登入"
 
-#: src/posts/course/Enrollment.php:321
-msgid "Access Restricted"
-msgstr "存取受限"
-
-#: src/posts/course/Enrollment.php:322
-#, php-format
-msgid "This lesson is part of the course \"%s\". Please log in to enroll."
-msgstr "此課堂屬於課程「%s」。請登入以報名。"
-
-#: src/posts/course/Enrollment.php:341
+#: src/posts/course/Enrollment.php:481
 msgid "Enrollment Required"
 msgstr "需要報名"
 
-#: src/posts/course/Enrollment.php:342
-#, php-format
-msgid "This lesson is part of the course \"%s\". Please enroll to view this content."
-msgstr "此課堂屬於課程「%s」。請報名以查看此內容。"
-
-#: src/posts/course/Enrollment.php:344
-msgid "Go to Course"
-msgstr "前往課程"
-
-#: src/posts/course/Enrollment.php:357
-msgid "Paid Course"
-msgstr "付費課程"
-
-#: src/posts/course/Enrollment.php:358
-#, php-format
-msgid "This lesson is part of the paid course \"%s\"."
-msgstr "此課堂屬於付費課程「%s」。"
-
-#: src/posts/course/Enrollment.php:360
-msgid "View Course Details"
-msgstr "查看課程詳情"
-
-#: src/posts/course/Enrollment.php:419
+#: src/posts/course/Enrollment.php:511
 msgid "You must be an administrator to perform this action."
 msgstr "您必須是管理員才能執行此操作。"
 
-#: src/posts/course/Enrollment.php:454
+#: src/posts/course/Enrollment.php:546
 msgid "Invalid user or course."
 msgstr "無效的使用者或課程。"
 
-#: src/posts/course/Enrollment.php:466
-#, php-format
-msgid "User \"%s\" has been unenrolled from course \"%s\"."
-msgstr "使用者「%s」已從課程「%s」退選。"
-
-#: src/posts/course/Enrollment.php:475
+#: src/posts/course/Enrollment.php:569
 msgid "Failed to unenroll user from the course."
 msgstr "退選用戶失敗。"
 
-#: src/posts/course/Enrollment.php:494
+#: src/posts/course/Enrollment.php:588
 msgid "Invalid course."
 msgstr "無效的課程。"
 
-#: src/posts/course/EnrollmentAdminColumn.php:32
+#: src/posts/course/EnrollmentAdminColumn.php:34
 msgid "Enrollments"
 msgstr "報名人數"
 
-#: src/posts/course/EnrollmentTest.php:173
-msgid "Free"
-msgstr "免費"
-
-#: src/posts/course/EnrollmentTest.php:174
-msgid "No linked product"
-msgstr "無連結商品"
-
-#: src/posts/course/EnrollmentTest.php:186
-#, php-format
-msgid "Product #%d not found"
-msgstr "找不到商品 #%d"
-
-#: src/posts/course/Field.php:52
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Course Features"
 msgstr "課程特色"
 
-#: src/posts/course/Field.php:57
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "What You Will Learn"
 msgstr "您將學到什麼"
 
-#: src/posts/course/Field.php:62
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Who This Course Is For"
 msgstr "適合對象"
 
-#: src/posts/course/Field.php:67
 #: build/course-metadata/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Prerequisites"
 msgstr "先修條件"
 
-#: src/posts/lesson/Lesson.php:23
+#: src/posts/lesson/Lesson.php:25
 #: build/course-outline/index.js:1
 #: build/lesson-sidebar/index.js:1
 msgid "Lesson"
 msgstr "課堂"
 
-#: src/posts/lesson/Lesson.php:26
+#: src/posts/lesson/Lesson.php:28
 msgid "Edit Lesson"
 msgstr "編輯課堂"
 
-#: src/posts/lesson/Lesson.php:27
+#: src/posts/lesson/Lesson.php:29
 msgid "Parent Module:"
 msgstr "上層章節："
 
-#: src/posts/module/Module.php:23
+#: src/posts/module/Module.php:25
 msgid "Module"
 msgstr "章節"
 
-#: src/posts/module/Module.php:26
+#: src/posts/module/Module.php:28
 msgid "Edit Module"
 msgstr "編輯章節"
 
-#: src/posts/module/Module.php:27
+#: src/posts/module/Module.php:29
 msgid "Parent Course:"
 msgstr "上層課程："
 
-#: src/template/SingleCourseTemplate.php:39
+#: temp/template/SingleCourseTemplate.php:41
 msgid "Single Course"
 msgstr "單一課程"
 
-#: src/template/SingleCourseTemplate.php:40
+#: temp/template/SingleCourseTemplate.php:42
 msgid "Template for displaying a single course (by Lithe Course)"
 msgstr "用於顯示單一課程的範本（由輕課提供）"
 
-#: src/terms/CourseTaxonomy.php:15
-#: src/terms/CourseTaxonomy.php:30
+#: src/terms/CourseTaxonomy.php:17
+#: src/terms/CourseTaxonomy.php:32
 msgid "Course Categories"
 msgstr "課程分類"
 
-#: src/terms/CourseTaxonomy.php:16
+#: src/terms/CourseTaxonomy.php:18
 msgid "Course Category"
 msgstr "課程分類"
 
-#: src/terms/CourseTaxonomy.php:17
+#: src/terms/CourseTaxonomy.php:19
 msgid "Search Course Categories"
 msgstr "搜尋課程分類"
 
-#: src/terms/CourseTaxonomy.php:18
+#: src/terms/CourseTaxonomy.php:20
 msgid "Popular Course Categories"
 msgstr "熱門課程分類"
 
-#: src/terms/CourseTaxonomy.php:19
+#: src/terms/CourseTaxonomy.php:21
 msgid "All Course Categories"
 msgstr "所有課程分類"
 
-#: src/terms/CourseTaxonomy.php:20
+#: src/terms/CourseTaxonomy.php:22
 msgid "Parent Course Category"
 msgstr "上層課程分類"
 
-#: src/terms/CourseTaxonomy.php:21
+#: src/terms/CourseTaxonomy.php:23
 msgid "Parent Course Category:"
 msgstr "上層課程分類："
 
-#: src/terms/CourseTaxonomy.php:22
+#: src/terms/CourseTaxonomy.php:24
 msgid "Edit Course Category"
 msgstr "編輯課程分類"
 
-#: src/terms/CourseTaxonomy.php:23
+#: src/terms/CourseTaxonomy.php:25
 msgid "Update Course Category"
 msgstr "更新課程分類"
 
-#: src/terms/CourseTaxonomy.php:24
+#: src/terms/CourseTaxonomy.php:26
 msgid "Add New Course Category"
 msgstr "新增課程分類"
 
-#: src/terms/CourseTaxonomy.php:25
+#: src/terms/CourseTaxonomy.php:27
 msgid "New Course Category Name"
 msgstr "新課程分類名稱"
 
-#: src/terms/CourseTaxonomy.php:26
+#: src/terms/CourseTaxonomy.php:28
 msgid "Separate course categories with commas"
 msgstr "使用逗號分隔課程分類"
 
-#: src/terms/CourseTaxonomy.php:27
+#: src/terms/CourseTaxonomy.php:29
 msgid "Add or remove course categories"
 msgstr "新增或移除課程分類"
 
-#: src/terms/CourseTaxonomy.php:28
+#: src/terms/CourseTaxonomy.php:30
 msgid "Choose from the most used course categories"
 msgstr "從最常用的課程分類中選擇"
 
-#: src/terms/CourseTaxonomy.php:29
+#: src/terms/CourseTaxonomy.php:31
 msgid "No course categories found."
 msgstr "找不到課程分類。"
 
@@ -948,6 +849,7 @@ msgstr "輸入課程要求"
 msgid "No requirements specified yet"
 msgstr "尚未指定任何要求"
 
+#: src/patterns/MyCourseLayout.php:19
 #: build/my-course/index.js:1
 msgid "My Course"
 msgstr "我的課程"
@@ -1008,10 +910,6 @@ msgid "Invalid video URL. Please enter a valid YouTube, Vimeo, or BunnyCDN URL."
 msgstr "無效的影片網址。請輸入有效的 YouTube、Vimeo 或 BunnyCDN 網址。"
 
 #: build/setting-panel-course/index.js:1
-msgid "Failed to save video URL"
-msgstr "儲存影片網址失敗"
-
-#: build/setting-panel-course/index.js:1
 msgid "Enter a valid YouTube, Vimeo, or BunnyCDN URL."
 msgstr "請輸入有效的 YouTube、Vimeo 或 BunnyCDN 網址。"
 
@@ -1066,3 +964,55 @@ msgstr "課堂項目 3"
 #: build/lesson-sidebar/index.js:1
 msgid "Current Lesson"
 msgstr "目前課堂"
+
+#. Plugin URI of the plugin
+#: lithe-course.php
+msgid "https://github.com/Tunglin-Li/lithecourse"
+msgstr "https://github.com/Tunglin-Li/lithecourse"
+
+#. Author URI of the plugin
+#: lithe-course.php
+msgid "https://github.com/Tunglin-Li/"
+msgstr "https://github.com/Tunglin-Li/"
+
+#: src/patterns/SingleCourseLayout.php:39
+msgid "What you'll learn"
+msgstr "您將學到什麼"
+
+#: src/patterns/SingleCourseLayout.php:47
+msgid "Requirements"
+msgstr "課程要求"
+
+#: src/patterns/SingleCourseLayout.php:55
+msgid "Who this course is for"
+msgstr "適合對象"
+
+#. translators: %s: course title
+#: src/posts/course/Enrollment.php:474
+#, php-format
+msgid "This lesson is part of the course \"%s\". Please log in to access this content."
+msgstr "此課堂是課程「%s」的一部分。請登入以存取此內容。"
+
+#: src/posts/course/Enrollment.php:481
+msgid "Purchase Required"
+msgstr "需要購買"
+
+#: src/posts/course/Enrollment.php:482
+msgid "View Course & Purchase"
+msgstr "查看課程並購買"
+
+#: src/posts/course/Enrollment.php:482
+msgid "Go to Course & Enroll"
+msgstr "前往課程並報名"
+
+#. translators: %s: course title
+#: src/posts/course/Enrollment.php:492
+#, php-format
+msgid "This lesson is part of the course \"%s\". Please visit the course page to enroll."
+msgstr "此課堂是課程「%s」的一部分。請前往課程頁面進行報名。"
+
+#. translators: %1$s: user display name, %2$s: course title
+#: src/posts/course/Enrollment.php:560
+#, php-format
+msgid "User \"%1$s\" has been unenrolled from course \"%2$s\"."
+msgstr "使用者「%1$s」已從課程「%2$s」中退選。"

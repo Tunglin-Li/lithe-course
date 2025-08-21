@@ -18,8 +18,8 @@ class MyCourseQuery {
             self::$instance = new self();
         }
 
-        add_filter('pre_render_block', [self::$instance, 'lithe_course_my_courses_pre_render_block'], 10, 2);
-        add_filter('rest_lithe_course_query', [self::$instance, 'lithe_course_rest_lithe_course_query'], 10, 2);
+        add_filter('pre_render_block', [self::$instance, 'lithecourse_my_courses_pre_render_block'], 10, 2);
+        add_filter('rest_lithecourse_query', [self::$instance, 'lithecourse_rest_lithecourse_query'], 10, 2);
     }
 
     /**
@@ -29,9 +29,9 @@ class MyCourseQuery {
      * @param array $parsed_block The block being rendered
      * @return mixed The original pre_render value
      */
-    public function lithe_course_my_courses_pre_render_block($pre_render, $parsed_block) {
+    public function lithecourse_my_courses_pre_render_block($pre_render, $parsed_block) {
         // Verify it's the correct block by checking the namespace
-        if (!empty($parsed_block['attrs']['namespace']) && 'lithe-course-my-course-list' === $parsed_block['attrs']['namespace']) {
+        if (!empty($parsed_block['attrs']['namespace']) && 'lithecourse-my-course-list' === $parsed_block['attrs']['namespace']) {
     
             add_filter('query_loop_block_query_vars', function ($query, $block) {
                 
@@ -41,8 +41,8 @@ class MyCourseQuery {
                     global $wpdb;
     
                     // Check cache first
-                    $cache_key = "lithe_course_user_access_{$current_user_id}";
-                    $course_ids = wp_cache_get($cache_key, 'lithe_course');
+                    $cache_key = "lithecourse_user_access_{$current_user_id}";
+                    $course_ids = wp_cache_get($cache_key, 'lithe-course');
     
                     if (false === $course_ids) {
                         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom user course access query, result is cached below
@@ -55,7 +55,7 @@ class MyCourseQuery {
                         );
                         
                         // Cache the result for 5 minutes
-                        wp_cache_set($cache_key, $course_ids, 'lithe_course', 300);
+                        wp_cache_set($cache_key, $course_ids, 'lithe-course', 300);
                     }
     
                     if (!empty($course_ids)) {
@@ -89,7 +89,7 @@ class MyCourseQuery {
      * @param \WP_REST_Request $request The REST API request
      * @return array Modified query args
      */
-    public function lithe_course_rest_lithe_course_query($query, $request) {
+    public function lithecourse_rest_lithecourse_query($query, $request) {
 
         // grab value from the request
         $enrolledFilter = $request['filterByEnrolled'];
@@ -100,8 +100,8 @@ class MyCourseQuery {
                 global $wpdb;
 
                 // Check cache first
-                $cache_key = "lithe_course_user_access_{$current_user_id}";
-                $course_ids = wp_cache_get($cache_key, 'lithe_course');
+                $cache_key = "lithecourse_user_access_{$current_user_id}";
+                $course_ids = wp_cache_get($cache_key, 'lithe-course');
 
                 if (false === $course_ids) {
                     // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom user course access query, result is cached below
@@ -114,7 +114,7 @@ class MyCourseQuery {
                     );
                     
                     // Cache the result for 5 minutes
-                    wp_cache_set($cache_key, $course_ids, 'lithe_course', 300);
+                    wp_cache_set($cache_key, $course_ids, 'lithe-course', 300);
                 }
 
                 if (!empty($course_ids)) {

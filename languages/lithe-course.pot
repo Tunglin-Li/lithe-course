@@ -9,20 +9,20 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-17T05:06:47+00:00\n"
+"POT-Creation-Date: 2025-08-16T02:30:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: lithe-course\n"
 
 #. Plugin Name of the plugin
 #: lithe-course.php
-#: src/patterns/LitheCoursePatternCategory.php:7
+#: src/patterns/LitheCoursePatternCategory.php:14
 msgid "Lithe Course"
 msgstr ""
 
 #. Plugin URI of the plugin
 #: lithe-course.php
-msgid "https://github.com/Tunglin-Li/lithe-course"
+msgid "https://github.com/Tunglin-Li/lithecourse"
 msgstr ""
 
 #. Description of the plugin
@@ -35,259 +35,100 @@ msgstr ""
 msgid "Tunglin Li"
 msgstr ""
 
-#: build/course-metadata/render.php:20
+#. Author URI of the plugin
+#: lithe-course.php
+msgid "https://github.com/Tunglin-Li/"
+msgstr ""
+
+#: build/course-metadata/render.php:23
 msgid "No features available."
 msgstr ""
 
-#: build/course-metadata/render.php:26
+#: build/course-metadata/render.php:29
 msgid "No prerequisites available."
 msgstr ""
 
-#: build/course-metadata/render.php:32
+#: build/course-metadata/render.php:35
 msgid "No learning objectives available."
 msgstr ""
 
-#: build/course-metadata/render.php:38
+#: build/course-metadata/render.php:41
 msgid "No suitable audience information available."
 msgstr ""
 
-#: build/course-outline/render.php:35
-#: build/lesson-sidebar/render.php:45
+#: build/course-outline/render.php:38
+#: build/lesson-sidebar/render.php:46
 msgid "No modules found."
 msgstr ""
 
-#: build/course-video/render.php:35
+#: build/course-video/render.php:38
 #: build/course-video/index.js:1
 #: build/setting-panel-course/index.js:1
 msgid "Course Video"
 msgstr ""
 
-#: build/course-video/render.php:37
+#: build/course-video/render.php:40
 msgid "No video available yet"
 msgstr ""
 
-#: build/enrollment-button/render.php:87
-msgid "Start Learning"
-msgstr ""
-
-#: build/enrollment-button/render.php:93
-msgid "View Course"
-msgstr ""
-
-#: build/enrollment-button/render.php:103
-#: src/posts/course/EnrollmentTest.php:67
-msgid "Log in to Enroll"
-msgstr ""
-
-#: build/enrollment-button/render.php:132
-#: build/enrollment-button/render.php:138
-#: src/posts/course/EnrollmentTest.php:90
-#: src/posts/course/EnrollmentTest.php:96
-msgid "Continue Learning"
-msgstr ""
-
-#: build/enrollment-button/render.php:149
-#: src/posts/course/Enrollment.php:331
-#: src/posts/course/EnrollmentTest.php:106
-#: build/enrollment-button/index.js:1
-msgid "Enroll Now"
-msgstr ""
-
-#: build/enrollment-button/render.php:162
-#: src/posts/course/EnrollmentTest.php:119
-msgid "Please link a product to this course."
-msgstr ""
-
-#: build/enrollment-button/render.php:164
-#: src/posts/course/Course.php:19
-#: src/posts/course/EnrollmentTest.php:121
-msgid "Edit Course"
-msgstr ""
-
-#: build/enrollment-button/render.php:178
-#: src/posts/course/EnrollmentTest.php:135
-msgid "Product exists but is not purchasable."
-msgstr ""
-
-#: build/enrollment-button/render.php:190
-#: src/posts/course/EnrollmentTest.php:147
-msgid "Buy Course"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:21
-#: src/admin/CourseOrganizer.php:22
-#: src/admin/CourseOrganizer.php:68
-msgid "Course Organizer"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:47
-msgid "Are you sure you want to save the changes?"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:48
-msgid "An error occurred. Please try again."
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:49
-msgid "Changes saved successfully."
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:81
-msgid "Select Course"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:126
-#: src/admin/CourseOrganizer.php:193
-#: src/posts/course/CourseStructure.php:124
-#: src/posts/course/CourseStructure.php:143
-#: src/posts/course/CourseStructure.php:465
-#: src/posts/course/CourseStructure.php:524
-#: build/setting-panel-course/index.js:1
-msgid "Edit"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:139
-msgid "Unassigned Items"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:141
-#: src/posts/module/Module.php:22
-msgid "Modules"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:165
-msgid "No unassigned modules"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:170
-#: src/posts/lesson/Lesson.php:22
-msgid "Lessons"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:199
-msgid "No unassigned lessons"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:207
-#: src/posts/course/CourseStructure.php:183
-#: src/posts/module/Module.php:24
-#: src/posts/module/Module.php:25
-#: build/setting-panel-course/index.js:1
-msgid "Add New Module"
-msgstr ""
-
-#: src/admin/CourseOrganizer.php:210
-#: src/posts/course/CourseStructure.php:169
-#: src/posts/course/CourseStructure.php:502
-#: src/posts/lesson/Lesson.php:24
-#: src/posts/lesson/Lesson.php:25
-#: build/setting-panel-course/index.js:1
-msgid "Add New Lesson"
-msgstr ""
-
-#: src/patterns/LitheCoursePatternCategory.php:8
+#: src/patterns/LitheCoursePatternCategory.php:15
 msgid "Patterns for Lithe Course."
 msgstr ""
 
-#: src/patterns/MyCourseLayout.php:7
+#: src/patterns/MyCourseLayout.php:14
 msgid "My Course Layout"
 msgstr ""
 
-#: src/patterns/SingleCourseLayout.php:7
+#: src/patterns/MyCourseLayout.php:19
+#: build/my-course/index.js:1
+msgid "My Course"
+msgstr ""
+
+#: src/patterns/SingleCourseLayout.php:14
 msgid "Single Course Layout"
 msgstr ""
 
-#: src/patterns/SingleLessonLayout.php:7
+#: src/patterns/SingleCourseLayout.php:39
+msgid "What you'll learn"
+msgstr ""
+
+#: src/patterns/SingleCourseLayout.php:47
+msgid "Requirements"
+msgstr ""
+
+#: src/patterns/SingleCourseLayout.php:55
+msgid "Who this course is for"
+msgstr ""
+
+#: src/patterns/SingleLessonLayout.php:14
 msgid "Single Lesson Layout"
 msgstr ""
 
-#: src/posts/course/Course.php:15
+#: src/posts/course/Course.php:17
 msgid "Courses"
 msgstr ""
 
-#: src/posts/course/Course.php:16
+#: src/posts/course/Course.php:18
 msgid "Course"
 msgstr ""
 
-#: src/posts/course/Course.php:17
-#: src/posts/course/Course.php:18
+#: src/posts/course/Course.php:19
+#: src/posts/course/Course.php:20
 msgid "Add New Course"
 msgstr ""
 
-#: src/posts/course/CourseStructure.php:27
-msgid "Course Structure"
+#: src/posts/course/Course.php:21
+#: src/posts/course/Enrollment.php:184
+msgid "Edit Course"
 msgstr ""
 
-#: src/posts/course/CourseStructure.php:61
-#: build/setting-panel-course/index.js:1
-msgid "Are you sure you want to delete this module? This will also delete all lessons within this module."
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:62
-#: src/posts/course/CourseStructure.php:188
-#: build/setting-panel-course/index.js:1
-msgid "Enter module title"
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:63
-#: src/posts/course/CourseStructure.php:191
-#: build/setting-panel-course/index.js:1
-msgid "Add Module"
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:64
-#: src/posts/course/CourseStructure.php:117
-#: src/posts/course/CourseStructure.php:165
-#: src/posts/course/CourseStructure.php:194
-#: src/posts/course/CourseStructure.php:458
-#: src/posts/course/CourseStructure.php:498
-#: build/setting-panel-course/index.js:1
-msgid "Cancel"
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:114
-#: src/posts/course/CourseStructure.php:455
-#: build/setting-panel-course/index.js:1
-msgid "Save"
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:127
-#: src/posts/course/CourseStructure.php:146
-#: src/posts/course/CourseStructure.php:468
-#: src/posts/course/CourseStructure.php:527
-#: build/setting-panel-course/index.js:1
-msgid "Delete"
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:153
-#: build/setting-panel-course/index.js:1
-msgid "No lessons found. Add a new lesson to get started."
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:159
-#: src/posts/course/CourseStructure.php:492
-#: build/setting-panel-course/index.js:1
-msgid "Enter lesson title"
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:162
-#: src/posts/course/CourseStructure.php:495
-#: build/setting-panel-course/index.js:1
-msgid "Add Lesson"
-msgstr ""
-
-#: src/posts/course/CourseStructure.php:177
-#: build/setting-panel-course/index.js:1
-msgid "No modules found. Add a new module to get started."
-msgstr ""
-
-#: src/posts/course/CourseStructureAPI.php:187
+#: src/posts/course/CourseStructureAPI.php:189
 msgid "You do not have permission to edit posts."
 msgstr ""
 
-#: src/posts/course/CourseStructureAPI.php:197
-#: src/posts/course/Enrollment.php:98
-#: src/posts/course/Enrollment.php:429
+#: src/posts/course/CourseStructureAPI.php:199
+#: src/posts/course/Enrollment.php:292
+#: src/posts/course/Enrollment.php:521
 msgid "Invalid security token."
 msgstr ""
 
@@ -329,226 +170,283 @@ msgstr ""
 msgid "Invalid module ID."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:88
+#: src/posts/course/Enrollment.php:121
+msgid "Start Learning"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:127
+msgid "View Course"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:137
+msgid "Log in to Enroll"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:152
+#: src/posts/course/Enrollment.php:158
+msgid "Continue Learning"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:169
+#: build/enrollment-button/index.js:1
+msgid "Enroll Now"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:182
+msgid "Please link a product to this course."
+msgstr ""
+
+#: src/posts/course/Enrollment.php:198
+msgid "Product exists but is not purchasable."
+msgstr ""
+
+#: src/posts/course/Enrollment.php:210
+msgid "Buy Course"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:282
 msgid "You must be logged in to enroll in courses."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:120
+#: src/posts/course/Enrollment.php:314
 msgid "This is a paid course and requires purchase"
 msgstr ""
 
-#: src/posts/course/Enrollment.php:128
+#: src/posts/course/Enrollment.php:322
 msgid "Successfully enrolled"
 msgstr ""
 
-#: src/posts/course/Enrollment.php:136
+#: src/posts/course/Enrollment.php:329
 msgid "Enrollment failed"
 msgstr ""
 
-#: src/posts/course/Enrollment.php:285
+#: src/posts/course/Enrollment.php:437
+#: src/posts/course/Enrollment.php:472
 msgid "Login Required"
 msgstr ""
 
-#: src/posts/course/Enrollment.php:286
+#. translators: %s: lesson title
+#: src/posts/course/Enrollment.php:439
 #, php-format
 msgid "Please log in to view this lesson: \"%s\""
 msgstr ""
 
-#: src/posts/course/Enrollment.php:288
-#: src/posts/course/Enrollment.php:324
+#: src/posts/course/Enrollment.php:441
+#: src/posts/course/Enrollment.php:476
 msgid "Log In"
 msgstr ""
 
-#: src/posts/course/Enrollment.php:321
-msgid "Access Restricted"
-msgstr ""
-
-#: src/posts/course/Enrollment.php:322
+#. translators: %s: course title
+#: src/posts/course/Enrollment.php:474
 #, php-format
-msgid "This lesson is part of the course \"%s\". Please log in to enroll."
+msgid "This lesson is part of the course \"%s\". Please log in to access this content."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:341
+#: src/posts/course/Enrollment.php:481
+msgid "Purchase Required"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:481
 msgid "Enrollment Required"
 msgstr ""
 
-#: src/posts/course/Enrollment.php:342
+#: src/posts/course/Enrollment.php:482
+msgid "View Course & Purchase"
+msgstr ""
+
+#: src/posts/course/Enrollment.php:482
+msgid "Go to Course & Enroll"
+msgstr ""
+
+#. translators: %s: course title
+#: src/posts/course/Enrollment.php:492
 #, php-format
-msgid "This lesson is part of the course \"%s\". Please enroll to view this content."
+msgid "This lesson is part of the course \"%s\". Please visit the course page to enroll."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:344
-msgid "Go to Course"
-msgstr ""
-
-#: src/posts/course/Enrollment.php:357
-msgid "Paid Course"
-msgstr ""
-
-#: src/posts/course/Enrollment.php:358
-#, php-format
-msgid "This lesson is part of the paid course \"%s\"."
-msgstr ""
-
-#: src/posts/course/Enrollment.php:360
-msgid "View Course Details"
-msgstr ""
-
-#: src/posts/course/Enrollment.php:419
+#: src/posts/course/Enrollment.php:511
 msgid "You must be an administrator to perform this action."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:454
+#: src/posts/course/Enrollment.php:546
 msgid "Invalid user or course."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:466
+#. translators: %1$s: user display name, %2$s: course title
+#: src/posts/course/Enrollment.php:560
 #, php-format
-msgid "User \"%s\" has been unenrolled from course \"%s\"."
+msgid "User \"%1$s\" has been unenrolled from course \"%2$s\"."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:475
+#: src/posts/course/Enrollment.php:569
 msgid "Failed to unenroll user from the course."
 msgstr ""
 
-#: src/posts/course/Enrollment.php:494
+#: src/posts/course/Enrollment.php:588
 msgid "Invalid course."
 msgstr ""
 
-#: src/posts/course/EnrollmentAdminColumn.php:32
+#: src/posts/course/EnrollmentAdminColumn.php:34
 msgid "Enrollments"
 msgstr ""
 
-#: src/posts/course/EnrollmentTest.php:173
-msgid "Free"
+#: src/posts/lesson/Lesson.php:24
+#: temp/CourseOrganizer.php:181
+msgid "Lessons"
 msgstr ""
 
-#: src/posts/course/EnrollmentTest.php:174
-msgid "No linked product"
-msgstr ""
-
-#: src/posts/course/EnrollmentTest.php:186
-#, php-format
-msgid "Product #%d not found"
-msgstr ""
-
-#: src/posts/course/Field.php:52
-#: build/course-metadata/index.js:1
-#: build/setting-panel-course/index.js:1
-msgid "Course Features"
-msgstr ""
-
-#: src/posts/course/Field.php:57
-#: build/course-metadata/index.js:1
-#: build/setting-panel-course/index.js:1
-msgid "What You Will Learn"
-msgstr ""
-
-#: src/posts/course/Field.php:62
-#: build/course-metadata/index.js:1
-#: build/setting-panel-course/index.js:1
-msgid "Who This Course Is For"
-msgstr ""
-
-#: src/posts/course/Field.php:67
-#: build/course-metadata/index.js:1
-#: build/setting-panel-course/index.js:1
-msgid "Prerequisites"
-msgstr ""
-
-#: src/posts/lesson/Lesson.php:23
+#: src/posts/lesson/Lesson.php:25
 #: build/course-outline/index.js:1
 #: build/lesson-sidebar/index.js:1
 msgid "Lesson"
 msgstr ""
 
 #: src/posts/lesson/Lesson.php:26
+#: src/posts/lesson/Lesson.php:27
+#: temp/CourseOrganizer.php:221
+#: build/setting-panel-course/index.js:1
+msgid "Add New Lesson"
+msgstr ""
+
+#: src/posts/lesson/Lesson.php:28
 msgid "Edit Lesson"
 msgstr ""
 
-#: src/posts/lesson/Lesson.php:27
+#: src/posts/lesson/Lesson.php:29
 msgid "Parent Module:"
 msgstr ""
 
-#: src/posts/module/Module.php:23
+#: src/posts/module/Module.php:24
+#: temp/CourseOrganizer.php:152
+msgid "Modules"
+msgstr ""
+
+#: src/posts/module/Module.php:25
 msgid "Module"
 msgstr ""
 
 #: src/posts/module/Module.php:26
+#: src/posts/module/Module.php:27
+#: temp/CourseOrganizer.php:218
+#: build/setting-panel-course/index.js:1
+msgid "Add New Module"
+msgstr ""
+
+#: src/posts/module/Module.php:28
 msgid "Edit Module"
 msgstr ""
 
-#: src/posts/module/Module.php:27
+#: src/posts/module/Module.php:29
 msgid "Parent Course:"
 msgstr ""
 
-#: src/template/SingleCourseTemplate.php:39
-msgid "Single Course"
-msgstr ""
-
-#: src/template/SingleCourseTemplate.php:40
-msgid "Template for displaying a single course (by Lithe Course)"
-msgstr ""
-
-#: src/terms/CourseTaxonomy.php:15
-#: src/terms/CourseTaxonomy.php:30
+#: src/terms/CourseTaxonomy.php:17
+#: src/terms/CourseTaxonomy.php:32
 msgid "Course Categories"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:16
+#: src/terms/CourseTaxonomy.php:18
 msgid "Course Category"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:17
+#: src/terms/CourseTaxonomy.php:19
 msgid "Search Course Categories"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:18
+#: src/terms/CourseTaxonomy.php:20
 msgid "Popular Course Categories"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:19
+#: src/terms/CourseTaxonomy.php:21
 msgid "All Course Categories"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:20
+#: src/terms/CourseTaxonomy.php:22
 msgid "Parent Course Category"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:21
+#: src/terms/CourseTaxonomy.php:23
 msgid "Parent Course Category:"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:22
+#: src/terms/CourseTaxonomy.php:24
 msgid "Edit Course Category"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:23
+#: src/terms/CourseTaxonomy.php:25
 msgid "Update Course Category"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:24
+#: src/terms/CourseTaxonomy.php:26
 msgid "Add New Course Category"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:25
+#: src/terms/CourseTaxonomy.php:27
 msgid "New Course Category Name"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:26
+#: src/terms/CourseTaxonomy.php:28
 msgid "Separate course categories with commas"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:27
+#: src/terms/CourseTaxonomy.php:29
 msgid "Add or remove course categories"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:28
+#: src/terms/CourseTaxonomy.php:30
 msgid "Choose from the most used course categories"
 msgstr ""
 
-#: src/terms/CourseTaxonomy.php:29
+#: src/terms/CourseTaxonomy.php:31
 msgid "No course categories found."
+msgstr ""
+
+#: temp/CourseOrganizer.php:23
+#: temp/CourseOrganizer.php:24
+#: temp/CourseOrganizer.php:78
+msgid "Course Organizer"
+msgstr ""
+
+#: temp/CourseOrganizer.php:49
+msgid "Are you sure you want to save the changes?"
+msgstr ""
+
+#: temp/CourseOrganizer.php:50
+msgid "An error occurred. Please try again."
+msgstr ""
+
+#: temp/CourseOrganizer.php:51
+msgid "Changes saved successfully."
+msgstr ""
+
+#: temp/CourseOrganizer.php:92
+msgid "Select Course"
+msgstr ""
+
+#: temp/CourseOrganizer.php:137
+#: temp/CourseOrganizer.php:204
+#: build/setting-panel-course/index.js:1
+msgid "Edit"
+msgstr ""
+
+#: temp/CourseOrganizer.php:150
+msgid "Unassigned Items"
+msgstr ""
+
+#: temp/CourseOrganizer.php:176
+msgid "No unassigned modules"
+msgstr ""
+
+#: temp/CourseOrganizer.php:210
+msgid "No unassigned lessons"
+msgstr ""
+
+#: temp/template/SingleCourseTemplate.php:41
+msgid "Single Course"
+msgstr ""
+
+#: temp/template/SingleCourseTemplate.php:42
+msgid "Template for displaying a single course (by Lithe Course)"
 msgstr ""
 
 #: build/course-metadata/index.js:1
@@ -561,6 +459,16 @@ msgstr ""
 
 #: build/course-metadata/index.js:1
 msgid "Features"
+msgstr ""
+
+#: build/course-metadata/index.js:1
+#: build/setting-panel-course/index.js:1
+msgid "Prerequisites"
+msgstr ""
+
+#: build/course-metadata/index.js:1
+#: build/setting-panel-course/index.js:1
+msgid "What You Will Learn"
 msgstr ""
 
 #: build/course-metadata/index.js:1
@@ -608,7 +516,17 @@ msgid "Upper Roman"
 msgstr ""
 
 #: build/course-metadata/index.js:1
+#: build/setting-panel-course/index.js:1
+msgid "Course Features"
+msgstr ""
+
+#: build/course-metadata/index.js:1
 msgid "Course Prerequisites"
+msgstr ""
+
+#: build/course-metadata/index.js:1
+#: build/setting-panel-course/index.js:1
+msgid "Who This Course Is For"
 msgstr ""
 
 #: build/course-metadata/index.js:1
@@ -805,10 +723,6 @@ msgid "Current Lesson"
 msgstr ""
 
 #: build/my-course/index.js:1
-msgid "My Course"
-msgstr ""
-
-#: build/my-course/index.js:1
 msgid "Displays a list of my courses"
 msgstr ""
 
@@ -829,6 +743,10 @@ msgid "Done"
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
+msgid "Delete"
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
 msgid "Are you sure you want to delete this lesson?"
 msgstr ""
 
@@ -845,11 +763,19 @@ msgid "Lesson title is required."
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
-msgid "Drag to reorder lesson"
+msgid "Enter lesson title"
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
-msgid "Drag to reorder module"
+msgid "Add Lesson"
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
+msgid "Cancel"
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
+msgid "Drag to reorder lesson"
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
@@ -861,7 +787,19 @@ msgid "Module title is required."
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
+msgid "Are you sure you want to delete this module? This will also delete all lessons within this module."
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
 msgid "Failed to delete module. Please try again."
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
+msgid "Drag to reorder module"
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
+msgid "Save"
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
@@ -869,7 +807,19 @@ msgid "Lessons:"
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
+msgid "No lessons found. Add a new lesson to get started."
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
 msgid "Failed to create module. Please try again."
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
+msgid "Enter module title"
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
+msgid "Add Module"
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
@@ -894,6 +844,10 @@ msgstr ""
 
 #: build/setting-panel-course/index.js:1
 msgid "Collapse All"
+msgstr ""
+
+#: build/setting-panel-course/index.js:1
+msgid "No modules found. Add a new module to get started."
 msgstr ""
 
 #: build/setting-panel-course/index.js:1
@@ -926,10 +880,6 @@ msgstr ""
 
 #: build/setting-panel-course/index.js:1
 msgid "Invalid video URL. Please enter a valid YouTube, Vimeo, or BunnyCDN URL."
-msgstr ""
-
-#: build/setting-panel-course/index.js:1
-msgid "Failed to save video URL"
 msgstr ""
 
 #: build/setting-panel-course/index.js:1

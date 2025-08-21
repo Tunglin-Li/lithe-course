@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $course_id = get_the_ID();
 
 // If we're not on a course page, try to get the course ID from the block attributes
-if (get_post_type() !== 'lithe_course') {
+if (get_post_type() !== 'lithecourse_course') {
     $course_id = isset($attributes['courseId']) ? $attributes['courseId'] : null;
     
     // Fallback to ACF field if using it
@@ -25,8 +25,8 @@ if (!$course_id) {
 }
 
 // Get all modules for this course
-$modules = get_posts([
-    'post_type' => 'lithe_module',
+    $modules = get_posts([
+        'post_type' => 'lithecourse_module',
     'meta_key' => '_parent_course_id',
     'meta_value' => $course_id,
     'orderby' => 'menu_order',
@@ -76,7 +76,7 @@ if ($lesson_text_color) {
 }
 ?>
 
-<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithe-course-modules'])); ?>>
+<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithecourse-modules'])); ?>>
     <?php foreach ($modules as $module) : ?>
         <div class="lithe-module" data-id="<?php echo esc_attr($module->ID); ?>" style="<?php echo esc_attr($module_style); ?>">
             <div class="module-header" style="<?php echo esc_attr($module_header_style); ?>">
@@ -87,7 +87,7 @@ if ($lesson_text_color) {
                 <?php
                 // Get lessons for this module
                 $lessons = get_posts([
-                    'post_type' => 'lithe_lesson',
+                    'post_type' => 'lithecourse_lesson',
                     'meta_key' => '_parent_module_id',
                     'meta_value' => $module->ID,
                     'orderby' => 'menu_order',

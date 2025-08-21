@@ -12,12 +12,12 @@ class Field {
             self::$instance = new self();
         }
         
-        add_action('init', [self::$instance, 'lithe_course_register_meta_fields']);
+        add_action('init', [self::$instance, 'lithecourse_register_meta_fields']);
     }
 
-    public function lithe_course_register_meta_fields() {
+    public function lithecourse_register_meta_fields() {
         // Register course type meta field
-        register_post_meta('lithe_course', '_course_type', [
+        register_post_meta('lithecourse_course', '_course_type', [
             'type' => 'string',
             'single' => true,
             'default' => 'free',
@@ -28,7 +28,7 @@ class Field {
         ]);
         
         // Register video meta
-        register_post_meta('lithe_course', '_video', [
+        register_post_meta('lithecourse_course', '_video', [
             'type' => 'object',
             'single' => true,
             'show_in_rest' => [
@@ -58,7 +58,7 @@ class Field {
         $course_info_fields = ['features', 'learnings', 'suitable', 'requirements'];
         
         foreach ($course_info_fields as $field) {
-            register_post_meta('lithe_course', "_{$field}", [
+            register_post_meta('lithecourse_course', "_{$field}", [
                 'type' => 'array',
                 'single' => true,
                 'show_in_rest' => [

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Lithe Course
- * Plugin URI: https://github.com/Tunglin-Li/lithe-course
+ * Plugin URI: https://github.com/Tunglin-Li/lithecourse
  * Description: A comprehensive learning management system (LMS) plugin for WordPress with modern blocks, course organization, and student enrollment features.
  * Version: 1.0.0
  * Author: Tunglin Li
@@ -31,36 +31,36 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('LITHE_COURSE_VERSION', '1.0.0');
-define('LITHE_COURSE_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('LITHE_COURSE_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('LITHE_COURSE_PLUGIN_BASENAME', plugin_basename(__FILE__));
+define('LITHECOURSE_VERSION', '1.0.0');
+define('LITHECOURSE_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('LITHECOURSE_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('LITHECOURSE_PLUGIN_BASENAME', plugin_basename(__FILE__));
 
 // Load Composer autoloader
-require_once LITHE_COURSE_PLUGIN_DIR . '/vendor/autoload.php';
-\A7\autoload(LITHE_COURSE_PLUGIN_DIR . 'src');
+require_once LITHECOURSE_PLUGIN_DIR . '/vendor/autoload.php';
+\A7\autoload(LITHECOURSE_PLUGIN_DIR . 'src');
 
 // Plugin activation/deactivation hooks
-register_activation_hook(__FILE__, 'lithe_course_activate');
-register_deactivation_hook(__FILE__, 'lithe_course_deactivate');
+register_activation_hook(__FILE__, 'lithecourse_activate');
+register_deactivation_hook(__FILE__, 'lithecourse_deactivate');
 
 /**
  * Plugin activation hook
  */
-function lithe_course_activate() {
+function lithecourse_activate() {
     // Flush rewrite rules to ensure post types are registered
     flush_rewrite_rules();
     
     // Set default options if needed
-    if (!get_option('lithe_course_version')) {
-        add_option('lithe_course_version', LITHE_COURSE_VERSION);
+    if (!get_option('LITHECOURSE_VERSION')) {
+        add_option('LITHECOURSE_VERSION', LITHECOURSE_VERSION);
     }
 }
 
 /**
  * Plugin deactivation hook
  */
-function lithe_course_deactivate() {
+function lithecourse_deactivate() {
     // Flush rewrite rules
     flush_rewrite_rules();
 }

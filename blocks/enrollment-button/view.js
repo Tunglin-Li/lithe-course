@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Handle enrollment button clicks
-  const enrollButtons = document.querySelectorAll(
-    ".lithe-course-enroll-button"
-  );
+  const enrollButtons = document.querySelectorAll(".lithecourse-enroll-button");
 
   enrollButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
@@ -12,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Find the status element - might be a sibling or in parent container
       const statusElement =
-        this.parentElement.querySelector(".lithe-course-enrollment-status") ||
+        this.parentElement.querySelector(".lithecourse-enrollment-status") ||
         this.closest(
-          ".lithe-course-enrollment-action, .lithe-course-enrollment-button-wrap"
+          ".lithecourse-enrollment-action, .lithecourse-enrollment-button-wrap"
         )?.querySelector(
-          ".lithe-course-enrollment-status, .lithe-course-enrollment-status-message"
+          ".lithecourse-enrollment-status, .lithecourse-enrollment-status-message"
         );
 
       // Disable button and show loading status
@@ -63,21 +61,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // Handle different block types
           const buttonContainer = this.closest(
-            ".lithe-course-enrollment-action, .lithe-course-enrollment-button-wrap"
+            ".lithecourse-enrollment-action, .lithecourse-enrollment-button-wrap"
           );
 
           if (
             buttonContainer &&
-            buttonContainer.classList.contains("lithe-course-enrollment-action")
+            buttonContainer.classList.contains("lithecourse-enrollment-action")
           ) {
             // For the course-enrollment block
             const enrollmentStatus =
               buttonContainer.parentElement.querySelector(
-                ".lithe-course-enrollment-status"
+                ".lithecourse-enrollment-status"
               );
             if (enrollmentStatus) {
               enrollmentStatus.innerHTML =
-                '<div class="lithe-course-enrollment-message lithe-course-enrolled">' +
+                '<div class="lithecourse-enrollment-message lithecourse-enrolled">' +
                 '<span class="dashicons dashicons-yes-alt"></span>' +
                 "You are enrolled in this course" +
                 "</div>";
@@ -160,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Update the enrollment count
             const enrollmentCountElement = document.querySelector(
-              ".lithe-course-admin-enrollment-count strong"
+              ".lithecourse-admin-enrollment-count strong"
             );
             if (enrollmentCountElement) {
               let count = parseInt(enrollmentCountElement.textContent) - 1;
@@ -168,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               // Update the text for singular/plural
               const enrollmentTextElement = document.querySelector(
-                ".lithe-course-admin-enrollment-count"
+                ".lithecourse-admin-enrollment-count"
               );
               if (enrollmentTextElement) {
                 if (count === 1) {
@@ -189,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   listTable.remove();
                 }
                 const enrollmentsContainer = document.querySelector(
-                  ".lithe-course-admin-enrollments"
+                  ".lithecourse-admin-enrollments"
                 );
                 if (enrollmentsContainer) {
                   enrollmentsContainer.innerHTML +=

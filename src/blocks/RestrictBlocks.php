@@ -7,26 +7,26 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class RestrictBlocks {
     public static function init() {
         $class = new self();
-        add_filter('allowed_block_types_all', [$class, 'lithe_course_restrict_course_blocks'], 10, 2);
+        add_filter('allowed_block_types_all', [$class, 'lithecourse_restrict_course_blocks'], 10, 2);
     }
 
     /**
      * Restrict course blocks to only appear in template editor
      */
-    public function lithe_course_restrict_course_blocks($allowed_blocks, $block_editor_context) {
+    public function lithecourse_restrict_course_blocks($allowed_blocks, $block_editor_context) {
         // List of your course blocks to restrict
         $course_blocks = [
-            'lithe-course/course-outline',
-            'lithe-course/course-metadata', 
-            'lithe-course/course-video',
-            'lithe-course/enrollment-button',
-            'lithe-course/lesson-sidebar',
-            'lithe-course/enrolled-student',
+            'lithecourse/course-outline',
+            'lithecourse/course-metadata', 
+            'lithecourse/course-video',
+            'lithecourse/enrollment-button',
+            'lithecourse/lesson-sidebar',
+            'lithecourse/enrolled-student',
 
         ];
 
         // Check if we're in template editor
-        $is_template_editor = $this->lithe_course_is_template_editor($block_editor_context);
+        $is_template_editor = $this->lithecourse_is_template_editor($block_editor_context);
         
         // If we're in template editor, allow all blocks (return original value)
         if ($is_template_editor) {
@@ -52,13 +52,13 @@ class RestrictBlocks {
     /**
      * Check if we should allow course blocks (only in specific contexts)
      */
-    private function lithe_course_is_template_editor($block_editor_context) {
+    private function lithecourse_is_template_editor($block_editor_context) {
         // Check if we have a post context
         if (isset($block_editor_context->post)) {
             $post = $block_editor_context->post;
             
             // Allow course blocks ONLY in course and lesson post types
-            if ($post->post_type === 'lithe_course' || $post->post_type === 'lithe_lesson') {
+            if ($post->post_type === 'lithecourse_course' || $post->post_type === 'lithecourse_lesson') {
                 return true;
             }
             

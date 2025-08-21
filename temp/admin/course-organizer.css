@@ -1,4 +1,4 @@
-.lithe-course-selector {
+.lithecourse-selector {
   margin: 20px 0;
   padding: 15px;
   background: #fff;
@@ -6,13 +6,13 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
 }
 
-.lithe-course-organizer {
+.lithecourse-organizer {
   display: flex;
   gap: 2rem;
   margin-top: 2rem;
 }
 
-.lithe-course-list {
+.lithecourse-list {
   flex: 3;
 }
 
@@ -21,14 +21,14 @@
   min-width: 250px;
 }
 
-.lithe-course {
+.lithecourse {
   background: #fff;
   border: 1px solid #ccd0d4;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
   margin-bottom: 2rem;
 }
 
-.lithe-course h2 {
+.lithecourse h2 {
   margin: 0;
   padding: 15px;
   border-bottom: 1px solid #ccd0d4;
@@ -131,7 +131,7 @@
   margin: 0;
 }
 
-.lithe-course-actions {
+.lithecourse-actions {
   display: flex;
   gap: 10px;
 }

@@ -36,7 +36,7 @@ Lithe Course is a comprehensive learning management system (LMS) plugin for Word
 
 **Important**: This plugin is designed specifically for WordPress block themes. It may not work properly with classic themes.
 
-1. Upload the plugin files to the `/wp-content/plugins/lithe-course` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/lithecourse` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Navigate to 'Courses' in your WordPress admin to start creating courses
 4. Use the course blocks in the Gutenberg editor to build your course pages
@@ -131,7 +131,7 @@ To build the plugin from source:
 - **Built files**: Generated in `build/` directory using @wordpress/scripts
 - **Dependencies**: Managed via npm (see package.json)
 
-The source code is also available on GitHub: https://github.com/Tunglin-Li/lithe-course
+The source code is also available on GitHub: https://github.com/Tunglin-Li/lithecourse
 
 == Frequently Asked Questions ==
 

@@ -12,12 +12,12 @@ class Lesson {
             self::$instance = new self();
         }
 
-        add_action('init', [self::$instance, 'lithe_course_register_lesson_post_type']);
+        add_action('init', [self::$instance, 'lithecourse_register_lesson_post_type']);
         // Add migration code
-        add_action('admin_init', [self::$instance, 'lithe_course_migrate_lesson_relationships']);
+        add_action('admin_init', [self::$instance, 'lithecourse_migrate_lesson_relationships']);
     }
 
-    public function lithe_course_register_lesson_post_type() {
+    public function lithecourse_register_lesson_post_type() {
         // Register Lesson Post Type
         $args = [
             'labels' => [
@@ -37,21 +37,21 @@ class Lesson {
             'hierarchical' => false, // Changed from true to false since we'll use custom meta
         ];
 
-        $result = register_post_type('lithe_lesson', $args);
+        $result = register_post_type('lithecourse_lesson', $args);
     }
 
     /**
      * Migrate existing lesson relationships from post_parent to custom meta
      */
-    public function lithe_course_migrate_lesson_relationships() {
+    public function lithecourse_migrate_lesson_relationships() {
         // Only run once by checking for a flag in options
-        if (get_option('lithe_lesson_migration_complete')) {
+        if (get_option('lithecourse_lesson_migration_complete')) {
             return;
         }
         
         // Get all lessons
         $lessons = get_posts([
-            'post_type' => 'lithe_lesson',
+            'post_type' => 'lithecourse_lesson',
             'posts_per_page' => -1
         ]);
         
@@ -85,7 +85,7 @@ class Lesson {
         }
         
         // Set flag to indicate migration is complete
-        update_option('lithe_lesson_migration_complete', true);
+        update_option('lithecourse_lesson_migration_complete', true);
     
     }
 }

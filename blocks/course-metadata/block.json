@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "title": "Course Metadata",
   "description": "Displays various course metadata",
-  "name": "lithe-course/course-metadata",
+  "name": "lithecourse/course-metadata",
   "version": "1.0.0",
   "category": "lithe-course",
   "icon": "info",

@@ -12,12 +12,12 @@ class Module {
             self::$instance = new self();
         }
 
-        add_action('init', [self::$instance, 'lithe_course_register_module_post_type']);
+        add_action('init', [self::$instance, 'lithecourse_register_module_post_type']);
         // Add migration code
-        add_action('admin_init', [self::$instance, 'lithe_course_migrate_module_relationships']);
+        add_action('admin_init', [self::$instance, 'lithecourse_migrate_module_relationships']);
     }
 
-    public function lithe_course_register_module_post_type() {
+    public function lithecourse_register_module_post_type() {
         // Register Module Post Type
         $args = [
             'labels' => [
@@ -44,21 +44,21 @@ class Module {
             'show_ui' => true, // Keep admin interface
         ];
 
-        $result = register_post_type('lithe_module', $args);
+        $result = register_post_type('lithecourse_module', $args);
     }
     
     /**
      * Migrate existing module relationships from post_parent to custom meta
      */
-    public function lithe_course_migrate_module_relationships() {
+    public function lithecourse_migrate_module_relationships() {
         // Only run once by checking for a flag in options
-        if (get_option('lithe_module_migration_complete')) {
+        if (get_option('lithecourse_module_migration_complete')) {
             return;
         }
         
         // Get all modules
         $modules = get_posts([
-            'post_type' => 'lithe_module',
+            'post_type' => 'lithecourse_module',
             'posts_per_page' => -1
         ]);
         
@@ -81,7 +81,7 @@ class Module {
         }
         
         // Set flag to indicate migration is complete
-        update_option('lithe_module_migration_complete', true);
+        update_option('lithecourse_module_migration_complete', true);
     
     }
 }

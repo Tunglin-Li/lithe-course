@@ -17,7 +17,7 @@ $course_id = get_the_ID();
 $user_id = get_current_user_id();
 
 // If we're not on a course page, check if we're on a lesson page and get the associated course ID
-if (get_post_type() === 'lithe_lesson') {
+if (get_post_type() === 'lithecourse_lesson') {
     // Get the parent course ID from the lesson metadata
     $course_id = get_post_meta(get_the_ID(), '_parent_course_id', true);
 }
@@ -29,12 +29,12 @@ if (!$course_id) {
 
 // Get course type to determine if it's public
 use Lithe\Course\Posts\Course\Enrollment;
-$course_type = Enrollment::lithe_course_get_course_type($course_id);
+$course_type = Enrollment::lithecourse_get_course_type($course_id);
 $is_public_course = ($course_type === 'public');
 
 // Get all modules for this course
 $modules = get_posts([
-    'post_type' => 'lithe_module',
+    'post_type' => 'lithecourse_module',
     'meta_key' => '_parent_course_id',
     'meta_value' => $course_id,
     'orderby' => 'menu_order',
@@ -85,7 +85,7 @@ if ($lesson_text_color) {
 }
 
 // Pass data to the view script
-wp_localize_script('lithe-course-lesson-sidebar-view-script', 'litheLessonSidebar', [
+wp_localize_script('lithecourse-lesson-sidebar-view-script', 'litheLessonSidebar', [
     'ajaxUrl' => admin_url('admin-ajax.php'),
     'isPublicCourse' => $is_public_course,
     'lessonTextColor' => $lesson_text_color,
@@ -93,7 +93,7 @@ wp_localize_script('lithe-course-lesson-sidebar-view-script', 'litheLessonSideba
 ]);
 ?>
 
-<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithe-course-modules'])); ?>>
+<div <?php echo wp_kses_data(get_block_wrapper_attributes(['class' => 'lithecourse-modules'])); ?>>
     <?php foreach ($modules as $module) : ?>
         <div class="lithe-module" data-id="<?php echo esc_attr($module->ID); ?>" style="<?php echo esc_attr($module_style); ?>">
             <div class="module-header" style="<?php echo esc_attr($module_header_style); ?>">
@@ -104,7 +104,7 @@ wp_localize_script('lithe-course-lesson-sidebar-view-script', 'litheLessonSideba
                 <?php
                 // Get lessons for this module
                 $lessons = get_posts([
-                    'post_type' => 'lithe_lesson',
+                    'post_type' => 'lithecourse_lesson',
                     'meta_key' => '_parent_module_id',
                     'meta_value' => $module->ID,
                     'orderby' => 'menu_order',
@@ -115,7 +115,7 @@ wp_localize_script('lithe-course-lesson-sidebar-view-script', 'litheLessonSideba
                 if (!empty($lessons)) : ?>
                     <ul class="module-lessons">
                         <?php foreach ($lessons as $lesson) : 
-                            $completed = Lithe\Course\Posts\Lesson\LessonMeta::lithe_course_get_lesson_completion_status($lesson->ID, $user_id);
+                            $completed = Lithe\Course\Posts\Lesson\LessonMeta::lithecourse_get_lesson_completion_status($lesson->ID, $user_id);
                             $current_lesson = get_the_ID() === $lesson->ID ? 'current-lesson' : '';
                             
                             // Determine lesson content style

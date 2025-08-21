@@ -42,6 +42,7 @@ export default function CourseStructure() {
   const [error, setError] = useState(null);
   const [showAddModule, setShowAddModule] = useState(false);
   const [allExpanded, setAllExpanded] = useState(true);
+  const [expandedModules, setExpandedModules] = useState(new Set());
 
   // Drag overlay state
   const [activeId, setActiveId] = useState(null);
@@ -85,7 +86,7 @@ export default function CourseStructure() {
 
     try {
       const response = await apiFetch({
-        path: `/lithe-course/v1/course/${postId}/structure`,
+        path: `/lithecourse/v1/course/${postId}/structure`,
       });
       setModules(response);
     } catch (error) {
@@ -115,12 +116,34 @@ export default function CourseStructure() {
     setModules(modules.filter((module) => module.id !== moduleId));
   };
 
-  const handleExpandAll = () => {
-    setAllExpanded(true);
-  };
-
   const handleCollapseAll = () => {
     setAllExpanded(false);
+    setExpandedModules(new Set());
+  };
+
+  const handleExpandAll = () => {
+    setAllExpanded(true);
+    // Set all modules as expanded
+    const allModuleIds = new Set(modules.map((module) => module.id));
+    setExpandedModules(allModuleIds);
+  };
+
+  // Track when a module is expanded or collapsed
+  const handleModuleExpandedChange = (moduleId, isExpanded) => {
+    setExpandedModules((prev) => {
+      const newSet = new Set(prev);
+      if (isExpanded) {
+        newSet.add(moduleId);
+      } else {
+        newSet.delete(moduleId);
+      }
+      return newSet;
+    });
+  };
+
+  // Check if any module is expanded (if so, disable all module dragging)
+  const isAnyModuleExpanded = () => {
+    return expandedModules.size > 0;
   };
 
   // Helper function to check if an ID is a module
@@ -225,6 +248,12 @@ export default function CourseStructure() {
   const handleDragStart = (event) => {
     const { active } = event;
     const activeIdValue = active.id;
+
+    // Prevent module dragging if any module is expanded
+    if (isModule(activeIdValue) && isAnyModuleExpanded()) {
+      event.preventDefault();
+      return;
+    }
 
     setActiveId(activeIdValue);
     setClonedModules(modules);
@@ -398,7 +427,7 @@ export default function CourseStructure() {
             // Save module order to server
             const moduleOrder = newOrder.map((module) => module.id);
             apiFetch({
-              path: `/lithe-course/v1/course/${postId}/module-order`,
+              path: `/lithecourse/v1/course/${postId}/module-order`,
               method: "PUT",
               data: {
                 module_order: moduleOrder,
@@ -461,7 +490,7 @@ export default function CourseStructure() {
           ) || 0;
 
         await apiFetch({
-          path: `/lithe-course/v1/lesson/${activeId}/move`,
+          path: `/lithecourse/v1/lesson/${activeId}/move`,
           method: "PUT",
           data: {
             module_id: overContainer,
@@ -486,7 +515,7 @@ export default function CourseStructure() {
 
           if (orderChanged) {
             await apiFetch({
-              path: `/lithe-course/v1/module/${activeContainer}/lesson-order`,
+              path: `/lithecourse/v1/module/${activeContainer}/lesson-order`,
               method: "PUT",
               data: {
                 lesson_order: currentLessonOrder,
@@ -545,7 +574,7 @@ export default function CourseStructure() {
       onDragCancel={handleDragCancel}
     >
       <PanelBody>
-        <div className="lithe-course-structure">
+        <div className="lithecourse-structure">
           {error && (
             <Notice status="error" isDismissible={false}>
               {error}
@@ -586,6 +615,8 @@ export default function CourseStructure() {
                     onUpdate={handleUpdateModule}
                     onDelete={handleDeleteModule}
                     forceExpanded={allExpanded}
+                    onExpandedChange={handleModuleExpandedChange}
+                    isModuleDraggingDisabled={isAnyModuleExpanded()}
                   />
                 ))
               ) : (

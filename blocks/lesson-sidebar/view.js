@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: new URLSearchParams({
-          action: "update_lesson_completion",
+          action: "lithecourse_update_lesson_completion",
           nonce: config.nonce,
           lesson_id: lessonId,
           completed: completed,

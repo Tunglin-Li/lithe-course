@@ -82,6 +82,9 @@ git rm --cached package-lock.json 2>/dev/null || true
 git rm --cached composer.lock 2>/dev/null || true
 git rm --cached .distignore 2>/dev/null || true
 git rm --cached .gitignore 2>/dev/null || true
+git rm --cached prepare-release.sh 2>/dev/null || true
+git rm --cached deploy-from-release.sh 2>/dev/null || true
+git rm --cached README.md 2>/dev/null || true
 
 # 提交清理
 git add .

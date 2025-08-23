@@ -4,7 +4,7 @@ Tags: course, education, learning, academy, lms
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,13 @@ Lithe Course is a block-first learning management system (LMS) plugin for WordPr
 ### Learn More
 For a full step-by-step tutorial with images, please visit:  
 👉 [Complete Lithe Course Introduction Guide](https://tunglinli.com/blog/lithe-course-intro/)
+
+== Screenshots ==
+
+1. Manage all your courses from the WordPress admin list view
+2. Add and customize course blocks in the block editor
+3. Example layout of a course template using Lithe Course
+4. Example layout of a lesson template with progress tracking
 
 == Installation ==
 

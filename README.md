@@ -3,7 +3,7 @@
 A lightweight, block-first Learning Management System (LMS) plugin for WordPress.  
 Create, organize, and deliver courses with a clean, modern block-based experience.
 
-![Lithe Course Banner](./assets/banner-772x250.png)
+![Lithe Course Banner](./screenshot.png)
 
 ---
 
@@ -88,7 +88,7 @@ When learners play a video, the host may receive the video URL and standard web 
 
 - **YouTube**: [Terms](https://www.youtube.com/t/terms) | [Privacy](https://policies.google.com/privacy)
 - **Vimeo**: [Terms](https://vimeo.com/terms) | [Privacy](https://vimeo.com/privacy)
-- **Bunny.net**: [Terms](https://bunny.net/terms/) | [Privacy](https://bunny.net/privacy/)
+- **Bunny.net**: [Terms](https://bunny.net/tos/) | [Privacy](https://bunny.net/privacy/)
 
 All course data, student enrollments, and progress tracking remain stored in your WordPress database.
 
@@ -103,5 +103,5 @@ For major changes, please open an issue first to discuss what you'd like to chan
 
 ## 📜 License
 
-This project is licensed under the GPL-2.0-or-later License.
-See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL-2.0-or-later License.  
+See the [LICENSE](./LICENSE) file for details, or view the [GNU GPL v2.0 text](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).

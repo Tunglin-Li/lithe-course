@@ -40,27 +40,3 @@ define('LITHECOURSE_PLUGIN_BASENAME', plugin_basename(__FILE__));
 require_once LITHECOURSE_PLUGIN_DIR . '/vendor/autoload.php';
 \A7\autoload(LITHECOURSE_PLUGIN_DIR . 'src');
 
-// Plugin activation/deactivation hooks
-register_activation_hook(__FILE__, 'lithecourse_activate');
-register_deactivation_hook(__FILE__, 'lithecourse_deactivate');
-
-/**
- * Plugin activation hook
- */
-function lithecourse_activate() {
-    // Flush rewrite rules to ensure post types are registered
-    flush_rewrite_rules();
-    
-    // Set default options if needed
-    if (!get_option('LITHECOURSE_VERSION')) {
-        add_option('LITHECOURSE_VERSION', LITHECOURSE_VERSION);
-    }
-}
-
-/**
- * Plugin deactivation hook
- */
-function lithecourse_deactivate() {
-    // Flush rewrite rules
-    flush_rewrite_rules();
-}

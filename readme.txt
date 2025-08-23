@@ -28,6 +28,10 @@ Lithe Course is a block-first learning management system (LMS) plugin for WordPr
 - Corporate learning platforms  
 - WordPress professionals who want a clean, block-based LMS  
 
+### Learn More
+For a full step-by-step tutorial with images, please visit:  
+👉 [Complete Lithe Course Introduction Guide](https://tunglinli.com/blog/lithe-course-intro/)
+
 == Installation ==
 
 1. Upload the plugin files to `/wp-content/plugins/lithecourse`, or install directly from the Plugins screen.  

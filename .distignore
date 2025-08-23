@@ -34,6 +34,8 @@ Thumbs.db
 README.md
 CHANGELOG.md
 *.md
+LICENSE
+screenshot.png
 
 # Testing
 tests/

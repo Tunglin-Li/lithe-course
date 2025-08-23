@@ -94,13 +94,6 @@ All course data, student enrollments, and progress tracking remain stored in you
 
 ---
 
-## 🤝 Contributing
-
-Pull requests are welcome!
-For major changes, please open an issue first to discuss what you'd like to change.
-
----
-
 ## 📜 License
 
 This project is licensed under the GPL-2.0-or-later License.  
